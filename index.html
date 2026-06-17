@@ -685,6 +685,18 @@ p { color: var(--body-text); line-height: 1.75; }
   .article-table tr:last-child td { border-bottom: none; }
   .article-table tr:nth-child(even) td { background: var(--off-white); }
   .article-table tr:hover td { background: var(--light-gray); }
+
+/* --- added: TCM category, member activity, typography orphan fix --- */
+.cat-tcm { background: rgba(46,139,87,0.12); color: #2e8b57; }
+.member-activity { display:grid; grid-template-columns:1.1fr 1fr; gap:32px; align-items:center; background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow); }
+.member-activity-media video { width:100%; height:auto; display:block; border-radius:var(--radius); background:#000; }
+.member-activity-body .listing-cat { display:inline-block; }
+.member-activity-body .listing-date { display:block; margin:10px 0 2px; color:var(--mid-gray); font-size:13px; }
+.member-activity-body h3 { margin:6px 0 14px; color:var(--dark-text); font-size:22px; line-height:1.45; }
+.member-activity-body p { color:var(--body-text); font-size:15px; line-height:1.85; margin-bottom:12px; }
+@media (max-width:768px){ .member-activity { grid-template-columns:1fr; gap:20px; } }
+h1,h2,h3,h4,h5,h6 { text-wrap:balance; }
+p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body p,.article-body p,.timeline-content p,.svc-card p,.adv-card p { text-wrap:pretty; }
 </style>
 </head>
 <body>
@@ -706,6 +718,7 @@ p { color: var(--body-text); line-height: 1.75; }
       <a href="#" onclick="showPage('about');return false;" data-zh="关于我们" data-en="About">关于我们</a>
       <a href="#" onclick="showPage('services');return false;" data-zh="服务" data-en="Work">服务</a>
       <a href="#" onclick="showPage('listings');return false;" data-zh="洞察报告" data-en="Insights">洞察报告</a>
+      <a href="#" onclick="showPage('members');return false;" data-zh="会员动态" data-en="Members">会员动态</a>
       <a href="#" onclick="showPage('contact');return false;" data-zh="联系我们" data-en="Contact">联系我们</a>
     </nav>
     <button class="btn-lang" id="lang-toggle" onclick="toggleLang()" title="Switch language">EN</button>
@@ -719,6 +732,7 @@ p { color: var(--body-text); line-height: 1.75; }
     <a href="#" onclick="showPage('about');closeMobile();return false;" data-zh="关于我们" data-en="About">关于我们</a>
     <a href="#" onclick="showPage('services');closeMobile();return false;" data-zh="服务" data-en="Work">服务</a>
     <a href="#" onclick="showPage('listings');closeMobile();return false;" data-zh="洞察报告" data-en="Insights">洞察报告</a>
+    <a href="#" onclick="showPage('members');closeMobile();return false;" data-zh="会员动态" data-en="Members">会员动态</a>
     <a href="#" onclick="showPage('contact');closeMobile();return false;" data-zh="联系我们" data-en="Contact">联系我们</a>
     <button class="btn-mobile" onclick="showPage('contact');closeMobile();" data-zh="预约咨询" data-en="Consult">预约咨询</button>
   </div>
@@ -735,7 +749,7 @@ p { color: var(--body-text); line-height: 1.75; }
       <div>
         <div class="hero-badge"><span></span>中国技术经济学会 · 北美代表处</div>
         <h1>连接<em>中国与北美</em>的技术经济智识平台</h1>
-        <p class="hero-sub">提供产业研究、商务对接与综合顾问服务，助力中企出海、华商回流与中外产业协同。扎根北美，独立中立，以学术严谨度服务产业决策。</p>
+        <p class="hero-sub">立足北美，围绕科技创新、经济发展与跨境合作等关键议题，开展学术交流、行业研究与专业对话，为太平洋两岸的企业、机构和专业人士提供可信赖的本土视角，搭建连接知识、产业与社区的桥梁。</p>
         <div class="hero-actions">
           <button class="btn btn-gold btn-lg" id="hero-btn-consult" onclick="showPage('contact')">预约咨询</button>
           <button class="btn btn-outline-white btn-lg" id="hero-btn-services" onclick="showPage('services')">了解服务</button>
@@ -753,11 +767,11 @@ p { color: var(--body-text); line-height: 1.75; }
           </div>
           <div class="stat-item">
             <div class="stat-num">47</div>
-            <div class="stat-label" id="stat-3-label">国际合作单位</div>
+            <div class="stat-label" id="stat-3-label">分支机构</div>
           </div>
           <div class="stat-item">
             <div class="stat-num">3</div>
-            <div class="stat-label" id="stat-4-label">核心服务领域</div>
+            <div class="stat-label" id="stat-4-label">学术期刊</div>
           </div>
         </div>
         <p class="hero-note" id="hero-note">中国社会科学技术类顶级学术组织 · 北美唯一代表机构</p>
@@ -785,7 +799,7 @@ p { color: var(--body-text); line-height: 1.75; }
       <div class="trust-sep"></div>
       <div class="trust-item">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        <span>聚焦 EV 出海 · AI 算力 · 绿色经济</span>
+        <span>聚焦 科技创新 · 跨境交流 · 可持续发展</span>
       </div>
     </div>
   </div>
@@ -796,7 +810,7 @@ p { color: var(--body-text); line-height: 1.75; }
       <div class="section-header">
         <span class="label">核心优势</span>
         <h2>为什么选择 CSTEAC</h2>
-        <p>我们以学术严谨度、产业网络深度与本地落地能力，为客户提供有实质价值的战略支撑。</p>
+        <p>平台价值来自于学术深度、行业广度与本土视野。</p>
       </div>
       <div class="adv-grid">
         <div class="adv-card">
@@ -871,51 +885,6 @@ p { color: var(--body-text); line-height: 1.75; }
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="label">客户声音</span>
-        <h2>他们这样评价 CSTEAC</h2>
-      </div>
-      <div class="testi-grid">
-        <div class="testi-card">
-          <div class="testi-quote">"</div>
-          <p class="testi-text">CSTEAC 提供的加拿大 EV 配额政策研究，帮助我们在第一时间做出了正确的市场准入判断。他们的分析独立、准确，没有任何立场偏向。</p>
-          <div class="testi-author">
-            <div class="testi-avatar">张</div>
-            <div class="testi-meta">
-              <div class="name">张先生</div>
-              <div class="role">某新能源整车企业 · 海外事业部总经理</div>
-            </div>
-          </div>
-        </div>
-        <div class="testi-card">
-          <div class="testi-quote">"</div>
-          <p class="testi-text">作为在温哥华深耕十年的华商，CSTEAC 的圆桌论坛让我第一次有机会与国内一线产业资源直接对话，效率超乎预期。</p>
-          <div class="testi-author">
-            <div class="testi-avatar">李</div>
-            <div class="testi-meta">
-              <div class="name">李女士</div>
-              <div class="role">BC 省贸易服务公司 · 创始人</div>
-            </div>
-          </div>
-        </div>
-        <div class="testi-card">
-          <div class="testi-quote">"</div>
-          <p class="testi-text">CSTEAC 不做空洞的承诺。他们帮我们梳理了在加拿大落地的每一道门槛，并协助对接了本地 PDI 合作伙伴，这种实质性的帮助很难得。</p>
-          <div class="testi-author">
-            <div class="testi-avatar">王</div>
-            <div class="testi-meta">
-              <div class="name">王总</div>
-              <div class="role">深圳供应链企业 · 加拿大市场负责人</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- About Preview -->
   <section class="section about-prev">
     <div class="container">
@@ -954,8 +923,8 @@ p { color: var(--body-text); line-height: 1.75; }
     <div class="about-hero-overlay"></div>
     <div class="container" style="position:relative;z-index:2;">
       <span class="label" style="color:var(--gold-light);">关于我们</span>
-      <h1 style="color:var(--white);max-width:700px;">北美唯一，学术立场，服务产业</h1>
-      <p style="color:rgba(255,255,255,0.7);max-width:600px;margin-top:16px;font-size:16px;">CSTEAC 是中国技术经济学会在北美设立的唯一代表机构，以学术背景、网络覆盖和本地落地能力服务中外产业交流。</p>
+      <h1 style="color:var(--white);max-width:700px;">国际视野，本土连接</h1>
+      <p style="color:rgba(255,255,255,0.7);max-width:600px;margin-top:16px;font-size:16px;">CSTEAC 是中国技术经济学会在中国境外设立的唯一代表机构，以学术背景、网络覆盖和本土连接能力服务中外学术与产业交流。</p>
     </div>
   </section>
 
@@ -966,9 +935,10 @@ p { color: var(--body-text); line-height: 1.75; }
           <span class="label">我们的故事</span>
           <h2>从学术到产业，从中国到北美</h2>
           <div class="divider"></div>
-          <p style="margin-top:16px;">中国技术经济学会（CSTE）成立于 1978 年，是中国最具影响力的技术经济类学术组织之一，现有会员逾 15,000 人，与全球 47 个国家的高校、研究机构及产业组织建立了合作关系。</p>
-          <p style="margin-top:14px;">2026 年 5 月，CSTEAC（中国技术经济学会北美代表处）在加拿大不列颠哥伦比亚省正式成立，成为 CSTE 在北美的唯一授权代表机构。代表处以独立、中立、学术为基本原则，聚焦于填平中加之间的信息不对称，为有意在北美与中国之间构建产业连接的各类机构和个人提供基于事实的研究与咨询服务。</p>
-          <p style="margin-top:14px;">我们的价值来自信息的准确与结构化，而非人脉的密度。</p>
+          <p class="xi18n" style="margin-top:16px;" data-zh="中国技术经济学会是中国科协直属全国一级学会，创立于 1978 年，长期致力于技术经济研究、学术交流和产学研协作。中国技术经济学会北美代表处的设立，是学会国际化发展中的重要一步。作为一个立足北美、面向技术经济、创新与应用研究的非营利学术与专业交流平台，CSTEAC 希望在不同国家、不同文化、不同专业背景的人群之间，搭建一个多元化的交流空间。" data-en="The Chinese Society of Technology Economics is a national first-level academic society under the China Association for Science and Technology. Founded in 1978, it has long been dedicated to techno-economic research, academic exchange, and collaboration among academia, industry, and research institutions. The establishment of the CSTE North America Office marks an important step in CSTE&#x27;s international development. As a non-profit academic and professional exchange platform based in North America and focused on techno-economics, innovation, and applied research, CSTEAC aims to create a diversified space for people from different countries, cultures, and professional backgrounds.">中国技术经济学会是中国科协直属全国一级学会，创立于 1978 年，长期致力于技术经济研究、学术交流和产学研协作。中国技术经济学会北美代表处的设立，是学会国际化发展中的重要一步。作为一个立足北美、面向技术经济、创新与应用研究的非营利学术与专业交流平台，CSTEAC 希望在不同国家、不同文化、不同专业背景的人群之间，搭建一个多元化的交流空间。</p>
+          <p class="xi18n" style="margin-top:14px;" data-zh="我们深知，真正有价值的国际合作，不是从交易开始，而是从理解、信任和共同关注的问题开始。北美有成熟的法律体系、专业标准、社区文化和产业生态。CSTEAC 在这里开展工作，首先要做的是学习本地、尊重本地、融入本地，并在此基础上推动研究交流、专业学习和跨区域理解。" data-en="We believe that meaningful international cooperation does not begin with transactions, but with understanding, trust, and shared questions. North America has mature legal systems, professional standards, community cultures, and industrial ecosystems. For CSTEAC, our first priority is to learn from, respect, and integrate into the local environment, and on that basis promote research exchange, professional learning, and cross-regional understanding.">我们深知，真正有价值的国际合作，不是从交易开始，而是从理解、信任和共同关注的问题开始。北美有成熟的法律体系、专业标准、社区文化和产业生态。CSTEAC 在这里开展工作，首先要做的是学习本地、尊重本地、融入本地，并在此基础上推动研究交流、专业学习和跨区域理解。</p>
+          <p class="xi18n" style="margin-top:14px;" data-zh="CSTEAC 不是商业中介，也不是政治组织。我们的工作重点，是围绕技术经济、科技创新、产业发展、教育、健康、社区与可持续发展等议题，组织研讨、研究、对话和专业交流。我们希望连接研究人员、企业家、专业人士、社区伙伴和青年人才，帮助大家在事实和研究的基础上提出更好的问题，形成更稳健的合作基础。" data-en="CSTEAC is neither a commercial intermediary nor a political organization. Our work focuses on seminars, research, dialogue, and professional exchange around issues such as technology economics, technological innovation, industrial development, education, health, community, and sustainable development. We seek to connect researchers, entrepreneurs, professionals, community partners, and young talents, helping all parties ask better questions and build a more solid foundation for cooperation based on facts and research.">CSTEAC 不是商业中介，也不是政治组织。我们的工作重点，是围绕技术经济、科技创新、产业发展、教育、健康、社区与可持续发展等议题，组织研讨、研究、对话和专业交流。我们希望连接研究人员、企业家、专业人士、社区伙伴和青年人才，帮助大家在事实和研究的基础上提出更好的问题，形成更稳健的合作基础。</p>
+          <p class="xi18n" style="margin-top:14px;" data-zh="未来，CSTEAC 将坚持合规运营的原则，持续推动中加、中美及更广泛北美地区在技术经济领域的知识交流与专业合作。我们也期待与更多本地机构、商会、学术组织、企业和社区伙伴建立长期、真诚、务实的联系。" data-en="Looking ahead, CSTEAC will continue to uphold the principles of compliant operations. We will work to promote knowledge exchange and professional cooperation in the field of techno-economics across Canada, the United States, and the broader North American region. We also look forward to building long-term, sincere, and practical relationships with local institutions, chambers of commerce, academic organizations, businesses, and community partners.">未来，CSTEAC 将坚持合规运营的原则，持续推动中加、中美及更广泛北美地区在技术经济领域的知识交流与专业合作。我们也期待与更多本地机构、商会、学术组织、企业和社区伙伴建立长期、真诚、务实的联系。</p>
         </div>
         <div class="timeline">
           <div class="timeline-item">
@@ -995,8 +965,8 @@ p { color: var(--body-text); line-height: 1.75; }
           <div class="timeline-item">
             <div class="timeline-dot">Q3</div>
             <div class="timeline-content">
-              <h4>AI 算力与 TOKEN 服务平台上线</h4>
-              <p>连接中国 GPU 资源与北美 AI 开发需求，提供合规跨境算力方案。</p>
+              <h4 class="xi18n" data-zh="敬请期待" data-en="Stay Tuned">敬请期待</h4>
+              <p class="xi18n" data-zh="更多季度活动安排即将公布。" data-en="More quarterly activities to be announced.">更多季度活动安排即将公布。</p>
             </div>
           </div>
         </div>
@@ -1107,7 +1077,7 @@ p { color: var(--body-text); line-height: 1.75; }
     <div class="container" style="position:relative;z-index:2;">
       <span class="label" style="color:var(--gold-light);">工作方向</span>
       <h1 style="color:var(--white);max-width:700px;">桥梁 · 催化剂 · 学术支撑</h1>
-      <p style="color:rgba(255,255,255,0.7);max-width:600px;margin-top:16px;font-size:16px;">代表处是非营利学术机构，以学术交流、研究发布与产业连接为核心工作，不收取任何服务费用。需要专业执行服务的个人与机构，代表处可免费引荐经审核的战略合作伙伴。</p>
+      <p style="color:rgba(255,255,255,0.7);max-width:600px;margin-top:16px;font-size:16px;">代表处是非营利学术机构。需要专业服务的个人与机构，代表处可免费引荐经审核的战略合作伙伴。</p>
     </div>
   </section>
 
@@ -1224,7 +1194,7 @@ p { color: var(--body-text); line-height: 1.75; }
               <li><strong>产业观察：</strong>EV、AI、大数据、绿色能源、供应链等方向深度研究与简报，了解国内产业真实需求</li>
               <li><strong>学术交流：</strong>与高校、研究机构合作举办讲座、圆桌与课题讨论，CSTE 学术资源对接</li>
               <li><strong>创新实践：</strong>支持参与教育部"互联网+"等创新创业大赛、产业案例研究、项目路演与专题报告</li>
-              <li><strong>学术通道：</strong>有学术志向者可获 CSTE 背书支持，协助期刊发表与国家级人才计划（千人/优青）申报指导</li>
+              <li><strong>学术通道：</strong>面向有学术发展需求的专业人士，组织学术交流与经验分享，支持其在研究选题、论文写作、职业规划和专业成长方面获得更清晰的路径参考。</li>
             </ul>
           </div>
         </div>
@@ -1235,8 +1205,8 @@ p { color: var(--body-text); line-height: 1.75; }
               <svg viewBox="0 0 24 24" fill="none" stroke="#b43c28" stroke-width="2" width="26" height="26"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <div>
-              <h3>中华文化传播与文化外交</h3>
-              <p style="font-size:13px;color:var(--mid-gray);margin-top:4px;">Chinese Cultural Outreach & Public Diplomacy</p>
+              <h3>多元文化分享</h3>
+              <p style="font-size:13px;color:var(--mid-gray);margin-top:4px;">Multicultural Exchange</p>
             </div>
           </div>
           <div class="svc-detail-body">
@@ -1244,9 +1214,8 @@ p { color: var(--body-text); line-height: 1.75; }
             <ul>
               <li>篆刻艺术推广（西泠印社战略合作，定制文化礼品）</li>
               <li>中医文化社区讲座与健康推广活动</li>
-              <li>匹克球文化外交（打通非华裔政商网络）</li>
+              <li>匹克球体育交流</li>
               <li>皇家安大略博物馆（ROM）等本地文化机构合作</li>
-              <li>加拿大农产品对华出口学术对接</li>
             </ul>
           </div>
         </div>
@@ -1260,7 +1229,7 @@ p { color: var(--body-text); line-height: 1.75; }
       <div class="section-header">
         <span class="label">参与方式</span>
         <h2>如何与我们建立连接</h2>
-        <p>无论您是企业、学者、学生还是华商，均可通过以下方式与代表处建立联系，全程免费。</p>
+        <p>无论您代表机构还是个人，均欢迎联系代表处。</p>
       </div>
       <div class="process-steps">
         <div class="step-item">
@@ -1373,13 +1342,14 @@ p { color: var(--body-text); line-height: 1.75; }
   <section class="section">
     <div class="container">
       <div class="filter-bar" id="filter-bar">
-        <button class="filter-btn active" data-filter="all" onclick="filterListings('all',this)">全部</button>
-        <button class="filter-btn" data-filter="ev" onclick="filterListings('ev',this)">EV 出海</button>
-        <button class="filter-btn" data-filter="ai" onclick="filterListings('ai',this)">AI 与算力</button>
-        <button class="filter-btn" data-filter="policy" onclick="filterListings('policy',this)">政策分析</button>
-        <button class="filter-btn" data-filter="bipv" onclick="filterListings('bipv',this)">绿色经济</button>
-        <button class="filter-btn" data-filter="member" onclick="filterListings('member',this)">侨情视野</button>
-        <button class="filter-btn" data-filter="other" onclick="filterListings('other',this)">其它</button>
+        <button class="filter-btn active xi18n" data-filter="all" data-zh="全部" data-en="All" onclick="filterListings('all',this)">全部</button>
+        <button class="filter-btn xi18n" data-filter="tcm" data-zh="中医药" data-en="TCM" onclick="filterListings('tcm',this)">中医药</button>
+        <button class="filter-btn xi18n" data-filter="ev" data-zh="EV 出海" data-en="EV" onclick="filterListings('ev',this)">EV 出海</button>
+        <button class="filter-btn xi18n" data-filter="ai" data-zh="AI 与算力" data-en="AI &amp; Computing" onclick="filterListings('ai',this)">AI 与算力</button>
+        <button class="filter-btn xi18n" data-filter="policy" data-zh="政策分析" data-en="Policy" onclick="filterListings('policy',this)">政策分析</button>
+        <button class="filter-btn xi18n" data-filter="bipv" data-zh="绿色经济" data-en="Green Economy" onclick="filterListings('bipv',this)">绿色经济</button>
+        <button class="filter-btn xi18n" data-filter="member" data-zh="侨情视野" data-en="Diaspora" onclick="filterListings('member',this)">侨情视野</button>
+        <button class="filter-btn xi18n" data-filter="other" data-zh="其它" data-en="Other" onclick="filterListings('other',this)">其它</button>
       </div>
       <div class="listing-grid" id="listing-grid">
         <!-- Cards injected by JS -->
@@ -1390,6 +1360,44 @@ p { color: var(--body-text); line-height: 1.75; }
     </div>
   </section>
 </div><!-- /page-listings -->
+
+<!-- ═══ MEMBERS PAGE ═════════════════════════════════════════════ -->
+<div id="page-members" class="page">
+  <section class="about-hero" style="padding:60px 0;">
+    <div class="about-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&q=80');"></div>
+    <div class="about-hero-overlay"></div>
+    <div class="container" style="position:relative;z-index:2;">
+      <span class="label xi18n" style="color:var(--gold-light);" data-zh="会员动态" data-en="Member News">会员动态</span>
+      <h1 class=" xi18n" style="color:var(--white);" data-zh="会员动态" data-en="Member News">会员动态</h1>
+      <p class=" xi18n" style="color:rgba(255,255,255,0.72);max-width:560px;margin-top:12px;font-size:15px;" data-zh="代表处及会员的最新活动、专业交流与公共参与动态。" data-en="The latest activities, professional exchanges, and public engagements of the Representative Office and its members.">代表处及会员的最新活动、专业交流与公共参与动态。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="label xi18n" data-zh="会员活动" data-en="Member Activities">会员活动</span>
+        <h2 class=" xi18n" data-zh="近期活动" data-en="Recent Activities">近期活动</h2>
+      </div>
+
+      <article class="member-activity">
+        <div class="member-activity-media">
+          <video controls preload="metadata" playsinline>
+            <source src="member-sdecb-2026.mp4" type="video/mp4">
+            <span class=" xi18n" data-zh="您的浏览器不支持视频播放。" data-en="Your browser does not support video playback.">您的浏览器不支持视频播放。</span>
+          </video>
+        </div>
+        <div class="member-activity-body">
+          <span class="listing-cat cat-member xi18n" data-zh="会员活动" data-en="Member Activity">会员活动</span>
+          <span class="listing-date xi18n" data-zh="2026年5月27日" data-en="May 27, 2026">2026年5月27日</span>
+          <h3 class=" xi18n" data-zh="代表处出席卑诗省亚裔企业领袖圆桌会议" data-en="Representative Office Attends BC Asian Business Leaders Roundtable">代表处出席卑诗省亚裔企业领袖圆桌会议</h3>
+          <p class=" xi18n" data-zh="2026年5月27日，中国技术经济学会北美代表处主任刘世坚（Jason Liu）与副主任苏伟祺（Wicky Su）受邀出席由卑诗省经济发展会（Société de développement économique de la Colombie-Britannique，SDECB）主办的亚裔企业领袖圆桌会议——一场庆祝2026年亚裔传统月（Asian Heritage Month 2026）的特别活动。" data-en="On May 27, 2026, Mr. Liu Shijian (Jason Liu), Director, and Mr. Su Weiqi (Wicky Su), Deputy Director of the CSTE North America Office, were invited to attend the Asian Business Leaders Roundtable — a special event celebrating Asian Heritage Month 2026, hosted by the Société de développement économique de la Colombie-Britannique (SDECB).">2026年5月27日，中国技术经济学会北美代表处主任刘世坚（Jason Liu）与副主任苏伟祺（Wicky Su）受邀出席由卑诗省经济发展会（Société de développement économique de la Colombie-Britannique，SDECB）主办的亚裔企业领袖圆桌会议——一场庆祝2026年亚裔传统月（Asian Heritage Month 2026）的特别活动。</p>
+          <p class=" xi18n" data-zh="活动汇聚卑诗省各界亚裔商界领袖，围绕跨文化经贸合作与亚裔社群对本地经济的贡献展开交流。代表处借此契机进一步拓展了在加拿大本地的合作网络，深化与本地机构和商界的联系。" data-en="The event brought together Asian business leaders from across British Columbia for an exchange on cross-cultural economic cooperation and the contributions of Asian communities to the local economy. The Representative Office used the occasion to further expand its local network and deepen ties with local institutions and the business community.">活动汇聚卑诗省各界亚裔商界领袖，围绕跨文化经贸合作与亚裔社群对本地经济的贡献展开交流。代表处借此契机进一步拓展了在加拿大本地的合作网络，深化与本地机构和商界的联系。</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</div><!-- /page-members -->
 
 <!-- ═══ CONTACT PAGE ═════════════════════════════════════════════ -->
 <div id="page-contact" class="page">
@@ -1545,6 +1553,7 @@ p { color: var(--body-text); line-height: 1.75; }
           <li><a onclick="showPage('about')">关于我们</a></li>
           <li><a onclick="showPage('services')">服务</a></li>
           <li><a onclick="showPage('listings')">洞察报告</a></li>
+          <li><a onclick="showPage('members')">会员动态</a></li>
           <li><a onclick="showPage('contact')">联系我们</a></li>
         </ul>
       </div>
@@ -1606,14 +1615,14 @@ var _t = {
 zh:{
 'hero-badge':'<span></span>中国技术经济学会 · 北美代表处',
 'hero-h1':'连接<em>中国与北美</em>的技术经济智识平台',
-'hero-sub':'提供产业研究、商务对接与综合顾问服务，助力中企出海、华商回流与中外产业协同。扎根北美，独立中立，以学术严谨度服务产业决策。',
+'hero-sub':'立足北美，围绕科技创新、经济发展与跨境合作等关键议题，开展学术交流、行业研究与专业对话，为太平洋两岸的企业、机构和专业人士提供可信赖的本土视角，搭建连接知识、产业与社区的桥梁。',
 'hero-btn-consult':'预约咨询','hero-btn-services':'了解服务',
-'stat-1-label':'CSTE 创立年份','stat-2-label':'学会会员','stat-3-label':'国际合作单位','stat-4-label':'核心服务领域',
+'stat-1-label':'CSTE 创立年份','stat-2-label':'学会会员','stat-3-label':'分支机构','stat-4-label':'学术期刊',
 'hero-note':'中国社会科学技术类顶级学术组织 · 北美唯一代表机构',
 'trust-1':'依托中国技术经济学会（CSTE）','trust-2':'成立于 2026 年 · 温哥华',
-'trust-3':'服务中企出海 · 华商回流 · 两岸学术连接','trust-4':'聚焦 EV 出海 · AI 算力 · 绿色经济',
+'trust-3':'服务中企出海 · 华商回流 · 两岸学术连接','trust-4':'聚焦 科技创新 · 跨境交流 · 可持续发展',
 'adv-label':'核心优势','adv-h2':'为什么选择 CSTEAC',
-'adv-p':'我们以学术严谨度、产业网络深度与本地落地能力，为客户提供有实质价值的战略支撑。',
+'adv-p':'平台价值来自于学术深度、行业广度与本土视野。',
 'adv1-h3':'学术背书，独立中立','adv1-p':'CSTE 成立于 1978 年，15,000+ 名会员，47 国合作伙伴。代表处以学术组织身份运营，不背书、不代理，以事实与研究为基础提供判断。',
 'adv2-h3':'双边网络，跨境对接','adv2-p':'深度嵌入中加两国产业、政府与学术网络。BC 省、安省与魁北克一线资源整合，中国国内一二线城市产业协会与政府资源畅通直达。',
 'adv3-h3':'研究驱动，落地陪跑','adv3-p':'从市场研究报告到项目全程管理，提供"研究—洞察—对接—陪跑"全链条服务。不卖结论，陪伴客户在真实场景中完成判断与决策。',
@@ -1638,8 +1647,8 @@ zh:{
 'home-cta-h2':'准备好开始了吗？',
 'home-cta-p':'无论您是希望进入北美市场的中国企业、寻求亚太布局的北美华商、打算回国发展的留学生，还是有意进入中国市场的海外机构，CSTEAC 都是您的中立学术起点。',
 'home-cta-btn1':'预约免费咨询','home-cta-btn2':'阅读最新研究',
-'about-hero-label':'关于我们','about-hero-h1':'北美唯一，学术立场，服务产业',
-'about-hero-p':'CSTEAC 是中国技术经济学会在北美设立的唯一代表机构，以学术背景、网络覆盖和本地落地能力服务中外产业交流。',
+'about-hero-label':'关于我们','about-hero-h1':'国际视野，本土连接',
+'about-hero-p':'CSTEAC 是中国技术经济学会在中国境外设立的唯一代表机构，以学术背景、网络覆盖和本土连接能力服务中外学术与产业交流。',
 'story-label':'我们的故事','story-h2':'从学术到产业，从中国到北美',
 'story-p1':'中国技术经济学会（CSTE）成立于 1978 年，是中国最具影响力的技术经济类学术组织之一，现有会员逾 15,000 人，与全球 47 个国家的高校、研究机构及产业组织建立了合作关系。',
 'story-p2':'2026 年 5 月，CSTEAC（中国技术经济学会北美代表处）在加拿大不列颠哥伦比亚省正式成立，成为 CSTE 在北美的唯一授权代表机构。代表处以独立、中立、学术为基本原则，聚焦于填平中加之间的信息不对称，为有意在北美与中国之间构建产业连接的各类机构和个人提供基于事实的研究与咨询服务。',
@@ -1664,11 +1673,11 @@ zh:{
 'about-cta-h2':'与我们建立连接','about-cta-p':'无论您是企业负责人、产业研究者还是有志于跨境发展的个人，CSTEAC 欢迎与您深度交流。',
 'about-cta-btn1':'立即联系','about-cta-btn2':'查看服务',
 'svc-hero-label':'工作方向','svc-hero-h1':'桥梁 · 催化剂 · 学术支撑',
-'svc-hero-p':'代表处是非营利学术机构，以学术交流、研究发布与产业连接为核心工作，不收取任何服务费用。需要专业执行服务的个人与机构，代表处可免费引荐经审核的战略合作伙伴。',
+'svc-hero-p':'代表处是非营利学术机构。需要专业服务的个人与机构，代表处可免费引荐经审核的战略合作伙伴。',
 'svc-detail-label':'工作方向详情','svc-detail-h2':'六大工作方向',
 'svc-detail-p':'代表处作为 CSTE 北美非营利学术机构，以下六大方向均为公益性工作。需要专业执行服务的个人与机构，代表处可免费引荐战略合作伙伴。',
 'engage-label':'参与方式','engage-h2':'如何与我们建立连接',
-'engage-p':'无论您是企业、学者、学生还是华商，均可通过以下方式与代表处建立联系，全程免费。',
+'engage-p':'无论您代表机构还是个人，均欢迎联系代表处。',
 'step1-h4':'发起联系','step1-p':'通过联系页面填写简要背景，说明您的需求或希望参与的方向',
 'step2-h4':'初步沟通','step2-p':'代表处在 1–2 个工作日内回复，安排视频或电话初步交流',
 'step3-h4':'方向匹配','step3-p':'根据您的背景与需求，匹配最适合的工作方向或活动邀请',
@@ -1708,7 +1717,7 @@ zh:{
 'form-sending':'发送中…','form-success-msg':'✓ 您的消息已发送成功！我们将在 1-2 个工作日内与您联系。',
 'footer-links-h5':'快速链接','footer-work-h5':'服务领域','footer-contact-h5':'联系信息',
 'footer-link-home':'首页','footer-link-about':'关于我们','footer-link-svc':'服务',
-'footer-link-insights':'洞察报告','footer-link-contact':'联系我们',
+'footer-link-insights':'洞察报告','footer-link-members':'会员动态','footer-link-contact':'联系我们',
 'footer-work-1':'行业研讨与对接','footer-work-2':'市场研究报告','footer-work-3':'综合顾问',
 'footer-work-4':'EV 供应链','footer-work-5':'AI 算力平台',
 'footer-brand-p':'North America Office of the Chinese Society of Technology Economics. 连接中国与北美的技术经济智识平台。',
@@ -1725,22 +1734,22 @@ zh:{
 ,'w4-h3':'海外会员招募与社团网络','w4-sub':'Overseas Membership & Community Network'
 ,'w4-body':'<p style="font-size:14px;color:var(--body-text);">面向北美各大城市的技术经济领域专家、学者与企业家，开放海外会员申请，连接 CSTE 全球 15,000+ 会员资源网络与 47 个国家的学术合作关系。</p><ul><li>海外会员在线申请（免费，邀请制与申请制并行）</li><li>接入 CSTE 总会学术委员会与三大核心期刊资源</li><li>温哥华、多伦多、硅谷华人社团网络对接</li><li>高校校友会合作（中国人民大学、清华大学等）</li><li>华商网络、齐鲁商会与侨商社群联动</li></ul>'
 ,'w5-h3':'北美青年人才与产业发展','w5-sub':'Youth Talent & Industry Development Program'
-,'w5-body':'<p style="font-size:14px;color:var(--body-text);">面向北美中国留学生与青年专业人才，搭建以<strong>产业认知、学术交流、职业发展、创新实践</strong>为核心的非中介型平台。代表处不做求职辅导或背景包装，而是帮助青年人看懂真实产业、接触专业人士、形成清晰的发展方向。</p><ul><li><strong>产业观察：</strong>EV、AI、大数据、绿色能源、供应链等方向深度研究与简报，了解国内产业真实需求</li><li><strong>学术交流：</strong>与高校、研究机构合作举办讲座、圆桌与课题讨论，CSTE 学术资源对接</li><li><strong>创新实践：</strong>支持参与教育部"互联网+"等创新创业大赛、产业案例研究、项目路演与专题报告</li><li><strong>学术通道：</strong>有学术志向者可获 CSTE 背书支持，协助期刊发表与国家级人才计划（千人/优青）申报指导</li></ul>'
-,'w6-h3':'中华文化传播与文化外交','w6-sub':'Chinese Cultural Outreach & Public Diplomacy'
-,'w6-body':'<p style="font-size:14px;color:var(--body-text);">以文化为纽带，推动中加人文交流，提升代表处在北美本地社会的影响力与可见度，以非商业方式建立跨族裔政商网络。</p><ul><li>篆刻艺术推广（西泠印社战略合作，定制文化礼品）</li><li>中医文化社区讲座与健康推广活动</li><li>匹克球文化外交（打通非华裔政商网络）</li><li>皇家安大略博物馆（ROM）等本地文化机构合作</li><li>加拿大农产品对华出口学术对接</li></ul>'
+,'w5-body':'<p style="font-size:14px;color:var(--body-text);">面向北美中国留学生与青年专业人才，搭建以<strong>产业认知、学术交流、职业发展、创新实践</strong>为核心的非中介型平台。代表处不做求职辅导或背景包装，而是帮助青年人看懂真实产业、接触专业人士、形成清晰的发展方向。</p><ul><li><strong>产业观察：</strong>EV、AI、大数据、绿色能源、供应链等方向深度研究与简报，了解国内产业真实需求</li><li><strong>学术交流：</strong>与高校、研究机构合作举办讲座、圆桌与课题讨论，CSTE 学术资源对接</li><li><strong>创新实践：</strong>支持参与教育部"互联网+"等创新创业大赛、产业案例研究、项目路演与专题报告</li><li><strong>学术通道：</strong>面向有学术发展需求的专业人士，组织学术交流与经验分享，支持其在研究选题、论文写作、职业规划和专业成长方面获得更清晰的路径参考。</li></ul>'
+,'w6-h3':'多元文化分享','w6-sub':'Multicultural Exchange'
+,'w6-body':'<p style="font-size:14px;color:var(--body-text);">以文化为纽带，推动中加人文交流，提升代表处在北美本地社会的影响力与可见度，以非商业方式建立跨族裔政商网络。</p><ul><li>篆刻艺术推广（西泠印社战略合作，定制文化礼品）</li><li>中医文化社区讲座与健康推广活动</li><li>匹克球体育交流</li><li>皇家安大略博物馆（ROM）等本地文化机构合作</li></ul>'
 },
 en:{
 'hero-badge':'<span></span>Chinese Society of Technology Economics · North America Office',
 'hero-h1':'The Knowledge Bridge Between <em>China and North America</em>',
-'hero-sub':'Providing industry research, business matchmaking, and advisory services to support Chinese companies expanding abroad, overseas Chinese returning home, and bilateral industry collaboration. Based in North America — independent, neutral, academically rigorous.',
+'hero-sub':'Based in North America, CSTEAC works around the key themes of technological innovation, economic development, and cross-border cooperation — conducting academic exchange, industry research, and professional dialogue. We offer enterprises, institutions, and professionals on both sides of the Pacific a trusted local perspective, building a bridge that connects knowledge, industry, and community.',
 'hero-btn-consult':'Book a Consultation','hero-btn-services':'Our Work',
-'stat-1-label':'CSTE Founded','stat-2-label':'Members','stat-3-label':'Global Partners','stat-4-label':'Core Focus Areas',
+'stat-1-label':'CSTE Founded','stat-2-label':'Members','stat-3-label':'Branch Offices','stat-4-label':'Academic Journals',
 'hero-note':"China's Premier Technical Economics Society · North America's Only Office",
 'trust-1':"Backed by CSTE, China's Premier Academic Society",'trust-2':'Founded 2026 · Vancouver, BC',
 'trust-3':'Serving Chinese outbound investment, overseas returnees & bilateral exchange',
-'trust-4':'Focus: EV Expansion · AI Computing · Green Economy',
+'trust-4':'Focus: Tech Innovation · Cross-Border Exchange · Sustainability',
 'adv-label':'Core Strengths','adv-h2':'Why Choose CSTEAC',
-'adv-p':'We deliver meaningful strategic value through academic rigor, deep industry networks, and real local presence on the ground.',
+'adv-p':'Our value comes from academic depth, industry breadth, and local insight.',
 'adv1-h3':'Academic Authority, Independent & Neutral',
 'adv1-p':'Founded in 1978, CSTE has 15,000+ members and partners in 47 countries. Operating as an academic institution — not a commercial agent — we provide fact-based analysis with no conflicts of interest.',
 'adv2-h3':'Bilateral Network, Cross-Border Connections',
@@ -1772,8 +1781,8 @@ en:{
 'home-cta-h2':'Ready to Connect?',
 'home-cta-p':'Whether you are a Chinese company entering North America, an overseas Chinese seeking Asia-Pacific opportunities, a student considering returning to China, or an international institution looking to enter the Chinese market — CSTEAC is your neutral, academic starting point.',
 'home-cta-btn1':'Book a Free Consultation','home-cta-btn2':'Read Latest Research',
-'about-hero-label':'About Us','about-hero-h1':"North America's Only Office — Academic Standing, Industry Impact",
-'about-hero-p':'CSTEAC is the sole North American representative of the Chinese Society of Technology Economics, serving cross-border industry exchange through academic credibility, network coverage, and real local presence.',
+'about-hero-label':'About Us','about-hero-h1':"Global Perspective, Local Connection",
+'about-hero-p':'CSTEAC is the sole representative office established by the Chinese Society of Technology Economics outside China, serving academic and industrial exchange between China and the world through its academic foundation, network reach, and local connections.',
 'story-label':'Our Story','story-h2':'From Academia to Industry, From China to North America',
 'story-p1':"The Chinese Society of Technology Economics (CSTE) was founded in 1978 and is among China's most influential academic organizations in technology and economics, with over 15,000 members and collaborative relationships with universities, research institutions, and industry organizations in 47 countries.",
 'story-p2':"In May 2026, CSTEAC was formally established in British Columbia, Canada as CSTE's sole authorized North American representative. Operating on principles of independence, neutrality, and academic integrity, CSTEAC focuses on closing the information gap between Canada and China, providing fact-based research and advisory services to organizations and individuals seeking to build industry connections across the Pacific.",
@@ -1802,11 +1811,11 @@ en:{
 'about-cta-h2':'Get in Touch','about-cta-p':'Whether you are a business leader, industry researcher, or an individual with cross-border ambitions, CSTEAC welcomes a meaningful conversation.',
 'about-cta-btn1':'Contact Us Now','about-cta-btn2':'View Our Work',
 'svc-hero-label':'Our Work','svc-hero-h1':'Bridge · Catalyst · Academic Backbone',
-'svc-hero-p':'CSTEAC is a non-profit academic institution. Our core work is academic exchange, research publication, and industry connection — all at no cost. For those needing professional execution services, we provide free referrals to vetted strategic partners.',
+'svc-hero-p':'CSTEAC is a non-profit academic institution. For individuals and organizations needing professional services, we provide complimentary introductions to vetted strategic partners.',
 'svc-detail-label':'Work Areas in Detail','svc-detail-h2':'Six Work Directions',
 'svc-detail-p':"As CSTE's North American non-profit academic institution, all six areas below are public-interest work. For professional execution services, we provide free partner referrals.",
 'engage-label':'How to Engage','engage-h2':'How to Connect with Us',
-'engage-p':'Whether you are a company, scholar, student, or overseas Chinese entrepreneur, you can connect with CSTEAC through the steps below — entirely free of charge.',
+'engage-p':'Whether you represent an organization or yourself as an individual, you are welcome to contact the Representative Office.',
 'step1-h4':'Reach Out','step1-p':'Fill in a brief background via the Contact page, describing your needs or the areas you wish to engage with',
 'step2-h4':'Initial Exchange','step2-p':'CSTEAC responds within 1–2 business days to arrange a video or phone call',
 'step3-h4':'Direction Matching','step3-p':'We match you with the most suitable work direction or event invitation based on your background and goals',
@@ -1846,7 +1855,7 @@ en:{
 'form-sending':'Sending…','form-success-msg':'✓ Your message has been sent! We will be in touch within 1–2 business days.',
 'footer-links-h5':'Quick Links','footer-work-h5':'Focus Areas','footer-contact-h5':'Contact Info',
 'footer-link-home':'Home','footer-link-about':'About','footer-link-svc':'Work',
-'footer-link-insights':'Insights','footer-link-contact':'Contact',
+'footer-link-insights':'Insights','footer-link-members':'Members','footer-link-contact':'Contact',
 'footer-work-1':'Industry Forums & Matchmaking','footer-work-2':'Market Research Reports','footer-work-3':'Advisory Services',
 'footer-work-4':'EV Supply Chain','footer-work-5':'AI Computing Platform',
 'footer-brand-p':'North America Office of the Chinese Society of Technology Economics. The knowledge bridge connecting China and North America.',
@@ -1863,9 +1872,9 @@ en:{
 ,'w4-h3':'Overseas Membership & Community Network','w4-sub':'海外会员招募与社团网络'
 ,'w4-body':'<p style="font-size:14px;color:var(--body-text);">Open overseas membership applications for experts, scholars, and entrepreneurs in technology economics across major North American cities — connecting to CSTE&#39;s global network of 15,000+ members and academic partnerships in 47 countries.</p><ul><li>Online overseas membership application (free, invitation &amp; open application)</li><li>Access to CSTE Academic Committee and three core academic journals</li><li>Vancouver, Toronto, and Silicon Valley Chinese community network connections</li><li>University alumni network partnerships (Renmin University, Tsinghua University, etc.)</li><li>Overseas Chinese business networks, Shandong Chamber of Commerce, and diaspora community engagement</li></ul>'
 ,'w5-h3':'Youth Talent & Industry Development Program','w5-sub':'北美青年人才与产业发展'
-,'w5-body':'<p style="font-size:14px;color:var(--body-text);">For North American Chinese students and young professionals, we provide a non-intermediary platform centered on <strong>industry insight, academic exchange, professional development, and innovation practice</strong>. We do not offer job coaching or credential packaging — we help young people understand real industries, meet professionals, and chart clear development paths.</p><ul><li><strong>Industry Insight:</strong> In-depth research and briefings on EV, AI, big data, green energy, and supply chain — understanding real domestic industry needs</li><li><strong>Academic Exchange:</strong> Lectures, roundtables, and research discussions with universities and research institutions; CSTE academic resource access</li><li><strong>Innovation Practice:</strong> Support for the Ministry of Education &quot;Internet+&quot; Innovation Competition, industry case studies, project roadshows, and research reports</li><li><strong>Academic Pathway:</strong> CSTE endorsement support for those with academic ambitions, guidance on journal publication and national talent program applications (Thousand Talents, Youth Excellence)</li></ul>'
-,'w6-h3':'Chinese Cultural Outreach & Public Diplomacy','w6-sub':'中华文化传播与文化外交'
-,'w6-body':'<p style="font-size:14px;color:var(--body-text);">Using culture as a bridge, we promote China-Canada people-to-people exchange, raise CSTEAC&#39;s visibility in North American communities, and build cross-ethnic political and business networks through non-commercial engagement.</p><ul><li>Chinese seal carving art outreach (West Lake Seal Society partnership, customized cultural gifts)</li><li>Traditional Chinese medicine community lectures and wellness promotion events</li><li>Pickleball cultural diplomacy (building networks across non-Chinese communities)</li><li>Partnerships with local cultural institutions (Royal Ontario Museum, etc.)</li><li>Academic connections for Canadian agricultural exports to China</li></ul>'
+,'w5-body':'<p style="font-size:14px;color:var(--body-text);">For North American Chinese students and young professionals, we provide a non-intermediary platform centered on <strong>industry insight, academic exchange, professional development, and innovation practice</strong>. We do not offer job coaching or credential packaging — we help young people understand real industries, meet professionals, and chart clear development paths.</p><ul><li><strong>Industry Insight:</strong> In-depth research and briefings on EV, AI, big data, green energy, and supply chain — understanding real domestic industry needs</li><li><strong>Academic Exchange:</strong> Lectures, roundtables, and research discussions with universities and research institutions; CSTE academic resource access</li><li><strong>Innovation Practice:</strong> Support for the Ministry of Education &quot;Internet+&quot; Innovation Competition, industry case studies, project roadshows, and research reports</li><li><strong>Academic Pathway:</strong> For professionals with academic development needs, we organize academic exchange and experience-sharing, helping them gain clearer guidance on research topics, paper writing, career planning, and professional growth.</li></ul>'
+,'w6-h3':'Multicultural Exchange','w6-sub':'多元文化分享'
+,'w6-body':'<p style="font-size:14px;color:var(--body-text);">Using culture as a bridge, we promote China-Canada people-to-people exchange, raise CSTEAC&#39;s visibility in North American communities, and build cross-ethnic political and business networks through non-commercial engagement.</p><ul><li>Chinese seal carving art outreach (West Lake Seal Society partnership, customized cultural gifts)</li><li>Traditional Chinese medicine community lectures and wellness promotion events</li><li>Pickleball sports exchange</li><li>Partnerships with local cultural institutions (Royal Ontario Museum, etc.)</li></ul>'
 }
 };
 
@@ -1876,6 +1885,8 @@ function applyTranslations(lang) {
   function sid(id, key) { var e=document.getElementById(id); if(e&&t[key]!==undefined) e.textContent=t[key]; }
   function shid(id, key) { var e=document.getElementById(id); if(e&&t[key]!==undefined) e.innerHTML=t[key]; }
   function sph(sel, key) { var e=document.querySelector(sel); if(e&&t[key]!==undefined) e.placeholder=t[key]; }
+  // generic bilingual elements: member page, filter buttons, Q3, about-story
+  document.querySelectorAll('.xi18n').forEach(function(el){ var v=(lang==='en')?el.getAttribute('data-en'):el.getAttribute('data-zh'); if(v!==null) el.textContent=v; });
 
   // HOME - hero
   sh('#page-home .hero-badge','hero-badge');
@@ -1906,12 +1917,6 @@ function applyTranslations(lang) {
     if(sc[i]){ sc[i].querySelector('h3').textContent=t[kp[0]]; sc[i].querySelector('p').textContent=t[kp[1]]; }
   });
   sid('home-svc-btn','home-svc-btn');
-  // testimonials
-  if(shs[2]){ shs[2].querySelector('.label').textContent=t['testi-label']; shs[2].querySelector('h2').textContent=t['testi-h2']; }
-  var tc = document.querySelectorAll('#page-home .testi-card');
-  [['testi1-text','testi1-name','testi1-role'],['testi2-text','testi2-name','testi2-role'],['testi3-text','testi3-name','testi3-role']].forEach(function(ks,i){
-    if(tc[i]){ tc[i].querySelector('.testi-text').textContent=t[ks[0]]; tc[i].querySelector('.name').textContent=t[ks[1]]; tc[i].querySelector('.role').textContent=t[ks[2]]; }
-  });
   // about preview
   var ap = document.querySelector('#page-home .about-prev .label');
   if(ap) ap.textContent=t['about-prev-label'];
@@ -1936,13 +1941,10 @@ function applyTranslations(lang) {
   if(abLabels[0]) abLabels[0].textContent=t['story-label'];
   var abH2s = document.querySelectorAll('#page-about section.section h2');
   if(abH2s[0]) abH2s[0].textContent=t['story-h2'];
-  var abPs = document.querySelectorAll('#page-about .grid-2 > div > p');
-  if(abPs[0]) abPs[0].textContent=t['story-p1'];
-  if(abPs[1]) abPs[1].textContent=t['story-p2'];
-  if(abPs[2]) abPs[2].textContent=t['story-p3'];
+  // about-story paragraphs are bilingual via .xi18n
   // timeline
   var tls = document.querySelectorAll('#page-about .timeline-item .timeline-content');
-  [['tl1-h4','tl1-p'],['tl2-h4','tl2-p'],['tl3-h4','tl3-p'],['tl4-h4','tl4-p']].forEach(function(kp,i){
+  [['tl1-h4','tl1-p'],['tl2-h4','tl2-p'],['tl3-h4','tl3-p']].forEach(function(kp,i){
     if(tls[i]){ tls[i].querySelector('h4').textContent=t[kp[0]]; tls[i].querySelector('p').textContent=t[kp[1]]; }
   });
   // values
@@ -2008,10 +2010,7 @@ function applyTranslations(lang) {
   s('#page-listings .about-hero .label','listings-label');
   s('#page-listings .about-hero h1','listings-h1');
   s('#page-listings .about-hero p','listings-p');
-  var fbs = document.querySelectorAll('#filter-bar .filter-btn');
-  ['filter-all','filter-ev','filter-ai','filter-policy','filter-bipv','filter-member','filter-other'].forEach(function(k,i){
-    if(fbs[i]) fbs[i].textContent=t[k];
-  });
+  // filter buttons are bilingual via .xi18n
   sid('listings-sub-btn','listings-sub-btn');
 
   // CONTACT page
@@ -2048,7 +2047,7 @@ function applyTranslations(lang) {
   sid('footer-work-h5','footer-work-h5');
   sid('footer-contact-h5','footer-contact-h5');
   var flks = document.querySelectorAll('#site-footer .footer-col:nth-child(2) li a');
-  ['footer-link-home','footer-link-about','footer-link-svc','footer-link-insights','footer-link-contact'].forEach(function(k,i){
+  ['footer-link-home','footer-link-about','footer-link-svc','footer-link-insights','footer-link-members','footer-link-contact'].forEach(function(k,i){
     if(flks[i]) flks[i].textContent=t[k];
   });
   var fwks = document.querySelectorAll('#site-footer .footer-col:nth-child(3) li a');
@@ -2089,7 +2088,7 @@ function applyTranslations(lang) {
 var _lang = 'zh';
 var _langData = {
   zh: {
-    nav: ['首页','关于我们','服务','洞察报告','联系我们'],
+    nav: ['首页','关于我们','服务','洞察报告','会员动态','联系我们'],
     cta: '预约咨询',
     toggleBtn: 'EN',
     articleBack: '← 返回',
@@ -2097,7 +2096,7 @@ var _langData = {
     readMore: '阅读全文 →'
   },
   en: {
-    nav: ['Home','About','Work','Insights','Contact'],
+    nav: ['Home','About','Work','Insights','Members','Contact'],
     cta: 'Consult',
     toggleBtn: '中文',
     articleBack: '← Back',
@@ -2146,7 +2145,7 @@ function showPage(id) {
   if (!target) return;
   target.classList.add('active');
   document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-  const navMap = {home:0,about:1,services:2,listings:3,contact:4};
+  const navMap = {home:0,about:1,services:2,listings:3,members:4,contact:5};
   const navLinks = document.querySelectorAll('nav a');
   if (navMap[id] !== undefined) navLinks[navMap[id]].classList.add('active');
   closeMobile();
@@ -2188,6 +2187,7 @@ function submitForm(e) {
 
 // ── LISTINGS DATA ────────────────────────────────────────────────
 var listings = [
+  { cat:'tcm', catLabel:'中医药', img:"https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80", alt:'中医药', title:"中医药出海加拿大研究报告", desc:"加拿大已在省级层面为中医建立相对完善的执业许可框架（BC 省最完善，安省紧随），叠加约 170 万华裔人口的天然消费基础，构成中医药国际化进程中监管清晰、社区扎实的市场。报告系统梳理省级监管框架、三类出海路径（产品/服务/技术）、五大细分赛道与进场前必须正视的五道关口。", date:"2026年6月17日" },
   { cat:'ev', catLabel:'EV 出海', img:'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=600&q=80', alt:'中国电动车', title:'为什么加拿大需要一个中国EV供应链智识平台', desc:'2026年，中国电动车进入加拿大正从战略研究阶段向实操准备阶段移动。CSTEAC围绕政策追踪、供应链研究、进场路径图谱、省级市场分析、竞争格局五大支柱，每周持续更新。', date:'2026年6月12日' },
   { cat:'ev', catLabel:'EV 出海', img:'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=80', alt:'汽车供应链', title:'中国电动汽车出海加拿大首发省份选择', desc:'BC省是中国OEM的最优轻量首发省份：温哥华港物流路径最短、英语市场门槛较低、英语区ZEV成熟度最高（20.9%）、华人消费基础较强。文章详解BC、安省、魁省三阶段进入策略与七维评分矩阵。', date:'2026年6月10日' },
   { cat:'policy', catLabel:'政策分析', img:'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=80', alt:'政策分析', title:'加拿大电动汽车政策简报（一）', desc:'2026年首批2.45万辆中国产EV配额窗口已于3月开启，特斯拉上海工厂认领约12%首批配额。6月政策审查临近，9月第二配额窗口是中国自主品牌实质入市的关键节点。', date:'2026年6月8日' },
@@ -2213,6 +2213,7 @@ var listings = [
 ];
 
 var listingsEn = [
+  { catLabel:'TCM', title:"Traditional Chinese Medicine Goes to Canada: A Market-Entry Research Report", desc:"Canada has built a comparatively mature, province-led licensing framework for TCM practice (BC leads, Ontario follows), and its ~1.7 million ethnic-Chinese population forms a natural consumer base. This report maps the provincial regulatory framework, three entry pathways (products, services, technology), five market segments, and five entry barriers.", date:"June 17, 2026", summary:"<p><strong>Overview:</strong> Canada is one of the clearer markets for the internationalization of Traditional Chinese Medicine (TCM): it offers a comparatively mature, province-led practice-licensing environment and a ~1.7 million ethnic-Chinese population (concentrated in Greater Vancouver and Greater Toronto) that forms a natural consumer base. Yet very few Chinese TCM firms have entered systematically, at scale, and in full compliance — the window and the compliance bar exist side by side.</p>\n<p><strong>Regulatory Framework:</strong> Unlike the long-fragmented US picture, Canada licenses TCM practice at the provincial level. BC is the most complete (regulated by CCHPBC, into which the former CTCMA merged in 2024 — one of Canada's oldest TCM regulators); Ontario follows (CTCMPAO); Quebec and Alberta have partial legislation (acupuncture-focused). Federally, herbal products fall under Health Canada's Natural Health Products (NHP) regime: a product licence (NPN, or DIN-HM for homeopathics) is required, importers need a site licence, and an NPN requires evidence of identity, safety (often ≥50 years of traditional use), efficacy, and bilingual English/French labelling.</p>\n<p><strong>Three Entry Pathways:</strong> (1) <em>Products</em> — patent medicines, herbal supplements, extracts and granules, governed by the NHP regime, with 18–24 month NPN approval timelines; (2) <em>Services</em> — clinic partnerships, acupuncture training and licensed practice, governed by provincial credentialing, title protection and controlled acts; (3) <em>Technology</em> — diagnostic-assist tools, tele-consultation and SaaS, where medical-device classification and PIPEDA/provincial privacy rules apply. These pathways differ in logic, cost and timeline and should not be conflated.</p>\n<p><strong>Five Market Segments:</strong> natural health products (the largest, clearest route); acupuncture &amp; integrative clinics (reimbursed by most major group insurers such as Sun Life and Manulife); B2B raw materials and standardized extracts (Canada lacks scaled domestic cultivation and relies on imports); TCM education and continuing professional training; and digital health tools for licensed practitioners.</p>\n<p><strong>Five Entry Barriers:</strong> (1) NPN registration is long and costly (18–24 months; roughly CAD $5,000–$20,000 per product); (2) heavy-metal, pesticide-residue and adulteration standards differ from China's pharmacopoeia, and some mineral drugs (e.g., realgar, cinnabar) are not accepted; (3) CITES-controlled species and animal-derived ingredients (tiger bone, bear bile, musk, rhino horn) are prohibited; (4) health-claim restrictions bar disease treatment/cure/prevention claims; (5) channels are fragmented, with no national TCM-product distribution network.</p>\n<p><strong>Regional Priority &amp; Bottom Line:</strong> BC is the recommended first landing point (most mature regulation + Chinese consumer base + port logistics), Ontario is the largest consumer market, and Quebec adds mandatory French-language labelling cost. The strategic message is consistent: compliance preparation must precede market promotion. The opportunity is real and still early-stage, but a solid compliance foundation is the precondition for sustainable entry. CSTEAC can act as an information bridge and matchmaking platform for firms taking a first, steady step.</p>" },
   { catLabel:'EV Expansion',
     title:'Why Canada Needs a China EV Supply-Chain Knowledge Platform',
     desc:'In 2026, Chinese EVs are moving from strategic research to operational readiness in Canada. CSTEAC tracks five pillars weekly — policy, supply chain, market entry, provincial analysis, and competitive landscape.',
@@ -2327,6 +2328,7 @@ var listingsEn = [
 
 
 var articleContents = [
+  /* TCM 2026-06-17 */ "<p>加拿大在省级层面已为中医药建立了相对系统的执业许可框架——不列颠哥伦比亚省率先立法，安大略省紧随其后；与此同时，根据2021年人口普查，加拿大华裔人口约170万，主要集中于大温哥华和大多伦多地区，并呈现逐年增长态势，构成稳定天然的中医药消费基础。然而，以系统化、规模化、合规化方式进入加拿大的中国中医药企业仍为少数，市场窗口与合规门槛并存。</p>\n<p>CSTEAC · 中企出海 / 中医药专题</p>\n<h3 class=\"article-section\">一、监管框架：中医在加拿大的\"合法身份\"</h3>\n<p>与美国中医药执业监管长期碎片化不同，加拿大在省级层面已逐步建立中医执业许可体系。理解这套框架，是进入市场的第一步。</p>\n<p>1.1 省级立法对比</p>\n<table class=\"article-table\"><thead><tr><th>省份</th><th>立法状态</th><th>监管机构</th><th>主要监管范畴</th></tr></thead><tbody><tr><td>不列颠哥伦比亚省（BC）</td><td>最完善</td><td>CCHPBC（原 CTCMA 并入）</td><td>中医师、针灸师、中草药师分类注册；执业资格、保护头衔、受控行为</td></tr><tr><td>安大略省（ON）</td><td>完善</td><td>CTCMPAO</td><td>中医师、针灸师执业资格、保护头衔及 TCM 诊断/针灸受控行为；草药产品销售适用联邦 NHP 监管</td></tr><tr><td>魁北克省（QC）</td><td>部分立法</td><td>针灸专业秩序</td><td>针灸执业单独立法；中医整体框架尚未完整建立</td></tr><tr><td>艾伯塔省（AB）</td><td>部分立法</td><td>CAHP</td><td>针灸纳入受管制健康行业；中医整体监管框架仍在推进</td></tr><tr><td>其他省份</td><td>行业自律</td><td>行业协会</td><td>尚无强制性省级立法</td></tr></tbody></table>\n<p>🌿 BC 省是中医药出海加拿大的首选登陆地。BC 省原 CTCMA 体系于 2024 年并入 College of Complementary Health Professionals of BC（CCHPBC），继续负责中医及针灸从业监管。CCHPBC 是加拿大历史最悠久的中医专业监管机构之一，执照体系完整，从业者数量和消费者认知度均居全加前列。</p>\n<p>1.2 联邦层面：Health Canada 天然健康产品（NHP）监管</p>\n<p>中草药产品进入加拿大市场，须在联邦层面满足 Health Canada《天然健康产品法规》（NHPR）的要求。核心许可机制为：产品层面须持有产品许可证，以自然产品编号（NPN）或顺势疗法药物标识号（DIN-HM）为证；经营主体层面，在加拿大从事制造、包装、贴标或进口 NHP 的机构需持有相应的经营场地许可（site licence）；境外生产场地通常由加拿大进口商在其 site licence 申请中纳入 foreign site 资料，并须证明符合 GMP 要求。</p>\n<p>NPN 申请核心要件包括：① 产品身份认证（成分规格、来源、提取/加工标准）；② 安全性证据（毒理学数据，或传统使用证明，通常需 ≥50 年记录）；③ 有效性证据（临床数据，或传统使用文献支持）；④ 标签合规（须含英文和法文双语说明，成分名称须参照 NHPID 数据库）。</p>\n<p>📋 传统中医药产品可依据 Health Canada 的传统医药路径提交传统使用证据作为有效性支持，但仍须同时满足安全性、质量、标签和功效声称要求，不等同于免除其他合规义务。</p>\n<p>1.3 执业资质互认：来加从业的路径</p>\n<p>中国执业中医师赴加执业，需在目标省份重新申请注册，中国国内执照通常不直接获承认。CCHPBC（BC 省）和 CTCMPAO（安省）均设有国际申请人通道，审核中国高校学历及临床时长，符合条件者通过本地考核后可获证。建议提前向目标省份监管机构查询最新评估要求，勿以过期信息作为规划依据。</p>\n<h3 class=\"article-section\">二、三类出海路径：产品、服务、技术各有合规主线</h3>\n<p>中医药出海加拿大涉及三条性质不同的路径，监管逻辑、入场成本和时间周期各异，不宜混为一谈。</p>\n<p>路径一｜产品出海　涵盖中成药、草本补充剂、代茶饮、植物提取物、中药颗粒剂。核心监管为 Health Canada NHP/食品/标签/进口合规，需持 NPN，加拿大进口商持 site licence。主要挑战是 NPN 审批周期长（18–24 个月）、重金属/农残/CITES 合规、功效声称限制、英法双语标签。</p>\n<p>路径二｜服务出海　涵盖中医诊所合作、针灸培训、连锁执业合作、中医院校国际项目。核心监管为省级执业资格、保护头衔、受控行为边界、专业责任保险、本地牌照。主要挑战是执照互认周期、本地合规合伙人筛选、专业责任边界厘清。</p>\n<p>路径三｜技术出海　涵盖中医辅助诊断工具、远程问诊平台、舌诊/面诊图像分析、SaaS 执业工具。核心监管为医疗器械法规、数据与隐私保护、执业边界。主要挑战是数字健康工具监管分类复杂，须在进入市场前评估是否触发 Health Canada 医疗器械、PIPEDA/省级隐私法及专业执业监管要求，不可简单定位为\"执业辅助工具\"以规避监管。</p>\n<h3 class=\"article-section\">三、细分机遇：五个值得关注的赛道</h3>\n<p>🌱 赛道一：天然健康产品（草药与中成药）　这是目前体量最大、监管框架最清晰的进入路径。加拿大消费者对植物基健康产品接受度较高，功能性食品、植物提取物、中药代茶饮等品类保持增长。已有部分中国品牌（同仁堂、九芝堂等）单品在华人商超流通，但整体 SKU 覆盖率较低，缺乏系统性渠道布局。黄芪、枸杞、灵芝、人参等在主流健康零售（如 Whole Foods、Costco）有稳定原料需求，但中国原料供应商与加拿大品牌商之间的直接合作仍较少。机会点：已完成 NHP 注册或与持证加拿大进口商合作的企业，可通过授权分销、贴牌合作等方式切入，降低独立注册成本。</p>\n<p>💉 赛道二：针灸与整合医疗诊所　加拿大公共医疗候诊时间长、慢性病管理能力有限，私人整合医疗需求持续存在。多数主流团体保险（如 Sunlife、Manulife、Great-West Life）将针灸列为可报销项目。多伦多、温哥华、卡尔加里等大城市整合医疗诊所保持增长，执业人才缺口明显。部分加拿大医院和癌症中心已将针灸纳入疼痛管理和化疗辅助方案。机会点：中国中医机构可探索以技术合作和从业者培训为切入点，与本地持牌诊所联合运营，轻资产进入市场。</p>\n<p>📦 赛道三：B2B 原料与提取物供应　加拿大本土缺乏规模化道地药材种植产业，中草药原料高度依赖进口，中国是最主要来源。但现有采购链条较为分散，买方对供应商的合规文件要求正在提高。主要采购需求包括标准化植物提取物（具备英文 COA、重金属/农残/微生物检测报告）、有机认证草药原料、中药颗粒剂、定制化草本配方原料。机会点：具备 GMP 认证、英文合规文件体系完整、并能提供英文技术支持的中国原料供应商，目前以系统化方式进入加拿大 B2B 市场的案例仍然有限，存在实质性合作空间。</p>\n<p>🎓 赛道四：中医教育与专业培训　加拿大本土中医药院校数量有限，从业者继续教育资源稀缺。随着 BC 省和安省注册机构对申请人学历要求逐步提升，本地院校供给与需求之间的缺口扩大。面向已持照从业者的进阶培训（如肿瘤辅助治疗针灸、运动损伤、皮肤科中医）存在明显需求空白。机会点：以\"中国院校+加拿大协作机构\"联合认证模式切入，比独立开设院校成本低、合规复杂度更低。</p>\n<p>🌐 赛道五：数字健康工具　加拿大远程医疗在疫情后加快合规化进程，部分省份已允许中医师通过视频问诊提供服务。面向本地持牌中医师的执业辅助工具（如病历管理、预约系统、标准化问诊表单）进入门槛相对较低，可作为技术合作起点。注意：涉及诊断辅助、图像分析、AI 决策支持功能的工具，须提前评估 Health Canada 医疗器械分类、PIPEDA 数据合规及省级执业监管要求，不可忽视。</p>\n<h3 class=\"article-section\">四、挑战清单：进场前必须正视的五道关</h3>\n<p>⚠️ 关一：NPN 注册周期长、成本高　Health Canada NHP 产品许可申请平均审批周期 18–24 个月，复杂配方可能更长。单个产品的注册成本（含检测、翻译、合规咨询）通常在 CAD $5,000–$20,000 之间。建议与经验丰富的本地 NHP 注册代理合作，并结合批量申请摊薄成本。</p>\n<p>⚠️ 关二：重金属、农残与掺假检测标准差异　Health Canada 对中草药中铅、砷、汞、镉的限量标准与中国药典存在差异；部分传统矿物药（如雄黄、朱砂）在加拿大 NHP 体系内不被接受。出口前须完成符合 Health Canada 要求的全套检测，不可以国内出厂报告替代。</p>\n<p>⚠️ 关三：CITES 管制物种与动物源成分　虎骨、熊胆、麝香、犀角等传统药材在加拿大受《濒危野生动植物种国际贸易公约》（CITES）严格管制，进口构成违规。含动物源成分的产品须提前完成成分合规审查，必要时替换配方。</p>\n<p>⚠️ 关四：功效声称限制　NHP 标签及推广材料中的功效声称须符合 Health Canada 批准的声称范围，不得宣称治疗、治愈或预防特定疾病。中医药传统表述中许多说法在加拿大合规框架下需要重新措辞，建议由本地合规顾问审查广告语。</p>\n<p>⚠️ 关五：渠道碎片化，无全国性经销网络　目前加拿大中药产品渠道高度分散：华人商超（T&amp;T、百佳等）、中医诊所自配、网络直邮三条线相互割裂，尚无全国性中药产品经销商网络。进场企业需要从零搭建渠道关系的耐心和资源预算。</p>\n<h3 class=\"article-section\">五、进入加拿大前的合规检查清单</h3>\n<p>以下清单适用于准备以产品出海为主要路径的企业，在正式启动注册前逐项核对，可有效降低后期返工风险：确认产品在加拿大的监管分类（NHP、食品、药品、化妆品还是医疗器械）；确认是否需要申请 NPN 或 DIN-HM；审查所有成分是否存在受限成分、CITES 管制物种、矿物药或动物源成分；完成符合 Health Canada 要求的重金属、农残、微生物、掺假成分检测；准备英文和法文双语产品标签（符合 NHPID 成分名称规范）；确认功效声称符合 Health Canada 批准范围；确认加拿大进口商已持有或正在申请 site licence，并将境外生产场地纳入申请；确认境外生产场地符合 GMP 要求；确认进口商已安排产品责任保险；建立不良反应记录机制和产品召回预案。</p>\n<p>以上清单基于 Health Canada NHP 监管框架整理，不构成法律意见。建议在正式申请前咨询具备加拿大 NHP 注册经验的专业顾问，并参阅 Health Canada 官网最新指引。</p>\n<h3 class=\"article-section\">六、区域优先级：BC 省是首站，安省是主市场</h3>\n<table class=\"article-table\"><thead><tr><th>维度</th><th>不列颠哥伦比亚省（BC）</th><th>安大略省（ON）</th><th>魁北克省（QC）</th></tr></thead><tbody><tr><td>华裔人口规模</td><td>大温哥华约 55–60 万</td><td>大多伦多约 70–80 万</td><td>蒙特利尔约 12–15 万</td></tr><tr><td>中医立法成熟度</td><td>⭐⭐⭐⭐⭐ 全加最完善</td><td>⭐⭐⭐⭐ 完善</td><td>⭐⭐⭐ 部分立法</td></tr><tr><td>消费者接受度</td><td>高（多元文化氛围浓厚）</td><td>高（华人社区规模最大）</td><td>中（法语文化圈，接受度相对保守）</td></tr><tr><td>产品入市渠道</td><td>华人商超、中医诊所、自然健康零售</td><td>全国最大消费市场，渠道最多元</td><td>法语标签为强制要求，增加额外成本</td></tr><tr><td>推荐入场优先级</td><td>首选（合规成熟+华人基础+港口便利）</td><td>第二站（规模最大，消费力强）</td><td>视语言能力和产品定位而定</td></tr></tbody></table>\n<h3 class=\"article-section\">七、CSTEAC 能做什么？</h3>\n<p>中国技术经济学会北美代表处（CSTEAC）在中加学术交流及产业互联方面持续深耕，在中医药领域可提供以下具体支持：</p>\n<p>■ 政策解读：持续跟踪 Health Canada、CCHPBC（BC 省）、CTCMPAO（安省）政策动态，提供中英文双语解读。</p>\n<p>■ 中加交流：协助中国中医药企业与加拿大经销商、零售渠道、中医诊所网络建立联系。</p>\n<p>■ 合规协调：对接加拿大本地 NHP 注册代理、法规顾问及检测机构。</p>\n<p>■ 市场研究：提供定制化中医药细分品类加拿大市场分析（原料供应链、消费端、B2B 采购需求）。</p>\n<h3 class=\"article-section\">结语</h3>\n<p>加拿大是中医药国际化进程中监管框架相对完善、华人社区基础较为扎实的市场之一。但这里不是可以快速复制国内打法的淘金场，而是一个需要尊重本地监管体系、系统投入的长期市场。对于有意布局的企业而言，合规准备早于市场推广——不了解 NHP 注册流程、不清楚成分合规边界、没有本地合规合作伙伴，就谈不上真正进入这个市场。市场机会确实存在，入场时机也相对早期，但把合规基础打牢，才是可持续发展的前提。CSTEAC 愿意作为信息桥梁和对接平台，协助有意布局的企业迈出稳健的第一步。</p>\n<p>本文基于公开信息整理，不构成投资或法律建议。",
   /* 0 */ "<h3 class=\"article-section\">一、观望之后的第一步</h3>\n<p>过去几年，\"中国电动车要进加拿大\"是一个反复出现的话题。公开信号显示，这一话题在2026年正在从战略研究阶段，缓慢但清晰地向实操准备阶段移动。</p>\n<p>这不是说入市已经确定。恰恰相反——配额窗口是否开放、关税如何演变、哪条渠道可行，这些问题在2026年中仍处于动态之中。但值得观察的是，有意向的车企开始认真看待认证流程，有兴趣的供应链企业开始了解PDI和港口路径，有好奇心的本地机构开始询问\"如果中国EV真的来了，我们能做什么\"。</p>\n<p>这是一个信号，说明市场参与者已经不满足于观望，而是需要可以用来做决策的信息。</p>\n<p>可靠的、有结构的行业信息，是任何市场进入行动的前提。没有信息基础，观望会变成误判，行动会变成莽撞。</p>\n<h3 class=\"article-section\">二、信息的鸿沟在哪里</h3>\n<p>关于中国电动车进入加拿大，并不缺乏信息。问题在于这些信息的结构和可用性。</p>\n<p>目前市场上可见的信息，大致分为三类：</p>\n<p>第一类：宏观政策报道 联邦关税政策、省级销售目标、零排放车辆激励计划，媒体和智库都有追踪，但这类信息通常面向政策研究者和大众读者，缺乏对供应链和运营层面的具体拆解。</p>\n<p>第二类：企业公告和传言 某品牌在某省注册，某车型在某港口出现，这类信息往往真伪难辨，且容易被解读为市场进入的直接信号，而实际情况要复杂得多。</p>\n<p>第三类：碎片化的圈子交流 行业会议、微信群、私下沟通——这里有最真实的一手信息，但它们不系统、不公开、难以核验。</p>\n<p>这三类信息加在一起，并不能帮助一个准备认真研究加拿大市场的供应链企业，回答这样一个具体的问题：一辆中国制造的电动车，从离开工厂到在加拿大完成交付，中间有哪些节点，每个节点有哪些参与方，需要满足什么条件？</p>\n<p>信息的鸿沟不在于数量，而在于结构。分散的信号需要被组织成可以支撑判断的知识；笼统的宏观描述需要被拆解成可以落地的操作框架。</p>\n<p>这是\"智识平台\"的出发点，而不是信息聚合器或商业中介。</p>\n<h3 class=\"article-section\">三、这个平台的研究方向</h3>\n<p>CSTEAC 中国EV供应链智识平台的研究工作围绕五个支柱展开。这五个方向并不是孤立的专题，而是共同构成一张完整的市场进入地图。</p>\n<table class=\"article-table\"><thead><tr><th>编号</th><th>支柱名称</th><th>研究覆盖内容</th></tr></thead><tbody><tr><td>P1</td><td>政策追踪</td><td>关税、配额、法规、补贴、销售目标、联邦与省级政策动态。政策是市场进入的边界条件，也是变化最频繁的变量。本平台将持续追踪官方文件和监管动态，为其他研究方向提供政策背景。</td></tr><tr><td>P2</td><td>供应链研究</td><td>PDI（交车前检测）、港口、仓储、物流、零配件、充电基础设施、售后体系、电池回收。供应链是市场进入的基础设施，也是最容易被低估的成本和风险来源。</td></tr><tr><td>P3</td><td>进场路径图谱</td><td>认证与合规、渠道模式（经销商 / 直营 / 代理）、首发省份选择、服务体系建设。从合规准备到首批交付，这条路上有哪些必须过的关，每一关大概需要多长时间。</td></tr><tr><td>P4</td><td>省级市场深度分析</td><td>BC省、魁北克、安大略省等主要市场的消费者结构、激励政策、渠道生态和本地化要求。加拿大不是一个统一市场，省级差异在监管、语言和消费行为上都有实质性影响。</td></tr><tr><td>P5</td><td>竞争格局追踪</td><td>品牌公开信号、季度观察、年度复盘、数据归档。中国品牌不是在真空中进入加拿大市场——日韩欧美竞品已有多年布局，了解竞争格局是制定差异化策略的前提。</td></tr></tbody></table>\n<p>这五个支柱的研究成果将以周更文章的形式陆续发布。每篇文章聚焦一个具体问题，有数据来源，有结构，有可以引用的结论。</p>\n<h3 class=\"article-section\">四、加拿大市场的特殊性</h3>\n<p>加拿大的特殊性体现在几个层面，每一层都值得单独拆解：</p>\n<p>⚖️政策环境的独立性</p>\n<p>加拿大有自己的汽车法规体系（CMVSS）、自己的零排放车辆目标（ZEVS）和自己的消费者补贴结构（iZEV等计划）。这些政策与美国不同，也在随时间演变。用\"美国模式\"理解加拿大市场，在很多关键节点上会产生误判。</p>\n<p>🏙️省级体系的实质差异</p>\n<p>加拿大的省级政府在消费者保护、经销商法规、语言要求（魁北克的法语要求是法律强制，不是建议）和地方激励政策上都有较大自主权。进入一个省和进入另一个省，准备工作可以非常不同。</p>\n<p>👥消费者信任的前提条件</p>\n<p>中国品牌在加拿大的消费者认知基础相对薄弱。在这个市场，品牌进入不仅是产品和价格的问题，也是如何建立消费者信任的问题——包括售后保障、保险可及性、残值预期和媒体信任。这需要专门的研究，而不是套用其他市场的经验。</p>\n<h3 class=\"article-section\">五、接下来发布什么</h3>\n<p>从本期开始，CSTEAC 中国EV供应链智识平台将保持每周更新的节奏，涵盖五大支柱的系列文章：</p>\n<table class=\"article-table\"><thead><tr><th>标签</th><th>期次</th><th>文章预告</th></tr></thead><tbody><tr><td>P1 政策</td><td>第02期 6/19</td><td>中国EV进口新窗口：配额、关税与规则变化</td></tr><tr><td>P2 供应链</td><td>第03期 6/26</td><td>PDI是什么：中国电动车到港后的最后一公里</td></tr><tr><td>P3 进场</td><td>第04期 6/29</td><td>配额不是终点：谁能真正把车卖进加拿大</td></tr><tr><td>P4 省市场</td><td>第05期 7/3</td><td>BC市场深度观察</td></tr><tr><td>P5 竞争</td><td>第06期 7/10</td><td>先到咸阳为王上：谁可能率先进入加拿大</td></tr></tbody></table>\n<p>24小时内同步发布英文摘要，及时触达加拿大本土合作方和行业关注者。</p>\n<h3 class=\"article-section\">结语</h3>\n<p>加拿大电动车市场正处于一个关键的信息需求时刻：入市意向已经存在，但可以支撑决策的结构化知识还非常稀缺。</p>\n<p>CSTEAC 中国EV供应链智识平台将填补这个空白——用持续的研究积累、清晰的结构框架、和严格的事实核验，为所有认真对待这个市场的参与者提供可以信赖的参考。</p>\n<p>本文为 CSTEAC 中国EV供应链智识平台系列文章第 01 期。所有内容基于公开信息整理，不构成投资建议或法律意见。涉及政策、关税、补贴、认证进度等事实，已于发布前以官方及可信媒体信息核验。</p>",
   /* 1 */ "<p>▌ 核心结论</p>\n<p>BC省不是加拿大ZEV渗透率最高的省份（魁北克2024年新注册ZEV占比30.9%高于BC的20.9%），也不是人口最多的省份，但它可能是中国OEM的最优轻量首发省份：温哥华港物流优势、英语市场环境、较高EV接受度、华人及亚裔消费基础、较低本地整车制造政治压力。</p>\n<p>魁北克是ZEV渗透率最高的成熟市场，但法语、本地化和渠道要求更高；安省是最大规模市场，但竞争、政治和资源投入要求更高。建议采用「BC省建样板、安省做规模、魁省做高渗透补充」的三阶段策略。</p>\n<table class=\"article-table\"><thead><tr><th>30.9% 魁北克2024 ZEV新注册占比</th><th>20.9% 不列颠哥伦比亚英语区最高</th><th>8.1% 安大略省2024 ZEV新注册占比</th><th>~80% 三省合计全国人口覆盖率</th></tr></thead><tbody></tbody></table>\n<p>⚠️ 补贴政策重要更新</p>\n<p>联邦iZEV乘用车补贴已于2025年关闭；BC Go Electric乘用车rebate已暂停；魁北克Roulez vert 2026年新车最高$2,000且计划年底结束。选省逻辑应建立在物流效率、消费者基础和市场成熟度上，而非依赖补贴叠加。</p>\n<h3 class=\"article-section\">一、为什么首发省份选择如此关键</h3>\n<p>对于首次进入加拿大市场的中国OEM而言，省份选择不是简单的市场规模排序，而是一项影响整体进场节奏和资源配置的战略决策。选错首发省份，代价是：过早进入竞争拥挤的市场、错配供应链资源、耗尽品牌在加拿大落地的第一张牌。选对首发省份，则可以：用最小资源建立可复制的运营样板，再向其他省份扩张。</p>\n<p>1.1 选省的五个关键维度</p>\n<table class=\"article-table\"><thead><tr><th>维度</th><th>对OEM的直接影响</th><th>核心考量问题</th></tr></thead><tbody><tr><td>物流与港口可达性</td><td>整车到港后的运输成本和PDI周期</td><td>最近的整车进口港？内陆运输成本如何？</td></tr><tr><td>EV市场成熟度</td><td>消费者教育成本与口碑传播效率</td><td>ZEV渗透率多高？早期采用者集中在哪里？</td></tr><tr><td>目标消费者结构</td><td>品牌认知基础与冷启动难度</td><td>华人/亚裔比例？消费者对中国品牌接受度？</td></tr><tr><td>经销商与供应链生态</td><td>落地速度与运营成本</td><td>是否有意向经销商？PDI仓储资源充足？</td></tr><tr><td>政治与制度门槛</td><td>省政府对进口EV的态度</td><td>是否有本地制造业保护压力？语言合规成本？</td></tr></tbody></table>\n<p>1.2 主要省份ZEV市场概览（2024官方数据）</p>\n<table class=\"article-table\"><thead><tr><th>省份</th><th>人口</th><th>2024 ZEV新注册占比</th><th>华裔/亚裔比例</th><th>省级EV补贴（2026）</th><th>战略优先级</th></tr></thead><tbody><tr><td>不列颠哥伦比亚（BC）</td><td>约550万</td><td>20.9%英语区最高</td><td>约30%（大温哥华）</td><td>乘用车rebate已暂停</td><td>★★★★★首选</td></tr><tr><td>安大略省（ON）</td><td>约1,500万</td><td>8.1%</td><td>约22%（大多伦多）</td><td>无省级补贴</td><td>★★★★★第二阶段</td></tr><tr><td>魁北克省（QC）</td><td>约870万</td><td>30.9%全加最高</td><td>约6%（蒙特利尔）</td><td>Roulez vert最高$2,000，年底结束</td><td>★★★★★第三阶段</td></tr><tr><td>艾伯塔省（AB）</td><td>约480万</td><td>约3–5%</td><td>约10%（卡尔加里）</td><td>无</td><td>★★★★★暂缓</td></tr></tbody></table>\n<p>数据来源：Statistics Canada 2024年省级ZEV新注册统计。</p>\n<h3 class=\"article-section\">二、不列颠哥伦比亚省（BC）：最优轻量首发地</h3>\n<p>BC 不列颠哥伦比亚省 综合评分最高 · 英语区ZEV成熟度最高 · 建议作为第一个进入的省份</p>\n<p>① 温哥华港：中国产整车进入加拿大的最短路径</p>\n<p>从中国主要港口（上海、宁波、天津）出发，温哥华港是北美大陆最近的主要港口，比哈利法克斯港短约8,000海里，航期节省约14–18天。</p>\n<p>温哥华港区域（含Fraser Surrey Docks、Annacis Island等）已有整车接卸基础设施</p>\n<p>先行建立PDI合作框架的供应商，将在仓储资源和定价方面具备先发优势</p>\n<p>② 英语区EV成熟度最高：较低的品牌教育成本</p>\n<p>BC省ZEV新注册占比约20.9%，是英语区主要省份中最高的（安省8.1%、艾省约3–5%）。</p>\n<p>消费者对EV的认知和接受程度高于全国平均，品牌教育成本低于安省</p>\n<p>公共快充网络在大温哥华和温哥华岛主要走廊已相对完善</p>\n<p>早期采用者群体相对集中，口碑传播效率较高</p>\n<p>政策现状</p>\n<p>联邦iZEV乘用车补贴已关闭；BC Go Electric乘用车rebate已暂停。首发逻辑须从「补贴叠加优势」转向「物流效率、消费者基础和市场成熟度」。</p>\n<p>③ 华人与亚裔消费群体：天然品牌启动基础</p>\n<p>大温哥华都会区华裔人口约55–60万，亚裔比例接近30%，是全加最密集的华人聚居区。</p>\n<p>中国品牌在华人社区具有自然认知度，营销冷启动成本低</p>\n<p>华人KOL、中文社媒（微信、小红书）在GVA渗透率高，口碑传播可快速成型</p>\n<p>④ 无省级整车制造业保护压力</p>\n<p>与安省（本田$150亿、大众$70亿投资）不同，BC省没有大规模本地整车制造业，省政府对中国进口EV的政治阻力相对较小。</p>\n<p>BC省的主要挑战</p>\n<p>市场规模相对有限（约550万人口），需要快速向安省延伸</p>\n<p>大型经销商集团主要集中在大温哥华，内陆地区覆盖薄弱</p>\n<p>竞争已经激烈：特斯拉直营网络、宝马、现代等EV产品线均已布局</p>\n<p>本地运营成本高：温哥华商业地产、人力成本是全加最高之一</p>\n<p>✅ BC省综合结论</p>\n<p>BC省是中国OEM进入加拿大的最优轻量首发地：物流路径最短、英语市场门槛较低、华人消费基础较强、英语区EV成熟度最高。建议在进口配额机制落地前，提前完成温哥华PDI合作、首批经销商签约、本地合规文件和营销材料准备。</p>\n<h3 class=\"article-section\">三、安大略省（ON）：第二阶段主战场</h3>\n<p>ON 安大略省 人口最多、市场规模最大 · 建议在BC省建立样板后进入</p>\n<p>安大略省是加拿大人口最多的省份（约1,500万），大多伦多地区（GTA）是全国最大的单一都会区消费市场。但从OEM首发策略看，安省不是最优起点：</p>\n<table class=\"article-table\"><thead><tr><th>维度</th><th>BC省</th><th>安大略省</th><th>OEM影响</th></tr></thead><tbody><tr><td>ZEV新注册占比</td><td>20.9%（英语区最高）</td><td>8.1%</td><td>安省消费者需更多品牌教育</td></tr><tr><td>政治态度</td><td>对进口EV较开放</td><td>偏向保护本地制造</td><td>安省政府持更审慎态度</td></tr><tr><td>港口可达性</td><td>温哥华港直达</td><td>需横穿大陆</td><td>物流成本显著增加</td></tr><tr><td>市场规模</td><td>中等</td><td>全加最大</td><td>首发需更大资源投入</td></tr></tbody></table>\n<p>⚠️ 战略判断</p>\n<p>安省政府对本地汽车制造业投入巨大政治资本——本田（$150亿）、大众（$70亿）、Stellantis（$50亿）三大投资合计逾270亿加元。中国OEM在安省的机会在于用差异化定位切入华人和新移民市场，而非与本地制造直接竞争。</p>\n<p>安省进入节奏建议</p>\n<p>在BC省样板运营稳定（建议满6–12个月）后再向安省扩张</p>\n<p>大多伦多地区优先：Markham、Richmond Hill、Mississauga等华人聚居区是首批经销商选址重点</p>\n<p>与安省本地汽车金融公司、保险经纪合作，降低消费者购车门槛</p>\n<h3 class=\"article-section\">四、魁北克省（QC）：最强EV成熟市场，但不是最轻首发市场</h3>\n<p>QC 魁北克省 全加ZEV渗透率最高（30.9%） · 法语本地化门槛不可低估 · 建议第三阶段进入</p>\n<table class=\"article-table\"><thead><tr><th>市场吸引力 全加ZEV渗透率最高（30.9%），消费者对EV接受度极高 省级充电基础设施较完善 人口约870万，经济体量仅次于安省</th><th>进入门槛 法语合规：标签、广告、说明书须法语（Bill 96） 补贴收缩：2026年最高$2,000，年底结束 华人基础有限：约12–15万，无法作为冷启动引擎</th></tr></thead><tbody></tbody></table>\n<p>▌ 定位建议</p>\n<p>魁北克是最强EV成熟市场，适合在完成法语本地化、经销合作和售后体系后进入，而不是作为英语体系首发样板。三阶段策略中，魁省是自然的第三阶段补充。</p>\n<h3 class=\"article-section\">五、综合评分与进入顺序建议</h3>\n<p>5.1 七维评分矩阵（5分制）</p>\n<table class=\"article-table\"><thead><tr><th>评分维度</th><th>BC省</th><th>安省</th><th>魁省</th><th>艾省</th></tr></thead><tbody><tr><td>ZEV渗透率与市场成熟度</td><td>4英语区最高</td><td>2</td><td>5全加最高</td><td>1</td></tr><tr><td>消费激励现状（2026）</td><td>2rebate已暂停</td><td>2无省级补贴</td><td>2将结束</td><td>1</td></tr><tr><td>华人/亚裔消费群体</td><td>5</td><td>4</td><td>2</td><td>2</td></tr><tr><td>物流与港口可达性</td><td>5</td><td>2</td><td>2</td><td>3</td></tr><tr><td>政治与政策风险</td><td>4</td><td>3</td><td>3</td><td>2</td></tr><tr><td>供应链与经销商生态</td><td>4</td><td>4</td><td>3</td><td>2</td></tr><tr><td>语言与文化进入门槛</td><td>5</td><td>5</td><td>2</td><td>4</td></tr><tr><td>加权综合得分</td><td>31/35</td><td>23/35</td><td>22/35</td><td>16/35</td></tr></tbody></table>\n<p>5.2 三阶段进入时间表</p>\n<table class=\"article-table\"><thead><tr><th>阶段</th><th>省份</th><th>时间窗口</th><th>核心目标</th><th>关键动作</th></tr></thead><tbody><tr><td>第一阶段</td><td>BC省大温哥华</td><td>2026年Q2–Q4</td><td>建立市场样板</td><td>锁定2–3家经销商；签订PDI协议；启动华人社区推广</td></tr><tr><td>第二阶段</td><td>安省大多伦多</td><td>BC省运营满6–12个月后预计2027年Q1起</td><td>规模扩张</td><td>对接GTA华人聚居区经销商；建立安省PDI分中心</td></tr><tr><td>第三阶段</td><td>魁北克蒙特利尔</td><td>法语本地化完成后预计2027–2028年</td><td>进入ZEV最成熟省份</td><td>完成全线法语合规（Bill 96）；对接魁省经销商</td></tr></tbody></table>\n<p>▌ 三省覆盖逻辑</p>\n<p>BC省（约550万，英语区ZEV成熟度最高）+ 安省（约1,500万，规模最大）+ 魁省（约870万，全加ZEV渗透率最高）三省合计覆盖加拿大约80%的人口，形成东西贯通的市场网络。</p>\n<h3 class=\"article-section\">六、选省落地操作要点</h3>\n<p>BC省首发准备清单</p>\n<p>☐ 锁定温哥华港区域PDI仓储合作伙伴（建议不晚于2026年7月确认）</p>\n<p>☐ 完成Transport Canada车辆认证，与进口配额申请节奏对齐</p>\n<p>☐ 签约大温哥华地区首批2–3家经销商（优先Surrey、Richmond、Burnaby）</p>\n<p>☐ 确认产品标签符合加拿大法规要求（Motor Vehicle Safety Act等）</p>\n<p>☐ 将产品竞争力建立在售价本身而非补贴叠加上</p>\n<p>☐ 制定华人社区品牌推广方案（中文社媒、KOL、社区活动）</p>\n<p>☐ 建立加拿大本地售后服务响应机制（含零配件库存预案）</p>\n<p>常见错误与避坑建议</p>\n<table class=\"article-table\"><thead><tr><th>常见错误</th><th>后果</th><th>正确做法</th></tr></thead><tbody><tr><td>以安省为首发省</td><td>资源分散、制造业政治压力大</td><td>以BC省建样板，安省为第二阶段</td></tr><tr><td>以补贴作为选省核心逻辑</td><td>联邦iZEV和BC rebate均已暂停</td><td>将竞争力建立在出厂价和服务成本上</td></tr><tr><td>PDI仓储安排滞后于到港节奏</td><td>整车积压港口，产生额外仓储费</td><td>PDI确认比首批车辆到港早至少3个月</td></tr><tr><td>假设华人消费者一定买中国品牌</td><td>忽视本地化服务信任建立</td><td>品质背书+本地服务+中文沟通缺一不可</td></tr><tr><td>魁省和BC省同步启动</td><td>法语合规资源不足</td><td>先完成英语市场样板再进魁省</td></tr></tbody></table>\n<h3 class=\"article-section\">七、结语</h3>\n<p>对于中国电动车而言，加拿大市场进入不是单次决策，而是一套需要与进口政策节奏、认证进度、供应链建设周期精确对齐的系统工程。</p>\n<p>首发省份选BC省，核心逻辑是：最短物流路径、英语市场门槛较低、较强华人消费基础、较低本地制造业政治阻力，以最小资源投入建立可复制的市场样板，再向安省、魁省依次扩张。</p>\n<p>上述判断的前提是：BC省是英语区EV成熟度最高的省份，而不是全加最高——全加ZEV渗透率最高的是魁北克（30.9%）。但魁北克的高渗透率伴随着更高的法语本地化成本和进入门槛，对于首次进入加拿大的OEM，BC省是路径更清晰的起点。</p>\n<p>使用限制</p>\n<p>本报告不构成投资建议或法律意见。企业在做出具体市场进入决策前，建议参阅Transport Canada、Statistics Canada及相关省政府的最新官方资料。</p>\n<p>▌ 参考来源</p>\n<p>Statistics Canada: New Zero-Emission Vehicle Registrations by Province (2024)</p>\n<p>Transport Canada: Incentives for Zero-Emission Vehicles (iZEV) Program — Program Closure Notice</p>\n<p>BC CleanBC: Go Electric Passenger Vehicle Rebate (Status: Paused as of 2025)</p>\n<p>Quebec MELCCFP: Roulez vert 2026 Program</p>\n<p>Global Affairs Canada: Import Management Mechanism for Passenger Vehicles from China — Consultation (2026)</p>\n<p>中国技术经济学会北美代表处（CSTEAC）内部研究整理</p>",
   /* 2 */ "<p>本期要点 · Issue Highlights</p>\n<p>联邦配额制度正式落地：2026年首批2.45万辆中国产EV配额窗口已于3月开启</p>\n<p>特斯拉上海工厂已认领约12%首批配额；中国自主品牌认证进度将决定第二窗口格局</p>\n<p>联邦6月政策审查临近，税率结构与配额分配方式存在调整可能</p>\n<p>BC省CleanBC补贴（最高$4,000）持续有效；安省无省级补贴，依赖联邦iZEV</p>\n<p>CSTEAC研判：第二配额窗口（9月1日起）是中国自主品牌实质入市的关键节点</p>\n<h3 class=\"article-section\">一、政策动态</h3>\n<p>1.1 联邦配额制度：核心参数</p>\n<p>2025年底，加拿大联邦政府宣布对中国产电动汽车实施差异化配额管理政策，以6.1%最惠国税率为优惠条件，允许部分中国产EV进入加拿大市场。政策背景为同期达成的\"油菜籽换汽车\"大宗贸易框架协议，标志着中加双方在贸易摩擦持续的背景下打开了一条有限但具备战略意义的通道。</p>\n<p>1.2 配额窗口安排</p>\n<p>1.3 主要车企进场状态</p>\n<table class=\"article-table\"><thead><tr><th>品牌</th><th>母国</th><th>认证状态</th><th>经销商布局</th><th>主要车型（预期）</th><th>当前研判</th></tr></thead><tbody><tr><td>特斯拉（上海）</td><td>美国</td><td>已认证</td><td>全国直营网络</td><td>Model 3/Y（上海产）</td><td>已认领首批约12%配额</td></tr><tr><td>比亚迪（BYD）</td><td>中国</td><td>进行中</td><td>洽谈约20家经销商</td><td>Atto 3、Seal、Dolphin、Seagull</td><td>最积极；Seagull预期约$2.5万加元</td></tr><tr><td>吉利（含极氪）</td><td>中国</td><td>进行中</td><td>借Volvo/Polestar渠道</td><td>极氪（Zeekr）系列</td><td>渠道基础最成熟；商标已注册</td></tr><tr><td>奇瑞</td><td>中国</td><td>进行中</td><td>评估中</td><td>SUV系列（待定）</td><td>态度审慎，优先夯实本地基础</td></tr><tr><td>沃尔沃/极星</td><td>瑞典/中国</td><td>已认证</td><td>现有网络</td><td>EX30、EX90；Polestar 2/4</td><td>已具备入市条件，或受益于配额</td></tr></tbody></table>\n<p>⚠️ 注意</p>\n<p>跨国车辆认证通常需要12–18个月。比亚迪、奇瑞、吉利赶上第一窗口（3—8月）的可能性较低，第二窗口（9月起）才是中国自主品牌竞争配额的真正起点。供应链企业的布局节奏应与此对齐，而非以第一窗口为准。</p>\n<h3 class=\"article-section\">二、省级政策动态</h3>\n<p>2.1 主要省份EV消费补贴对比</p>\n<table class=\"article-table\"><thead><tr><th>省份</th><th>省级EV补贴</th><th>联邦iZEV补贴</th><th>合计最高</th><th>备注</th></tr></thead><tbody><tr><td>不列颠哥伦比亚省（BC）</td><td>最高$4,000（CleanBC SCRAP+）</td><td>最高$5,000</td><td>$9,000</td><td>换购旧车额外补贴；华人消费者集中</td></tr><tr><td>安大略省（ON）</td><td>无省级补贴</td><td>最高$5,000</td><td>$5,000</td><td>2018年撤销省补贴，未有恢复迹象</td></tr><tr><td>魁北克省（QC）</td><td>最高$7,000（Roulez Vert）</td><td>最高$5,000</td><td>$12,000</td><td>全加补贴最高；法语市场壁垒</td></tr><tr><td>艾伯塔省（AB）</td><td>无省级补贴</td><td>最高$5,000</td><td>$5,000</td><td>油气省份；EV渗透率较低</td></tr></tbody></table>\n<p>🟢 BC省战略价值</p>\n<p>综合考量：CleanBC补贴最高$4,000 + 联邦$5,000 + 温哥华港最短航运距离 + 华人社区基础 + EV渗透率全加最高（约20%+），BC省是中国EV品牌进入加拿大的首选登陆市场，也是本土供应链企业布局PDI仓储和经销商体系的优先区域。</p>\n<p>2.2 省级充电基础设施政策动态</p>\n<p>联邦政府已承诺投入CAD $15亿用于全国充电网络建设（ZEV基础设施计划），各省按比例配套：</p>\n<p>BC省：CleanBC计划持续支持快充网络扩展，温哥华岛及内陆走廊为优先建设区域</p>\n<p>安省：依托大众$70亿电池厂（圣托马斯）及本田$150亿整车厂（阿利斯顿）产业集群，充电基础设施建设将加速</p>\n<p>联邦层面：商业楼宇和停车场EV充电桩安装补贴（ZEVIP）仍在接受申请，进场时间窗口尚开放</p>\n<h3 class=\"article-section\">三、CSTEAC政策研判</h3>\n<p>📡 研判一 · 6月审查是本季度最大政策变量</p>\n<p>联邦6月政策审查的三个核心关注点：①配额分配方式是否调整（按品牌/按国别/按价格段）；②低价车型（<$3.5万FOB）占比政策是否提速；③是否出现专门针对中国自主品牌的附加条件。审查结果将直接影响第二窗口竞争格局，建议企业保持政策观察窗口，勿在审查结果出炉前锁定第二窗口策略。</p>\n<p>📡 研判二 · 认证节点将拉开品牌间差距</p>\n<p>Transport Canada认证周期（12–18个月）已成为中国自主品牌进场节奏的硬约束。首个完成认证并建立经销商网络的品牌将获得先发优势，后续品牌将面临更拥挤的供应链竞争。本地供应链企业（PDI、零配件、物流）宜在此前优先与进度最快的品牌建立框架合作，而非等待市场成形。</p>\n<p>📡 研判三 · 安省战略重心在本地制造，而非进口车</p>\n<p>本田（$150亿）、大众（$70亿）、Stellantis（$50亿电池厂）三大投资合计逾270亿加元，将在未来3–5年重塑安省汽车供应链版图。安省政府对中国进口EV态度审慎，但对本地制造生态持欢迎态度。对本地零配件企业而言，安省的机会更多在于对接这些新建产能，而非押注中国进口车渠道。</p>\n<p>🟢 供应链企业行动建议</p>\n<p>现在（2026年Q2）：对接比亚迪/吉利加拿大筹备团队，洽谈PDI框架协议；评估温哥华港附近仓储资源6月审查后：依据审查结果调整第二窗口布局策略，锁定经销商合作伙伴2026年Q4：第二窗口到车高峰期，PDI仓储、零配件库存、售后服务人员需提前到位</p>\n<h3 class=\"article-section\">四、数据速览</h3>\n<table class=\"article-table\"><thead><tr><th>指标</th><th>数据</th><th>来源/备注</th></tr></thead><tbody><tr><td>加拿大2025年EV新车销量占比</td><td>约13.5%</td><td>EVIP / Statistics Canada估算</td></tr><tr><td>BC省EV渗透率</td><td>约20–22%</td><td>全加最高，2025年数据</td></tr><tr><td>全国公共充电桩数量</td><td>约26,000+个</td><td>含Level 2及DC快充，2025年底</td></tr><tr><td>2026年全年中国EV进口配额</td><td>49,000辆</td><td>联邦政策文件</td></tr><tr><td>第一窗口特斯拉上海认领量</td><td>约2,910辆（~12%）</td><td>行业信息，待官方确认</td></tr><tr><td>联邦iZEV补贴最高额度</td><td>CAD $5,000</td><td>适用于MSRP <$70,000车型</td></tr><tr><td>联邦充电基础设施承诺投入</td><td>CAD $15亿</td><td>ZEV基础设施计划</td></tr></tbody></table>",
