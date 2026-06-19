@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -122,6 +122,7 @@ nav a:hover, nav a.active { color: var(--navy); background: var(--light-gray); }
   text-align: left; cursor: pointer; width: 100%;
 }
 .mobile-nav a:last-child, .mobile-nav button:last-child { border-bottom: none; }
+.mobile-nav a.active { color: var(--navy); font-weight: 700; }
 .mobile-nav .btn-mobile {
   margin-top: 12px; padding: 12px 0;
   background: var(--navy); color: var(--white);
@@ -759,9 +760,9 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
       <a href="#" onclick="showPage('members');return false;" data-zh="会员动态" data-en="Members">会员动态</a>
       <a href="#" onclick="showPage('contact');return false;" data-zh="联系我们" data-en="Contact">联系我们</a>
     </nav>
-    <button class="btn-lang" id="lang-toggle" onclick="toggleLang()" title="Switch language">EN</button>
+    <button class="btn-lang" id="lang-toggle" onclick="toggleLang()" title="Switch language" aria-label="Switch language">EN</button>
     <button class="btn-nav" onclick="showPage('contact')" data-zh="预约咨询" data-en="Consult">预约咨询</button>
-    <button class="hamburger" id="hamburger" aria-label="菜单">
+    <button class="hamburger" id="hamburger" aria-label="打开菜单">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -973,7 +974,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
           <h2>从学术到产业，从中国到北美</h2>
           <div class="divider"></div>
           <p class="xi18n" style="margin-top:16px;" data-zh="中国技术经济学会是中国科协直属全国一级学会，创立于 1978 年，长期致力于技术经济研究、学术交流和产学研协作。中国技术经济学会北美代表处的设立，是学会国际化发展中的重要一步。作为一个立足北美、面向技术经济、创新与应用研究的非营利学术与专业赋能平台，CSTEAC 希望在不同国家、不同文化、不同专业背景的人群之间，搭建一个多元化的交流空间。" data-en="The Chinese Society of Technology Economics is a national first-level academic society under the China Association for Science and Technology. Founded in 1978, it has long been dedicated to techno-economic research, academic exchange, and collaboration among academia, industry, and research institutions. The establishment of the CSTE North America Office marks an important step in CSTE&#x27;s international development. As a non-profit academic and professional enablement platform based in North America and focused on techno-economics, innovation, and applied research, CSTEAC aims to create a diversified space for people from different countries, cultures, and professional backgrounds.">中国技术经济学会是中国科协直属全国一级学会，创立于 1978 年，长期致力于技术经济研究、学术交流和产学研协作。中国技术经济学会北美代表处的设立，是学会国际化发展中的重要一步。作为一个立足北美、面向技术经济、创新与应用研究的非营利学术与专业赋能平台，CSTEAC 希望在不同国家、不同文化、不同专业背景的人群之间，搭建一个多元化的交流空间。</p>
-          <p class="xi18n" style="margin-top:14px;" data-zh="我们深知，真正有价值的国际合作，不是从交易开始，而是从理解、信任和共同关注的问题开始。北美有成熟的法律体系、专业标准、社区文化和产业生态。CSTEAC 在这里开展工作，首先要做的是了解本地、尊重本地、融入本地，并在此基础上推动研究交流、专业学习和跨区域理解。" data-en="We believe that meaningful international cooperation does not begin with transactions, but with understanding, trust, and shared questions. North America has mature legal systems, professional standards, community cultures, and industrial ecosystems. For CSTEAC, our first priority is to learn from, respect, and integrate into the local environment, and on that basis promote research exchange, professional learning, and cross-regional understanding.">我们深知，真正有价值的国际合作，不是从交易开始，而是从理解、信任和共同关注的问题开始。北美有成熟的法律体系、专业标准、社区文化和产业生态。CSTEAC 在这里开展工作，首先要做的是了解本地、尊重本地、融入本地，并在此基础上推动研究交流、专业学习和跨区域理解。</p>
+          <p class="xi18n" style="margin-top:14px;" data-zh="我们深知，真正有价值的国际合作，不是从交易开始，而是从理解、信任和共同关注的问题开始。北美有成熟的法律体系、专业标准、社区文化和产业生态。CSTEAC 在这里开展工作，首先要做的是了解本地、尊重本地、融入本地，并在此基础上推动研究交流、专业学习和跨区域互信与合作。" data-en="We believe that meaningful international cooperation does not begin with transactions, but with understanding, trust, and shared questions. North America has mature legal systems, professional standards, community cultures, and industrial ecosystems. For CSTEAC, our first priority is to learn from, respect, and integrate into the local environment, and on that basis promote research exchange, professional learning, and cross-regional mutual trust and cooperation.">我们深知，真正有价值的国际合作，不是从交易开始，而是从理解、信任和共同关注的问题开始。北美有成熟的法律体系、专业标准、社区文化和产业生态。CSTEAC 在这里开展工作，首先要做的是了解本地、尊重本地、融入本地，并在此基础上推动研究交流、专业学习和跨区域互信与合作。</p>
           <p class="xi18n" style="margin-top:14px;" data-zh="CSTEAC 不是商业中介，也不是政治组织。我们的工作重点，是围绕技术经济、科技创新、产业发展、教育、健康、社区与可持续发展等议题，组织研讨、研究、对话和专业交流。我们希望连接研究人员、企业家、专业人士、社区伙伴和青年才俊，帮助大家在事实和研究的基础上提出更好的问题，形成更稳健的合作基础。" data-en="CSTEAC is neither a commercial intermediary nor a political organization. Our work focuses on seminars, research, dialogue, and professional exchange around issues such as technology economics, technological innovation, industrial development, education, health, community, and sustainable development. We seek to connect researchers, entrepreneurs, professionals, community partners, and young professionals, helping all parties ask better questions and build a more solid foundation for cooperation based on facts and research.">CSTEAC 不是商业中介，也不是政治组织。我们的工作重点，是围绕技术经济、科技创新、产业发展、教育、健康、社区与可持续发展等议题，组织研讨、研究、对话和专业交流。我们希望连接研究人员、企业家、专业人士、社区伙伴和青年才俊，帮助大家在事实和研究的基础上提出更好的问题，形成更稳健的合作基础。</p>
           <p class="xi18n" style="margin-top:14px;" data-zh="未来，CSTEAC 将坚持合规运营的原则，持续推动中加、中美及全球范围内在技术经济领域的知识交流与专业合作。我们也期待与更多本地机构、商会、学术组织、企业和社区伙伴建立长期、真诚、务实的联系。" data-en="Looking ahead, CSTEAC will continue to uphold the principles of compliant operations. We will work to promote knowledge exchange and professional cooperation in the field of techno-economics across Canada, the United States, and global contexts. We also look forward to building long-term, sincere, and practical relationships with local institutions, chambers of commerce, academic organizations, businesses, and community partners.">未来，CSTEAC 将坚持合规运营的原则，持续推动中加、中美及全球范围内在技术经济领域的知识交流与专业合作。我们也期待与更多本地机构、商会、学术组织、企业和社区伙伴建立长期、真诚、务实的联系。</p>
         </div>
@@ -1505,13 +1506,13 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
           </div>
 
           <div class="social-links">
-            <a class="social-btn" href="https://www.linkedin.com" target="_blank" rel="noopener">
+            <a class="social-btn" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
               LinkedIn
             </a>
-            <a class="social-btn" href="#" onclick="alert(_lang==='en'?'WeChat: CSTEAC. Please scan the QR code to follow us.':'微信公众号：CSTEAC 北美代表处，扫码关注');return false;">
+            <a class="social-btn" href="#" data-social="wechat" aria-label="微信公众号" onclick="alert((_lang==='en'?(_langData.en.wechatAlert):(_langData.zh.wechatAlert)));return false;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span id="contact-wechat-text">微信公众号</span></a>
-            <a class="social-btn" href="https://www.cste.org.cn" target="_blank" rel="noopener">
+            <a class="social-btn" href="https://www.cste.org.cn" target="_blank" rel="noopener noreferrer" aria-label="CSTE 官网">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               <span id="contact-cste-text">CSTE 官网</span>
             </a>
@@ -1625,20 +1626,20 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
         </div>
         <div class="footer-contact-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          <span><a href="https://www.cste.org.cn" style="color:rgba(255,255,255,0.55);" target="_blank">www.cste.org.cn</a></span>
+          <span><a href="https://www.cste.org.cn" style="color:rgba(255,255,255,0.55);" target="_blank" rel="noopener noreferrer">www.cste.org.cn</a></span>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <p id="footer-copyright">© 2026 CSTEAC · 中国技术经济学会北美代表处 · 保留所有权利</p>
       <div class="footer-social">
-        <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
-        <a href="#" onclick="alert('微信公众号：CSTEAC');return false;" aria-label="微信">
+        <a href="#" data-social="wechat" onclick="alert((_lang==='en'?(_langData.en.wechatAlert):(_langData.zh.wechatAlert)));return false;" aria-label="微信公众号">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </a>
-        <a href="https://www.cste.org.cn" target="_blank" rel="noopener" aria-label="CSTE官网">
+        <a href="https://www.cste.org.cn" target="_blank" rel="noopener noreferrer" aria-label="CSTE官网">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </a>
       </div>
@@ -2132,6 +2133,11 @@ var _langData = {
     nav: ['首页','关于我们','服务','洞察报告','会员动态','联系我们'],
     cta: '预约咨询',
     toggleBtn: 'EN',
+    langTitle: '切换语言',
+    menuLabel: '打开菜单',
+    wechatLabel: '微信公众号',
+    csteLabel: 'CSTE 官网',
+    wechatAlert: '微信公众号：CSTEAC 北美代表处，扫码关注',
     articleBack: '← 返回',
     articleBackList: '← 返回列表',
     readMore: '阅读全文 →'
@@ -2140,6 +2146,11 @@ var _langData = {
     nav: ['Home','About','Work','Insights','Members','Contact'],
     cta: 'Consult',
     toggleBtn: '中文',
+    langTitle: 'Switch language',
+    menuLabel: 'Open menu',
+    wechatLabel: 'WeChat Official Account',
+    csteLabel: 'CSTE Website',
+    wechatAlert: 'WeChat: CSTEAC North America Office. Please scan the QR code or search CSTEAC to follow us.',
     articleBack: '← Back',
     articleBackList: '← Back to List',
     readMore: 'Read More →'
@@ -2163,7 +2174,20 @@ function toggleLang() {
   var cta = document.querySelector('.btn-nav[data-zh]');
   if (cta) cta.textContent = d.cta;
   // Toggle button label
-  document.getElementById('lang-toggle').textContent = d.toggleBtn;
+  var langBtn = document.getElementById('lang-toggle');
+  if (langBtn) {
+    langBtn.textContent = d.toggleBtn;
+    langBtn.title = d.langTitle;
+    langBtn.setAttribute('aria-label', d.langTitle);
+  }
+  var hamburger = document.getElementById('hamburger');
+  if (hamburger) hamburger.setAttribute('aria-label', d.menuLabel);
+  document.querySelectorAll('[data-social="wechat"]').forEach(function(a) {
+    a.setAttribute('aria-label', d.wechatLabel);
+  });
+  document.querySelectorAll('a[aria-label^="CSTE"]').forEach(function(a) {
+    a.setAttribute('aria-label', d.csteLabel);
+  });
   // Article back buttons
   document.querySelectorAll('.article-back-btn').forEach(function(btn, i) {
     btn.textContent = i === 0 ? d.articleBack : d.articleBackList;
@@ -2191,9 +2215,14 @@ function showPage(id) {
   if (!target) return;
   target.classList.add('active');
   document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  document.querySelectorAll('#mobile-nav a').forEach(a => a.classList.remove('active'));
   const navMap = {home:0,about:1,services:2,listings:3,members:4,contact:5};
   const navLinks = document.querySelectorAll('nav a');
-  if (navMap[id] !== undefined) navLinks[navMap[id]].classList.add('active');
+  const mobileNavLinks = document.querySelectorAll('#mobile-nav a');
+  if (navMap[id] !== undefined) {
+    if (navLinks[navMap[id]]) navLinks[navMap[id]].classList.add('active');
+    if (mobileNavLinks[navMap[id]]) mobileNavLinks[navMap[id]].classList.add('active');
+  }
   if (id === 'listings' && typeof renderListings === 'function') {
     var activeFilter = document.querySelector('.filter-btn.active');
     renderListings(activeFilter ? activeFilter.getAttribute('data-filter') : 'all');
@@ -2208,7 +2237,8 @@ document.getElementById('hamburger').addEventListener('click', function() {
   mn.style.display = mn.style.display === 'flex' ? 'none' : 'flex';
 });
 function closeMobile() {
-  document.getElementById('mobile-nav').style.display = 'none';
+  var mn = document.getElementById('mobile-nav');
+  if (mn) mn.style.display = 'none';
 }
 
 // ── HEADER SCROLL ────────────────────────────────────────────────
@@ -2433,6 +2463,7 @@ var _prevPage = 'listings';
 var _currentArticle = null;
 function showArticle(idx) {
   var l = listings[idx];
+  if (!l) return;
   var activePage = document.querySelector('.page.active');
   var _ap = activePage ? activePage.id.replace('page-', '') : 'listings';
   if(_ap !== 'article') _prevPage = _ap;
@@ -2440,6 +2471,7 @@ function showArticle(idx) {
   document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
   document.getElementById('page-article').classList.add('active');
   document.querySelector('nav a.active') && document.querySelector('nav a.active').classList.remove('active');
+  document.querySelector('#mobile-nav a.active') && document.querySelector('#mobile-nav a.active').classList.remove('active');
   var isEn = (typeof _lang !== 'undefined' && _lang === 'en');
   var en = (isEn && typeof listingsEn !== 'undefined' && listingsEn[idx]) ? listingsEn[idx] : null;
   document.getElementById('article-title').textContent = en ? en.title : l.title;
@@ -2468,6 +2500,7 @@ function showPrevPage() {
 
 function renderListings(filter) {
   var grid = document.getElementById('listing-grid');
+  if (!grid) return;
   var items = filter === 'all' ? listings : listings.filter(function(l){ return l.cat === filter; });
   grid.innerHTML = items.map(function(l){
           var idx = listings.indexOf(l);
