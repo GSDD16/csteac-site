@@ -90,15 +90,47 @@ nav a:hover, nav a.active { color: var(--navy); background: var(--light-gray); }
   white-space: nowrap;
 }
 .btn-nav:hover { background: var(--navy-light); }
-.btn-lang {
-  margin-left: 12px; padding: 6px 13px;
-  background: transparent; color: var(--navy);
-  border: 1.5px solid var(--border); border-radius: 6px;
-  font-size: 13px; font-weight: 600; cursor: pointer;
-  transition: all var(--transition); white-space: nowrap;
-  letter-spacing: 0.04em;
+.lang-switch {
+  margin-left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  background: var(--white);
+  white-space: nowrap;
 }
-.btn-lang:hover { border-color: var(--teal); color: var(--teal); }
+.lang-link {
+  border: none;
+  background: transparent;
+  color: var(--mid-gray);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: var(--sans);
+}
+.lang-link:hover { color: var(--teal); background: var(--light-gray); }
+.lang-link.active { color: var(--white); background: var(--navy); }
+.mobile-lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 0 8px;
+}
+.mobile-lang-switch .lang-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  border: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 6px 12px;
+  text-align: center;
+}
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
   background: none; border: none; cursor: pointer; padding: 6px; margin-left: auto;
@@ -639,7 +671,7 @@ p { color: var(--body-text); line-height: 1.75; }
 
 /* ── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 960px) {
-  nav, .btn-nav { display: none; }
+  nav, .btn-nav, .header-inner > .lang-switch { display: none; }
   .hamburger { display: flex; }
   .hero-content { grid-template-columns: 1fr; }
   .hero-stat-card { display: none; }
@@ -768,7 +800,11 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
       <a href="#" onclick="showPage('members');return false;" data-zh="会员动态" data-en="Members">会员动态</a>
       <a href="#" onclick="showPage('contact');return false;" data-zh="联系我们" data-en="Contact">联系我们</a>
     </nav>
-    <button class="btn-lang" id="lang-toggle" onclick="toggleLang()" title="Switch language" aria-label="Switch language">EN</button>
+    <div class="lang-switch" id="lang-switch" role="group" aria-label="语言切换">
+      <button type="button" class="lang-link active" data-lang="zh" onclick="setLang('zh')">简</button>
+      <button type="button" class="lang-link" data-lang="zhHant" onclick="setLang('zhHant')">繁</button>
+      <button type="button" class="lang-link" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
     <button class="btn-nav" onclick="showPage('contact')" data-zh="预约咨询" data-en="Consult">预约咨询</button>
     <button class="hamburger" id="hamburger" aria-label="打开菜单">
       <span></span><span></span><span></span>
@@ -781,6 +817,11 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
     <a href="#" onclick="showPage('listings');closeMobile();return false;" data-zh="洞察报告" data-en="Insights">洞察报告</a>
     <a href="#" onclick="showPage('members');closeMobile();return false;" data-zh="会员动态" data-en="Members">会员动态</a>
     <a href="#" onclick="showPage('contact');closeMobile();return false;" data-zh="联系我们" data-en="Contact">联系我们</a>
+    <div class="mobile-lang-switch" role="group" aria-label="语言切换">
+      <button type="button" class="lang-link active" data-lang="zh" onclick="setLang('zh')">简体</button>
+      <button type="button" class="lang-link" data-lang="zhHant" onclick="setLang('zhHant')">繁體</button>
+      <button type="button" class="lang-link" data-lang="en" onclick="setLang('en')">English</button>
+    </div>
     <button class="btn-mobile" onclick="showPage('contact');closeMobile();" data-zh="预约咨询" data-en="Consult">预约咨询</button>
   </div>
 </header>
@@ -1518,7 +1559,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
               LinkedIn
             </a>
-            <a class="social-btn" href="#" data-social="wechat" aria-label="微信公众号" onclick="alert((_lang==='en'?(_langData.en.wechatAlert):(_langData.zh.wechatAlert)));return false;">
+            <a class="social-btn" href="#" data-social="wechat" aria-label="微信公众号" onclick="alert((_langData[_lang]||_langData.zh).wechatAlert);return false;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span id="contact-wechat-text">微信公众号</span></a>
             <a class="social-btn" href="https://www.cste.org.cn" target="_blank" rel="noopener noreferrer" aria-label="CSTE 官网">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -1644,7 +1685,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
         <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
-        <a href="#" data-social="wechat" onclick="alert((_lang==='en'?(_langData.en.wechatAlert):(_langData.zh.wechatAlert)));return false;" aria-label="微信公众号">
+        <a href="#" data-social="wechat" onclick="alert((_langData[_lang]||_langData.zh).wechatAlert);return false;" aria-label="微信公众号">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </a>
         <a href="https://www.cste.org.cn" target="_blank" rel="noopener noreferrer" aria-label="CSTE官网">
@@ -1925,15 +1966,57 @@ en:{
 }
 };
 
+
+// ── SIMPLIFIED/TRADITIONAL CHINESE SUPPORT ──────────────────────
+var _tradCache = {};
+var _tradPhraseMap = [
+  ['中国技术经济学会','中國技術經濟學會'],['北美代表处','北美代表處'],['技术经济','技術經濟'],
+  ['洞察报告','洞察報告'],['研究与洞察','研究與洞察'],['会员动态','會員動態'],
+  ['预约咨询','預約諮詢'],['联系我们','聯繫我們'],['关于我们','關於我們'],
+  ['阅读全文','閱讀全文'],['返回列表','返回列表'],['微信公众号','微信公眾號'],
+  ['电动车','電動車'],['电动汽车','電動汽車'],['钠电池','鈉電池'],['固态电池','固態電池'],
+  ['全固态','全固態'],['半固态','半固態'],['宁德时代','寧德時代'],['曾毓群','曾毓群'],
+  ['加拿大','加拿大'],['温哥华','溫哥華'],['北京办公室','北京辦公室'],['服务领域','服務領域']
+];
+var _tradCharMap = {
+  '万':'萬','几':'幾','台':'臺','范':'範','划':'劃','历':'歷','历':'歷','厂':'廠',
+  '与':'與','丑':'醜','专':'專','业':'業','东':'東','丝':'絲','丢':'丟','两':'兩','严':'嚴','丧':'喪','个':'個','丰':'豐','临':'臨','为':'為','丽':'麗','举':'舉','么':'麼','义':'義','乌':'烏','乐':'樂','乔':'喬','习':'習','乡':'鄉','书':'書','买':'買','乱':'亂','争':'爭','于':'於','亏':'虧','云':'雲','亚':'亞','产':'產','亩':'畝','亲':'親','亵':'褻','亿':'億','仅':'僅','从':'從','仑':'侖','仓':'倉','仪':'儀','们':'們','价':'價','众':'眾','优':'優','会':'會','伞':'傘','伟':'偉','传':'傳','伤':'傷','伦':'倫','伪':'偽','体':'體','余':'餘','佛':'佛','佣':'傭','侠':'俠','侣':'侶','侥':'僥','侦':'偵','侧':'側','侨':'僑','侩':'儈','侪':'儕','侬':'儂','俣':'俁','俦':'儔','俨':'儼','俩':'倆','俪':'儷','俭':'儉','债':'債','倾':'傾','偬':'傯','储':'儲','儿':'兒','兑':'兌','党':'黨','兰':'蘭','关':'關','兴':'興','养':'養','兽':'獸','内':'內','册':'冊','写':'寫','军':'軍','农':'農','冲':'衝','决':'決','况':'況','冻':'凍','净':'淨','准':'準','凉':'涼','减':'減','凑':'湊','凤':'鳳','凭':'憑','凯':'凱','击':'擊','凿':'鑿','刍':'芻','划':'劃','刘':'劉','则':'則','刚':'剛','创':'創','删':'刪','别':'別','刬':'剗','刭':'剄','剂':'劑','剑':'劍','剧':'劇','劝':'勸','办':'辦','务':'務','动':'動','励':'勵','劲':'勁','劳':'勞','势':'勢','勋':'勳','勐':'猛','匀':'勻','匦':'匭','区':'區','医':'醫','华':'華','协':'協','单':'單','卖':'賣','卢':'盧','卫':'衛','却':'卻','厂':'廠','厅':'廳','历':'歷','厉':'厲','压':'壓','厌':'厭','厕':'廁','厘':'釐','厢':'廂','厦':'廈','厨':'廚','县':'縣','参':'參','双':'雙','发':'發','变':'變','叙':'敘','叶':'葉','号':'號','叹':'嘆','叽':'嘰','吁':'籲','后':'後','吓':'嚇','吕':'呂','吗':'嗎','听':'聽','启':'啟','吴':'吳','呐':'吶','呒':'嘸','呓':'囈','呕':'嘔','员':'員','呛':'嗆','呜':'嗚','咏':'詠','咙':'嚨','咛':'嚀','咝':'噝','咤':'吒','咨':'諮','咸':'鹹','响':'響','哑':'啞','哒':'噠','哓':'嘵','哔':'嗶','哕':'噦','哗':'嘩','哙':'噲','哜':'嚌','哝':'噥','哟':'喲','唤':'喚','唿':'呼','啧':'嘖','啬':'嗇','啭':'囀','啮':'嚙','啰':'囉','啸':'嘯','喷':'噴','喽':'嘍','喾':'嚳','嗫':'囁','嗳':'噯','嘘':'噓','嘤':'嚶','嘱':'囑','噜':'嚕','嚣':'囂','团':'團','园':'園','围':'圍','国':'國','图':'圖','圆':'圓','圣':'聖','场':'場','坏':'壞','块':'塊','坚':'堅','坛':'壇','坝':'壩','坞':'塢','坟':'墳','坠':'墜','垄':'壟','垅':'壟','垆':'壚','垒':'壘','垦':'墾','垩':'堊','垫':'墊','垭':'埡','垯':'墶','垱':'壋','垲':'塏','垴':'堖','埘':'塒','埙':'塤','埚':'堝','埯':'垵','堑':'塹','堕':'墮','墙':'牆','壮':'壯','声':'聲','壳':'殼','壶':'壺','处':'處','备':'備','复':'復','够':'夠','头':'頭','夹':'夾','夺':'奪','奁':'奩','奂':'奐','奋':'奮','奖':'獎','奥':'奧','妆':'妝','妇':'婦','妈':'媽','妩':'嫵','妪':'嫗','妫':'媯','姗':'姍','姜':'薑','娄':'婁','娅':'婭','娆':'嬈','娇':'嬌','娈':'孌','娱':'娛','娲':'媧','娴':'嫻','婴':'嬰','婵':'嬋','婶':'嬸','媪':'媼','嫒':'嬡','嫔':'嬪','嫱':'嬙','嬷':'嬤','孙':'孫','学':'學','孪':'孿','宁':'寧','宝':'寶','实':'實','宠':'寵','审':'審','宪':'憲','宫':'宮','宽':'寬','宾':'賓','寝':'寢','对':'對','寻':'尋','导':'導','寿':'壽','将':'將','尔':'爾','尘':'塵','尝':'嘗','尧':'堯','尴':'尷','尸':'屍','层':'層','屃':'屓','屉':'屜','届':'屆','属':'屬','屡':'屢','屦':'屨','屿':'嶼','岁':'歲','岂':'豈','岖':'嶇','岗':'崗','岘':'峴','岚':'嵐','岛':'島','岭':'嶺','岳':'嶽','峡':'峽','峣':'嶢','峤':'嶠','峥':'崢','峦':'巒','崂':'嶗','崃':'崍','崄':'嶮','崭':'嶄','嵘':'嶸','嵚':'嶔','嵝':'嶁','巅':'巔','巩':'鞏','币':'幣','帅':'帥','师':'師','帏':'幃','帐':'帳','帘':'簾','帜':'幟','带':'帶','帧':'幀','帮':'幫','帱':'幬','帻':'幘','帼':'幗','幂':'冪','并':'並','广':'廣','庄':'莊','庆':'慶','庐':'廬','庑':'廡','库':'庫','应':'應','庙':'廟','庞':'龐','废':'廢','庼':'廎','开':'開','异':'異','弃':'棄','张':'張','弥':'彌','弪':'弳','弯':'彎','弹':'彈','强':'強','归':'歸','当':'當','录':'錄','彝':'彞','彦':'彥','彻':'徹','径':'徑','徕':'徠','忆':'憶','忧':'憂','忾':'愾','怀':'懷','态':'態','怂':'慫','怃':'憮','怄':'慪','怅':'悵','怆':'愴','怜':'憐','总':'總','怼':'懟','怿':'懌','恋':'戀','恒':'恆','恳':'懇','恶':'惡','恸':'慟','恹':'懨','恺':'愷','恻':'惻','恼':'惱','恽':'惲','悦':'悅','悫':'愨','悬':'懸','悭':'慳','悯':'憫','惊':'驚','惧':'懼','惨':'慘','惩':'懲','惫':'憊','惬':'愜','惭':'慚','惮':'憚','惯':'慣','愠':'慍','愤':'憤','愦':'憒','愿':'願','慑':'懾','懑':'懣','懒':'懶','戆':'戇','戋':'戔','戏':'戲','戗':'戧','战':'戰','戬':'戩','户':'戶','扎':'紮','扑':'撲','执':'執','扩':'擴','扪':'捫','扫':'掃','扬':'揚','扰':'擾','抚':'撫','抛':'拋','抟':'摶','抠':'摳','抡':'掄','抢':'搶','护':'護','报':'報','担':'擔','拟':'擬','拢':'攏','拣':'揀','拥':'擁','拦':'攔','拧':'擰','拨':'撥','择':'擇','挂':'掛','挚':'摯','挛':'攣','挜':'掗','挝':'撾','挞':'撻','挟':'挾','挠':'撓','挡':'擋','挣':'掙','挤':'擠','挥':'揮','挦':'撏','捞':'撈','损':'損','捡':'撿','换':'換','捣':'搗','据':'據','掳':'擄','掴':'摑','掷':'擲','掸':'撣','掺':'摻','掼':'摜','揽':'攬','揿':'撳','搀':'攙','搁':'擱','搂':'摟','搅':'攪','携':'攜','摄':'攝','摆':'擺','摇':'搖','摈':'擯','摊':'攤','撄':'攖','撑':'撐','撵':'攆','撷':'擷','撸':'擼','撺':'攛','擞':'擻','攒':'攢','敌':'敵','敛':'斂','数':'數','斋':'齋','斓':'斕','斗':'鬥','斩':'斬','断':'斷','无':'無','旧':'舊','时':'時','旷':'曠','旸':'暘','昙':'曇','昼':'晝','显':'顯','晋':'晉','晒':'曬','晓':'曉','晔':'曄','晕':'暈','晖':'暉','暂':'暫','暧':'曖','术':'術','机':'機','杀':'殺','杂':'雜','权':'權','杆':'桿','条':'條','来':'來','杨':'楊','杰':'傑','极':'極','构':'構','枞':'樅','枢':'樞','枣':'棗','枪':'槍','枫':'楓','枭':'梟','柜':'櫃','柠':'檸','查':'查','柽':'檉','栀':'梔','栅':'柵','标':'標','栈':'棧','栋':'棟','栏':'欄','树':'樹','栖':'棲','样':'樣','核':'核','栾':'欒','桊':'棬','桠':'椏','桡':'橈','桢':'楨','档':'檔','桤':'榿','桥':'橋','桦':'樺','桧':'檜','桨':'槳','桩':'樁','梦':'夢','梼':'檮','梾':'棶','检':'檢','棂':'欞','椁':'槨','椟':'櫝','椠':'槧','椤':'欏','椭':'橢','楼':'樓','榄':'欖','榅':'榲','榇':'櫬','榈':'櫚','榉':'櫸','槚':'檟','槛':'檻','槟':'檳','槠':'櫧','横':'橫','樯':'檣','樱':'櫻','橥':'櫫','橱':'櫥','橹':'櫓','橼':'櫞','檩':'檁','欢':'歡','欤':'歟','欧':'歐','歼':'殲','殁':'歿','殇':'殤','残':'殘','殒':'殞','殓':'殮','殚':'殫','殡':'殯','殴':'毆','毁':'毀','毕':'畢','毙':'斃','毡':'氈','气':'氣','氢':'氫','氩':'氬','氲':'氳','汇':'匯','汉':'漢','汤':'湯','汹':'洶','沓':'遝','沟':'溝','没':'沒','沣':'灃','沤':'漚','沥':'瀝','沦':'淪','沧':'滄','沪':'滬','泞':'濘','注':'註','泪':'淚','泶':'澩','泷':'瀧','泸':'瀘','泺':'濼','泻':'瀉','泼':'潑','泽':'澤','泾':'涇','洁':'潔','洒':'灑','洼':'窪','浃':'浹','浅':'淺','浆':'漿','浇':'澆','浈':'湞','浊':'濁','测':'測','济':'濟','浏':'瀏','浑':'渾','浓':'濃','浔':'潯','涛':'濤','涝':'澇','涞':'淶','涟':'漣','涠':'潿','涡':'渦','涢':'溳','涣':'渙','涤':'滌','润':'潤','涧':'澗','涨':'漲','涩':'澀','淀':'澱','渊':'淵','渌':'淥','渍':'漬','渎':'瀆','渐':'漸','渑':'澠','渔':'漁','渖':'瀋','渗':'滲','温':'溫','湾':'灣','湿':'濕','溃':'潰','溅':'濺','溆':'漵','滗':'潷','滚':'滾','滞':'滯','滟':'灩','滠':'灄','满':'滿','滢':'瀅','滤':'濾','滥':'濫','滦':'灤','滨':'濱','滩':'灘','滪':'澦','漤':'灠','潆':'瀠','潇':'瀟','潋':'瀲','潍':'濰','潜':'潛','潴':'瀦','澜':'瀾','濑':'瀨','灏':'灝','灭':'滅','灯':'燈','灵':'靈','灾':'災','灿':'燦','炀':'煬','炉':'爐','点':'點','炼':'煉','炽':'熾','烁':'爍','烂':'爛','烃':'烴','烛':'燭','烟':'煙','烦':'煩','烧':'燒','烨':'燁','烩':'燴','烫':'燙','烬':'燼','热':'熱','焕':'煥','焖':'燜','焘':'燾','煴':'熅','爱':'愛','爷':'爺','牍':'牘','牵':'牽','牺':'犧','状':'狀','犷':'獷','犸':'獁','犹':'猶','狈':'狽','狝':'獮','狞':'獰','独':'獨','狭':'狹','狮':'獅','狯':'獪','狰':'猙','狱':'獄','狲':'猻','猃':'獫','猎':'獵','猕':'獼','猡':'玀','猪':'豬','猫':'貓','献':'獻','獭':'獺','玑':'璣','玙':'璵','玛':'瑪','玮':'瑋','环':'環','现':'現','玱':'瑲','玺':'璽','珐':'琺','珑':'瓏','珰':'璫','珲':'琿','琏':'璉','琐':'瑣','琼':'瓊','瑶':'瑤','瑷':'璦','璎':'瓔','瓒':'瓚','瓯':'甌','电':'電','画':'畫','畅':'暢','畴':'疇','疗':'療','疟':'瘧','疠':'癘','疡':'瘍','疬':'癧','疮':'瘡','疯':'瘋','疱':'皰','疴':'痾','痈':'癰','痉':'痙','痒':'癢','痨':'癆','痪':'瘓','痫':'癇','瘅':'癉','瘗':'瘞','瘘':'瘺','瘪':'癟','瘫':'癱','瘾':'癮','瘿':'癭','癞':'癩','癣':'癬','皱':'皺','皲':'皸','盏':'盞','盐':'鹽','监':'監','盖':'蓋','盗':'盜','盘':'盤','眍':'瞘','眦':'眥','眬':'矓','着':'著','睁':'睜','睐':'睞','瞒':'瞞','瞩':'矚','矫':'矯','矶':'磯','矿':'礦','砀':'碭','码':'碼','砖':'磚','砗':'硨','砚':'硯','砜':'碸','砺':'礪','砻':'礱','砾':'礫','础':'礎','硁':'硜','硅':'矽','硕':'碩','硖':'硤','硗':'磽','硙':'磑','硚':'礄','确':'確','硷':'鹼','碍':'礙','碛':'磧','碜':'磣','碱':'鹼','礼':'禮','祢':'禰','祯':'禎','祷':'禱','祸':'禍','禀':'稟','禄':'祿','离':'離','秃':'禿','秆':'稈','种':'種','积':'積','称':'稱','秽':'穢','秾':'穠','稆':'穭','税':'稅','稣':'穌','稳':'穩','穑':'穡','穷':'窮','窃':'竊','窍':'竅','窑':'窯','窜':'竄','窝':'窩','窥':'窺','窦':'竇','窭':'窶','竖':'豎','竞':'競','笃':'篤','笋':'筍','笔':'筆','笕':'筧','笺':'箋','笼':'籠','笾':'籩','筑':'築','筚':'篳','筛':'篩','筜':'簹','筝':'箏','筹':'籌','签':'簽','简':'簡','箓':'籙','箦':'簀','箧':'篋','箨':'籜','箩':'籮','箪':'簞','箫':'簫','篑':'簣','篓':'簍','篮':'籃','篱':'籬','簖':'籪','籁':'籟','类':'類','籼':'秈','粜':'糶','粝':'糲','粤':'粵','粪':'糞','粮':'糧','紧':'緊','絷':'縶','纟':'糹','纠':'糾','纡':'紆','红':'紅','纣':'紂','纤':'纖','约':'約','级':'級','纨':'紈','纩':'纊','纪':'紀','纫':'紉','纬':'緯','纭':'紜','纯':'純','纰':'紕','纱':'紗','纲':'綱','纳':'納','纵':'縱','纶':'綸','纷':'紛','纸':'紙','纹':'紋','纺':'紡','纽':'紐','纾':'紓','线':'線','绀':'紺','绁':'紲','绂':'紱','练':'練','组':'組','绅':'紳','细':'細','织':'織','终':'終','绉':'縐','绊':'絆','绋':'紼','绌':'絀','绍':'紹','绎':'繹','经':'經','绑':'綁','绒':'絨','结':'結','绔':'絝','绕':'繞','绘':'繪','给':'給','绚':'絢','绛':'絳','络':'絡','绝':'絕','绞':'絞','统':'統','绠':'綆','绡':'綃','绢':'絹','绣':'繡','绥':'綏','绦':'絛','继':'繼','绩':'績','绪':'緒','绫':'綾','续':'續','绮':'綺','绯':'緋','绰':'綽','绱':'緔','绲':'緄','绳':'繩','维':'維','绵':'綿','绶':'綬','绷':'繃','绸':'綢','绺':'綹','绻':'綣','综':'綜','绽':'綻','绾':'綰','绿':'綠','缀':'綴','缁':'緇','缂':'緙','缃':'緗','缄':'緘','缅':'緬','缆':'纜','缇':'緹','缈':'緲','缉':'緝','缊':'縕','缋':'繢','缌':'緦','缍':'綞','缎':'緞','缏':'緶','缑':'緱','缒':'縋','缓':'緩','缔':'締','缕':'縷','编':'編','缘':'緣','缙':'縉','缚':'縛','缛':'縟','缜':'縝','缝':'縫','缟':'縞','缠':'纏','缡':'縭','缢':'縊','缣':'縑','缤':'繽','缥':'縹','缦':'縵','缧':'縲','缨':'纓','缩':'縮','缪':'繆','缫':'繅','缬':'纈','缭':'繚','缮':'繕','缯':'繒','缰':'韁','缱':'繾','缲':'繰','缳':'繯','缴':'繳','缵':'纘','罂':'罌','网':'網','罗':'羅','罚':'罰','罢':'罷','羁':'羈','羟':'羥','翘':'翹','耢':'耮','耧':'耬','耸':'聳','耻':'恥','聂':'聶','职':'職','聍':'聹','联':'聯','聩':'聵','聪':'聰','肃':'肅','肠':'腸','肤':'膚','肮':'骯','肴':'餚','肾':'腎','肿':'腫','胀':'脹','胁':'脅','胆':'膽','胜':'勝','胧':'朧','胨':'腖','胪':'臚','胫':'脛','胶':'膠','脉':'脈','脍':'膾','脏':'臟','脐':'臍','脑':'腦','脓':'膿','脔':'臠','脚':'腳','脱':'脫','脸':'臉','腊':'臘','腌':'醃','腘':'膕','腭':'齶','腻':'膩','腼':'靦','腾':'騰','膑':'臏','臜':'臢','舆':'輿','舣':'艤','舰':'艦','舱':'艙','艰':'艱','艳':'豔','艺':'藝','节':'節','芈':'羋','芗':'薌','芜':'蕪','芦':'蘆','苁':'蓯','苇':'葦','苈':'藶','苋':'莧','苌':'萇','苍':'蒼','苎':'苧','苏':'蘇','苹':'蘋','范':'範','茎':'莖','茏':'蘢','茑':'蔦','茔':'塋','茕':'煢','茧':'繭','荆':'荊','荐':'薦','荙':'薘','荚':'莢','荛':'蕘','荜':'蓽','荞':'蕎','荟':'薈','荠':'薺','荡':'蕩','荣':'榮','荤':'葷','荥':'滎','荦':'犖','荧':'熒','荨':'蕁','荩':'藎','荪':'蓀','荫':'蔭','荬':'蕒','荭':'葒','荮':'葤','药':'藥','莅':'蒞','莱':'萊','莲':'蓮','莳':'蒔','莴':'萵','莶':'薟','获':'獲','莸':'蕕','莹':'瑩','莺':'鶯','莼':'蓴','萚':'蘀','萝':'蘿','萤':'螢','营':'營','萦':'縈','萧':'蕭','萨':'薩','葱':'蔥','蒇':'蕆','蒉':'蕢','蒋':'蔣','蒌':'蔞','蓝':'藍','蓟':'薊','蓠':'蘺','蓣':'蕷','蓥':'鎣','蓦':'驀','蔷':'薔','蔹':'蘞','蔺':'藺','蔼':'藹','蕲':'蘄','蕴':'蘊','薮':'藪','藓':'蘚','虏':'虜','虑':'慮','虚':'虛','虫':'蟲','虽':'雖','虾':'蝦','虿':'蠆','蚀':'蝕','蚁':'蟻','蚂':'螞','蚕':'蠶','蚬':'蜆','蛊':'蠱','蛎':'蠣','蛏':'蟶','蛮':'蠻','蛰':'蟄','蛱':'蛺','蛲':'蟯','蛳':'螄','蛴':'蠐','蜕':'蛻','蜗':'蝸','蝇':'蠅','蝈':'蟈','蝉':'蟬','蝼':'螻','蝾':'蠑','螀':'螿','螨':'蟎','蟏':'蠨','衅':'釁','衔':'銜','补':'補','衬':'襯','衮':'袞','袄':'襖','袅':'裊','袆':'褘','袜':'襪','袭':'襲','袯':'襏','装':'裝','裆':'襠','裈':'褌','裢':'褳','裣':'襝','裤':'褲','裥':'襇','褛':'褸','褴':'襤','襁':'繈','见':'見','观':'觀','规':'規','觅':'覓','视':'視','觇':'覘','览':'覽','觉':'覺','觊':'覬','觋':'覡','觌':'覿','觎':'覦','觏':'覯','觐':'覲','觑':'覷','觞':'觴','触':'觸','觯':'觶','誉':'譽','誊':'謄','讠':'訁','计':'計','订':'訂','讣':'訃','认':'認','讥':'譏','讦':'訐','讧':'訌','讨':'討','让':'讓','讪':'訕','讫':'訖','训':'訓','议':'議','讯':'訊','记':'記','讲':'講','讳':'諱','讴':'謳','讵':'詎','讶':'訝','讷':'訥','许':'許','讹':'訛','论':'論','讼':'訟','讽':'諷','设':'設','访':'訪','诀':'訣','证':'證','诂':'詁','诃':'訶','评':'評','诅':'詛','识':'識','诈':'詐','诉':'訴','诊':'診','诋':'詆','词':'詞','诎':'詘','诏':'詔','译':'譯','诒':'詒','诓':'誆','诔':'誄','试':'試','诖':'詿','诗':'詩','诘':'詰','诙':'詼','诚':'誠','诛':'誅','诜':'詵','话':'話','诞':'誕','诟':'詬','诠':'詮','诡':'詭','询':'詢','诣':'詣','诤':'諍','该':'該','详':'詳','诧':'詫','诨':'諢','诩':'詡','诫':'誡','诬':'誣','语':'語','诮':'誚','误':'誤','诰':'誥','诱':'誘','诲':'誨','诳':'誑','说':'說','诵':'誦','诶':'誒','请':'請','诸':'諸','诹':'諏','诺':'諾','读':'讀','诼':'諑','诽':'誹','课':'課','诿':'諉','谀':'諛','谁':'誰','谂':'諗','调':'調','谄':'諂','谅':'諒','谆':'諄','谇':'誶','谈':'談','谊':'誼','谋':'謀','谌':'諶','谍':'諜','谎':'謊','谏':'諫','谐':'諧','谑':'謔','谒':'謁','谓':'謂','谔':'諤','谕':'諭','谖':'諼','谗':'讒','谘':'諮','谙':'諳','谚':'諺','谛':'諦','谜':'謎','谝':'諞','谟':'謨','谠':'讜','谡':'謖','谢':'謝','谣':'謠','谤':'謗','谥':'諡','谦':'謙','谧':'謐','谨':'謹','谩':'謾','谪':'謫','谫':'譾','谬':'謬','谭':'譚','谮':'譖','谯':'譙','谰':'讕','谱':'譜','谲':'譎','谳':'讞','谴':'譴','谵':'譫','谶':'讖','谷':'穀','豆':'豆','贝':'貝','贞':'貞','负':'負','贡':'貢','财':'財','责':'責','贤':'賢','败':'敗','账':'賬','货':'貨','质':'質','贩':'販','贪':'貪','贫':'貧','贬':'貶','购':'購','贮':'貯','贯':'貫','贰':'貳','贱':'賤','贲':'賁','贳':'貰','贴':'貼','贵':'貴','贶':'貺','贷':'貸','贸':'貿','费':'費','贺':'賀','贻':'貽','贼':'賊','贽':'贄','贾':'賈','贿':'賄','赀':'貲','赁':'賃','赂':'賂','赃':'贓','资':'資','赅':'賅','赆':'贐','赇':'賕','赈':'賑','赉':'賚','赊':'賒','赋':'賦','赌':'賭','赍':'齎','赎':'贖','赏':'賞','赐':'賜','赑':'贔','赒':'賙','赔':'賠','赖':'賴','赘':'贅','赚':'賺','赛':'賽','赞':'贊','赠':'贈','赡':'贍','赢':'贏','赣':'贛','赵':'趙','赶':'趕','趋':'趨','趱':'趲','跃':'躍','跄':'蹌','跞':'躒','践':'踐','跶':'躂','跷':'蹺','跸':'蹕','跹':'躚','跻':'躋','踊':'踴','踌':'躊','踪':'蹤','踬':'躓','蹑':'躡','蹒':'蹣','蹰':'躕','蹿':'躥','躏':'躪','躜':'躦','车':'車','轧':'軋','轨':'軌','轩':'軒','轫':'軔','转':'轉','轭':'軛','轮':'輪','软':'軟','轰':'轟','轱':'軲','轲':'軻','轳':'轤','轴':'軸','轵':'軹','轶':'軼','轷':'軤','轸':'軫','轹':'轢','轻':'輕','轼':'軾','载':'載','轾':'輊','轿':'轎','辀':'輈','较':'較','辂':'輅','辆':'輛','辄':'輒','辅':'輔','辆':'輛','辉':'輝','辊':'輥','辋':'輞','辌':'輬','辍':'輟','辎':'輜','辏':'輳','辐':'輻','辑':'輯','输':'輸','辔':'轡','辕':'轅','辖':'轄','辗':'輾','辘':'轆','辙':'轍','辞':'辭','辩':'辯','辫':'辮','边':'邊','辽':'遼','达':'達','迁':'遷','过':'過','迈':'邁','运':'運','还':'還','这':'這','进':'進','远':'遠','违':'違','连':'連','迟':'遲','迩':'邇','迹':'跡','适':'適','选':'選','逊':'遜','递':'遞','逻':'邏','遗':'遺','遥':'遙','邓':'鄧','郑':'鄭','邻':'鄰','郁':'鬱','郏':'郟','郐':'鄶','郓':'鄆','郦':'酈','郧':'鄖','郸':'鄲','酝':'醞','酦':'醱','酱':'醬','酽':'釅','酾':'釃','酿':'釀','释':'釋','里':'裡','鉴':'鑑','銮':'鑾','錾':'鏨','钅':'釒','针':'針','钉':'釘','钊':'釗','钋':'釙','钌':'釕','钍':'釷','钎':'釺','钏':'釧','钐':'釤','钒':'釩','钓':'釣','钔':'鍆','钕':'釹','钗':'釵','钙':'鈣','钚':'鈈','钛':'鈦','钜':'鉅','钝':'鈍','钞':'鈔','钟':'鐘','钠':'鈉','钢':'鋼','钣':'鈑','钤':'鈐','钥':'鑰','钦':'欽','钧':'鈞','钨':'鎢','钩':'鉤','钮':'鈕','钪':'鈧','钫':'鈁','钬':'鈥','钭':'鈄','钮':'鈕','钯':'鈀','钰':'鈺','钱':'錢','钲':'鉦','钳':'鉗','钴':'鈷','钵':'缽','钶':'鈳','钷':'鉕','钸':'鈽','钹':'鈸','钺':'鉞','钻':'鑽','钼':'鉬','钽':'鉭','钾':'鉀','钿':'鈿','铀':'鈾','铁':'鐵','铂':'鉑','铃':'鈴','铄':'鑠','铅':'鉛','铆':'鉚','铈':'鈰','铉':'鉉','铊':'鉈','铋':'鉍','铌':'鈮','铍':'鈹','铎':'鐸','铐':'銬','铑':'銠','铒':'鉺','铕':'銪','铖':'鋮','铗':'鋏','铘':'鋣','铙':'鐃','铛':'鐺','铜':'銅','铝':'鋁','铞':'銱','铟':'銦','铠':'鎧','铡':'鍘','铢':'銖','铣':'銑','铤':'鋌','铥':'銩','铧':'鏵','铨':'銓','铩':'鎩','铪':'鉿','铫':'銚','铬':'鉻','铭':'銘','铮':'錚','铯':'銫','铰':'鉸','铱':'銥','铲':'鏟','铳':'銃','铵':'銨','银':'銀','铷':'銣','铸':'鑄','铹':'鐒','铺':'鋪','铼':'錸','链':'鏈','铿':'鏗','销':'銷','锁':'鎖','锂':'鋰','锃':'鋥','锄':'鋤','锅':'鍋','锆':'鋯','锇':'鋨','锈':'鏽','锉':'銼','锋':'鋒','锌':'鋅','锍':'鋶','锎':'鐦','锏':'鐧','锐':'銳','锑':'銻','锒':'鋃','锓':'鋟','锔':'鋦','锕':'錒','锖':'錆','锗':'鍺','错':'錯','锚':'錨','锛':'錛','锜':'錡','锝':'鍀','锞':'錁','锟':'錕','锡':'錫','锢':'錮','锣':'鑼','锤':'錘','锥':'錐','锦':'錦','锧':'鑕','锨':'鍁','锩':'錈','锬':'錟','锭':'錠','键':'鍵','锯':'鋸','锰':'錳','锱':'錙','锲':'鍥','锴':'鍇','锵':'鏘','锶':'鍶','锷':'鍔','锸':'鍤','锹':'鍬','锺':'鍾','锻':'鍛','锼':'鎪','锾':'鍰','锿':'鎄','镀':'鍍','镁':'鎂','镂':'鏤','镄':'鐨','镅':'鎇','镇':'鎮','镉':'鎘','镊':'鑷','镌':'鐫','镍':'鎳','镏':'鎦','镐':'鎬','镑':'鎊','镒':'鎰','镓':'鎵','镔':'鑌','镖':'鏢','镗':'鏜','镘':'鏝','镙':'鏍','镚':'鏰','镛':'鏞','镜':'鏡','镝':'鏑','镞':'鏃','镟':'鏇','镡':'鐔','镢':'鐝','镣':'鐐','镤':'鏷','镥':'鑥','镦':'鐓','镧':'鑭','镨':'鐠','镩':'鑹','镪':'鏹','镫':'鐙','镬':'鑊','镭':'鐳','镮':'鐶','镯':'鐲','镰':'鐮','镱':'鐿','镲':'鑔','镳':'鑣','镴':'鑞','镶':'鑲','长':'長','门':'門','闩':'閂','闪':'閃','闭':'閉','问':'問','闯':'闖','闰':'閏','闲':'閒','间':'間','闵':'閔','闶':'閌','闷':'悶','闸':'閘','闹':'鬧','闺':'閨','闻':'聞','闼':'闥','闽':'閩','闾':'閭','阀':'閥','阁':'閣','阂':'閡','阅':'閱','阆':'閬','阈':'閾','阉':'閹','阊':'閶','阋':'鬩','阌':'閿','阍':'閽','阎':'閻','阏':'閼','阐':'闡','阑':'闌','阒':'闃','阔':'闊','阕':'闋','阖':'闔','阗':'闐','阙':'闕','队':'隊','阳':'陽','阴':'陰','阵':'陣','阶':'階','际':'際','陆':'陸','陇':'隴','陈':'陳','陉':'陘','陕':'陝','陧':'隉','陨':'隕','险':'險','随':'隨','隐':'隱','隶':'隸','隽':'雋','难':'難','雏':'雛','雠':'讎','雳':'靂','雾':'霧','霁':'霽','霭':'靄','靓':'靚','静':'靜','面':'麵','鞑':'韃','鞯':'韉','韦':'韋','韧':'韌','韩':'韓','韪':'韙','韫':'韞','韬':'韜','页':'頁','顶':'頂','顷':'頃','项':'項','顺':'順','须':'須','顼':'頊','顽':'頑','顾':'顧','顿':'頓','颀':'頎','颁':'頒','颂':'頌','预':'預','颅':'顱','领':'領','颇':'頗','颈':'頸','颉':'頡','颊':'頰','颌':'頜','颍':'潁','颏':'頦','频':'頻','颓':'頹','颖':'穎','颗':'顆','题':'題','颜':'顏','额':'額','颚':'顎','颛':'顓','颞':'顳','颟':'顢','颠':'顛','颡':'顙','颢':'顥','颤':'顫','颥':'顬','颦':'顰','风':'風','飏':'颺','飐':'颭','飑':'颮','飒':'颯','飓':'颶','飔':'颸','飕':'颼','飖':'颻','飘':'飄','飙':'飆','飞':'飛','饣':'飠','饥':'飢','饧':'餳','饨':'飩','饩':'餼','饪':'飪','饫':'飫','饬':'飭','饭':'飯','饮':'飲','饯':'餞','饰':'飾','饱':'飽','饲':'飼','饴':'飴','饵':'餌','饶':'饒','饷':'餉','饺':'餃','饼':'餅','饽':'餑','饿':'餓','馀':'餘','馆':'館','馈':'饋','馊':'餿','馋':'饞','馍':'饃','馏':'餾','馐':'饈','馑':'饉','馒':'饅','馓':'饊','馔':'饌','馕':'饢','马':'馬','驭':'馭','驮':'馱','驯':'馴','驰':'馳','驱':'驅','驳':'駁','驴':'驢','驶':'駛','驷':'駟','驸':'駙','驹':'駒','驻':'駐','驼':'駝','驽':'駑','驾':'駕','驿':'驛','骀':'駘','骁':'驍','骂':'罵','骄':'驕','骅':'驊','骆':'駱','骇':'駭','骈':'駢','骊':'驪','骋':'騁','验':'驗','骎':'駸','骏':'駿','骐':'騏','骑':'騎','骒':'騍','骓':'騅','骗':'騙','骘':'騭','骚':'騷','骛':'騖','骜':'驁','骝':'騮','骞':'騫','骟':'騸','骠':'驃','骡':'騾','骢':'驄','骣':'驏','骤':'驟','骥':'驥','骧':'驤','髅':'髏','髋':'髖','髌':'髕','鬓':'鬢','魇':'魘','魉':'魎','鱼':'魚','鱽':'魛','鱿':'魷','鲁':'魯','鲂':'魴','鲃':'䰾','鲅':'鮁','鲆':'鮃','鲇':'鮎','鲈':'鱸','鲉':'鮋','鲊':'鮓','鲋':'鮒','鲌':'鮊','鲍':'鮑','鲎':'鱟','鲏':'鮍','鲐':'鮐','鲑':'鮭','鲒':'鮚','鲔':'鮪','鲕':'鮞','鲖':'鮦','鲗':'鰂','鲘':'鮜','鲙':'鱠','鲚':'鱭','鲛':'鮫','鲜':'鮮','鲝':'鮺','鲞':'鯗','鲟':'鱘','鲠':'鯁','鲡':'鱺','鲢':'鰱','鲣':'鰹','鲤':'鯉','鲥':'鰣','鲦':'鰷','鲧':'鯀','鲨':'鯊','鲩':'鯇','鲫':'鯽','鲭':'鯖','鲮':'鯪','鲰':'鯫','鲱':'鯡','鲲':'鯤','鲳':'鯧','鲴':'鯝','鲵':'鯢','鲶':'鯰','鲷':'鯛','鲸':'鯨','鲺':'鯴','鲻':'鯔','鲼':'鱝','鲽':'鰈','鲿':'鱨','鳀':'鯷','鳁':'鰛','鳃':'鰓','鳄':'鱷','鳅':'鰍','鳆':'鰒','鳇':'鰉','鳊':'鯿','鳋':'鰠','鳌':'鰲','鳍':'鰭','鳎':'鰨','鳏':'鰥','鳐':'鰩','鳓':'鰳','鳔':'鰾','鳕':'鱈','鳖':'鱉','鳗':'鰻','鳘':'鰵','鳙':'鱅','鳛':'鰼','鳜':'鱖','鳝':'鱔','鳞':'鱗','鳟':'鱒','鳠':'鱯','鳡':'鱤','鸟':'鳥','鸠':'鳩','鸡':'雞','鸢':'鳶','鸣':'鳴','鸥':'鷗','鸦':'鴉','鸭':'鴨','鸯':'鴦','鸱':'鴟','鸲':'鴝','鸳':'鴛','鸴':'鷽','鸵':'鴕','鸶':'鷥','鸷':'鷙','鸸':'鴯','鸹':'鴰','鸺':'鵂','鸽':'鴿','鸾':'鸞','鸿':'鴻','鹁':'鵓','鹂':'鸝','鹄':'鵠','鹅':'鵝','鹆':'鵒','鹇':'鷳','鹈':'鵜','鹉':'鵡','鹊':'鵲','鹋':'鶓','鹌':'鵪','鹏':'鵬','鹐':'鵮','鹑':'鶉','鹕':'鶘','鹗':'鶚','鹘':'鶻','鹚':'鶿','鹛':'鶥','鹜':'鶩','鹞':'鷂','鹟':'鶲','鹠':'鶹','鹡':'鶺','鹢':'鷁','鹣':'鶼','鹤':'鶴','鹦':'鸚','鹧':'鷓','鹨':'鷚','鹩':'鷯','鹪':'鷦','鹫':'鷲','鹬':'鷸','鹭':'鷺','鹯':'鸇','鹰':'鷹','鹱':'鸌','鹲':'鸏','鹳':'鸛','鹴':'鸘','麦':'麥','麸':'麩','黄':'黃','黉':'黌','齐':'齊','齑':'齏','齿':'齒','龀':'齔','龃':'齟','龄':'齡','龅':'齙','龆':'齠','龇':'齜','龈':'齦','龉':'齬','龊':'齪','龋':'齲','龌':'齷','龙':'龍','龚':'龔','龛':'龕','龟':'龜'
+};
+function toTraditional(input) {
+  if (input == null) return input;
+  var text = String(input);
+  if (_tradCache[text]) return _tradCache[text];
+  var out = text;
+  _tradPhraseMap.forEach(function(pair) { out = out.split(pair[0]).join(pair[1]); });
+  out = out.replace(/[\u4e00-\u9fff]/g, function(ch) { return _tradCharMap[ch] || ch; });
+  _tradCache[text] = out;
+  return out;
+}
+function localizeZh(input) {
+  return _lang === 'zhHant' ? toTraditional(input) : input;
+}
+function makeTraditionalDict(src) {
+  if (_tradCache.__dict) return _tradCache.__dict;
+  var out = {};
+  Object.keys(src || {}).forEach(function(k) { out[k] = toTraditional(src[k]); });
+  _tradCache.__dict = out;
+  return out;
+}
+function updateLanguageSwitch() {
+  document.querySelectorAll('.lang-link[data-lang]').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === _lang);
+  });
+}
+
 function applyTranslations(lang) {
-  var t = _t[lang];
+  var t = (lang === 'zhHant') ? makeTraditionalDict(_t.zh) : (_t[lang] || _t.zh);
   function s(sel, key) { var e=document.querySelector(sel); if(e&&t[key]!==undefined) e.textContent=t[key]; }
   function sh(sel, key) { var e=document.querySelector(sel); if(e&&t[key]!==undefined) e.innerHTML=t[key]; }
   function sid(id, key) { var e=document.getElementById(id); if(e&&t[key]!==undefined) e.textContent=t[key]; }
   function shid(id, key) { var e=document.getElementById(id); if(e&&t[key]!==undefined) e.innerHTML=t[key]; }
   function sph(sel, key) { var e=document.querySelector(sel); if(e&&t[key]!==undefined) e.placeholder=t[key]; }
   // generic bilingual elements: member page, filter buttons, Q3, about-story
-  document.querySelectorAll('.xi18n').forEach(function(el){ var v=(lang==='en')?el.getAttribute('data-en'):el.getAttribute('data-zh'); if(v!==null) el.textContent=v; });
+  document.querySelectorAll('.xi18n').forEach(function(el){ var v=(lang==='en')?el.getAttribute('data-en'):el.getAttribute('data-zh'); if(v!==null) el.textContent=(lang==='zhHant'?toTraditional(v):v); });
 
   // HOME - hero
   sh('#page-home .hero-badge','hero-badge');
@@ -2127,8 +2210,9 @@ function applyTranslations(lang) {
     if(body && t[w+'-body']) body.innerHTML = t[w+'-body'];
   });
 
-  // Re-render listing cards to update "阅读全文/Read More" text
-  if(typeof renderListings==='function') {
+  // Re-render listing cards only when the listings page is currently visible.
+  var listingsPageForI18n = document.getElementById('page-listings');
+  if(listingsPageForI18n && listingsPageForI18n.classList.contains('active') && typeof renderListings==='function') {
     var activeFilter = document.querySelector('#filter-bar .filter-btn.active');
     renderListings(activeFilter ? activeFilter.getAttribute('data-filter')||'all' : 'all');
   }
@@ -2140,8 +2224,8 @@ var _langData = {
   zh: {
     nav: ['首页','关于我们','服务','洞察报告','会员动态','联系我们'],
     cta: '预约咨询',
-    toggleBtn: 'EN',
-    langTitle: '切换语言',
+    toggleBtn: '繁',
+    langTitle: '语言切换',
     menuLabel: '打开菜单',
     wechatLabel: '微信公众号',
     csteLabel: 'CSTE 官网',
@@ -2150,11 +2234,24 @@ var _langData = {
     articleBackList: '← 返回列表',
     readMore: '阅读全文 →'
   },
+  zhHant: {
+    nav: ['首頁','關於我們','服務','洞察報告','會員動態','聯繫我們'],
+    cta: '預約諮詢',
+    toggleBtn: 'EN',
+    langTitle: '語言切換',
+    menuLabel: '打開選單',
+    wechatLabel: '微信公眾號',
+    csteLabel: 'CSTE 官網',
+    wechatAlert: '微信公眾號：CSTEAC 北美代表處，掃碼關注',
+    articleBack: '← 返回',
+    articleBackList: '← 返回列表',
+    readMore: '閱讀全文 →'
+  },
   en: {
     nav: ['Home','About','Work','Insights','Members','Contact'],
     cta: 'Consult',
-    toggleBtn: '中文',
-    langTitle: 'Switch language',
+    toggleBtn: '简',
+    langTitle: 'Language switch',
     menuLabel: 'Open menu',
     wechatLabel: 'WeChat Official Account',
     csteLabel: 'CSTE Website',
@@ -2164,9 +2261,10 @@ var _langData = {
     readMore: 'Read More →'
   }
 };
-function toggleLang() {
-  _lang = _lang === 'zh' ? 'en' : 'zh';
-  var d = _langData[_lang];
+function setLang(lang) {
+  if (!_langData[lang]) lang = 'zh';
+  _lang = lang;
+  var d = _langData[_lang] || _langData.zh;
   // Desktop nav links
   document.querySelectorAll('nav a[data-zh]').forEach(function(a, i) {
     a.textContent = d.nav[i];
@@ -2181,13 +2279,6 @@ function toggleLang() {
   // Desktop CTA button
   var cta = document.querySelector('.btn-nav[data-zh]');
   if (cta) cta.textContent = d.cta;
-  // Toggle button label
-  var langBtn = document.getElementById('lang-toggle');
-  if (langBtn) {
-    langBtn.textContent = d.toggleBtn;
-    langBtn.title = d.langTitle;
-    langBtn.setAttribute('aria-label', d.langTitle);
-  }
   var hamburger = document.getElementById('hamburger');
   if (hamburger) hamburger.setAttribute('aria-label', d.menuLabel);
   document.querySelectorAll('[data-social="wechat"]').forEach(function(a) {
@@ -2200,8 +2291,8 @@ function toggleLang() {
   document.querySelectorAll('.article-back-btn').forEach(function(btn, i) {
     btn.textContent = i === 0 ? d.articleBack : d.articleBackList;
   });
-  // html lang attr
-  document.documentElement.lang = _lang === 'zh' ? 'zh-CN' : 'en';
+  updateLanguageSwitch();
+  document.documentElement.lang = _lang === 'en' ? 'en' : (_lang === 'zhHant' ? 'zh-Hant' : 'zh-CN');
   // Apply full page translations
   applyTranslations(_lang);
   // Re-render dynamic content in the active language.
@@ -2214,6 +2305,11 @@ function toggleLang() {
     var artPage=document.getElementById('page-article');
     if(artPage && artPage.classList.contains('active') && typeof showArticle==='function') showArticle(_currentArticle);
   }
+}
+function toggleLang() {
+  var order = ['zh','zhHant','en'];
+  var idx = order.indexOf(_lang);
+  setLang(order[(idx + 1) % order.length]);
 }
 
 // ── PAGE NAVIGATION ──────────────────────────────────────────────
@@ -2266,7 +2362,7 @@ function submitForm(e) {
   var form = e.target;
   var btn = form.querySelector('button[type=submit]');
   var fs = document.getElementById('form-success');
-  var t = (_t[_lang] || _t.zh);
+  var t = (_lang === 'zhHant') ? makeTraditionalDict(_t.zh) : (_t[_lang] || _t.zh);
   btn.textContent = t['form-sending'] || '发送中…';
   btn.disabled = true;
   if (fs) fs.style.display = 'none';
@@ -2287,7 +2383,9 @@ function submitForm(e) {
     if (fs) {
       fs.textContent = _lang === 'en'
         ? 'Sorry, the message could not be sent. Please email us directly at jasonliu@cste.org.cn.'
-        : '抱歉，消息未能发送。请直接发送邮件至 jasonliu@cste.org.cn。';
+        : (_lang === 'zhHant'
+          ? '抱歉，消息未能發送。請直接發送郵件至 jasonliu@cste.org.cn。'
+          : '抱歉，消息未能发送。请直接发送邮件至 jasonliu@cste.org.cn。');
       fs.style.display = 'block';
     }
     btn.disabled = false;
@@ -2297,6 +2395,7 @@ function submitForm(e) {
 
 // ── LISTINGS DATA ────────────────────────────────────────────────
 var listings = [
+  {"cat": "ev", "catLabel": "EV 出海", "img": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=600&q=80", "alt": "电动车电池技术", "title": "钠电池开始上车，固态电池被泼冷水", "desc": "宁德时代一边推动钠离子电池真实装车，一边由曾毓群给全固态电池量产降温。钠电池、半固态、全固态三条路线正在分化，电池产业进入多路线、多场景、多供应链的新阶段。", "date": "2026年6月24日"},
   {"cat": "member", "catLabel": "侨情视野", "img": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80", "alt": "加拿大留学生", "title": "加拿大留学生毕业后如何\"留下来\"？", "desc": "PGWP 门槛、就业分化、CEC/PNP路径和省份差异正在重塑加拿大留学生的毕业后选择。文章从入学前到PGWP后期，梳理一条更现实的留加操作路线。", "date": "2026年6月24日"},
   {"cat": "ev", "catLabel": "EV 出海", "img": "https://images.cpac.ca/episode/thumbnail/2026/06/6a2f994c-eb99-4936-a2e8-dfa294c51e24/2026-06-22_joly.jpg", "alt": "梅拉妮·乔利东京新闻发布会", "title": "乔利东京发布会释放信号：中国EV入加进入“本地化谈判”阶段", "desc": "乔利在日本新闻发布会上透露，比亚迪、吉利、奇瑞等中国主要电动车制造商均对加拿大4.9万辆低关税EV进口配额表示兴趣；加拿大的交换条件则清晰指向加方控股、本地零部件、劳工标准与数据安全。", "date": "2026年6月22日"},
   {"cat": "member", "catLabel": "侨情视野", "img": "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=80", "alt": "加拿大移民政策", "title": "C-12正式实施：加拿大移民规则大变天！", "desc": "C-12 法案正式获得御准后，加拿大庇护、边境管理与临时居民监管体系进入更严格的新阶段。文章梳理一年规则、14天规则、积压处理、信息共享与批量取消/修改签证权力，对申请人和临时居民的影响。", "date": "2026年3月28日"},
@@ -2328,6 +2427,7 @@ var listings = [
 ];
 
 var listingsEn = [
+  {"catLabel": "EV Expansion", "title": "Sodium Batteries Start Reaching Vehicles as Solid-State Batteries Face a Reality Check", "desc": "CATL is pushing sodium-ion batteries into real vehicle deployment while Robin Zeng cautions that all-solid-state batteries remain far from mass readiness. The battery race is shifting from a single-route story to scenario-based technology allocation.", "date": "June 24, 2026", "summary": "<p><strong>Overview:</strong> CATL's recent signals point in two directions at once: sodium-ion batteries are moving into limited real-world deployment, while all-solid-state batteries remain years away from million-vehicle scale.</p><p><strong>Key Takeaway:</strong> The near-term opportunity is not one chemistry replacing another, but a more segmented battery market: lithium for long-range mainstream EVs, sodium for cost-sensitive and cold-weather use cases, semi-solid-state for premium pilots, and all-solid-state as a longer-term engineering challenge.</p>"},
   {"catLabel": "Diaspora Insights", "title": "How Can International Students Stay in Canada After Graduation?", "desc": "A practical look at PGWP changes, employment outcomes, CEC/PNP pathways, and province-level differences shaping international graduates' post-study options in Canada.", "date": "June 24, 2026", "summary": "<p><strong>Overview:</strong> The article explains why a Canadian credential is no longer a simple pathway to staying in Canada. PGWP rules, job-market outcomes, CEC/PNP requirements, and province-specific nomination priorities now need to be planned together.</p><p><strong>Key Takeaway:</strong> Students should verify PGWP eligibility before enrolling, build language and employability early, prioritize TEER 0-3 work after graduation, and reassess PR options well before the PGWP expires.</p>"},
   {"catLabel": "EV Expansion", "title": "Joly's Tokyo Briefing Signals a Localization-First Phase for Chinese EVs in Canada", "desc": "At a June 22 CPAC-recorded news conference from Japan, Mélanie Joly said major Chinese EV makers including BYD, Geely, and Chery have shown interest in Canada's 49,000-unit low-tariff EV quota. Canada's conditions point toward Canadian control, local parts, labour standards, and data security.", "date": "June 22, 2026", "summary": "<p><strong>Overview:</strong> Mélanie Joly's June 22 news conference from Japan adds a clearer political frame to Canada's China EV opening: the quota is not just an import channel; it is leverage for localization.</p><p><strong>Key Signal:</strong> Interest from BYD, Geely, Chery, and other Chinese EV makers matters, but Canada's conditions point to Canadian-controlled joint ventures, Canadian parts, Canadian labour standards, and credible user-data safeguards.</p><p><strong>CSTEAC Reading:</strong> The practical rule is simple: sell where you build. For Chinese OEMs, the next stage is less about price arbitrage and more about a bankable Canada plan covering ownership, supply-chain participation, labour alignment, after-sales service, and data governance.</p>"},
   {"catLabel": "Policy Analysis", "title": "Bill C-12 Takes Effect: Canada Tightens Immigration, Asylum, and Border Rules", "desc": "Canada's Bill C-12 reshapes asylum eligibility, border management, information sharing, and government authority over temporary resident documents. The note highlights the one-year rule, the 14-day rule, faster removal logic, and new batch cancellation or modification powers.", "date": "March 28, 2026", "summary": "<p><strong>Overview:</strong> Bill C-12 represents a significant tightening of Canada's immigration and border-management framework, especially around asylum claims, irregular entry, and temporary resident oversight.</p><p><strong>Key Changes:</strong> The note highlights two hard eligibility thresholds: a one-year rule affecting people who entered Canada after June 24, 2020 and waited more than one year to claim asylum, and a 14-day rule affecting certain non-official land-border entries from the United States. It also describes faster processing, stronger information sharing, and expanded authority to cancel, suspend, or modify temporary permits and visas in batches.</p><p><strong>Practical Implication:</strong> Applicants should review entry dates, document validity, and compliance history early. The reform primarily targets asylum and border-management pathways; regular economic immigration streams such as Express Entry, PNP, and research-talent pathways remain separate, though the broader environment is stricter.</p>"},
@@ -2448,6 +2548,7 @@ var listingsEn = [
 
 
 var articleContents = [
+  /* Sodium and solid-state batteries 2026-06-24 */ "<div class=\"article-callout\"><p>这不是技术路线的互相否定，而是电池产业进入了更现实的阶段：不同场景，需要不同电池。</p></div>\n<p>过去几年，电池行业最常见的叙事是：谁能率先突破固态电池，谁就可能改写电动车格局。</p>\n<p>但最近，宁德时代同时释放了两个看似相反的信号：一边是钠离子电池开始进入真实装车，预计今年将有约1万至2万辆电动车搭载；另一边，董事长曾毓群在大连夏季达沃斯论坛上给固态电池降温，认为如果9分才算量产就绪，目前全行业大概只做到4分。</p>\n<p>一个开始上车，一个还在实验室和中试线之间艰难爬坡。</p>\n<h3 class=\"article-section\">钠电池：从“替代方案”进入真实装车</h3>\n<p>长期以来，钠离子电池一直被视为锂电池的“备选方案”。它不算新技术，却一直没有真正成为主角。原因也很现实：能量密度不够高，产业链不够成熟，车企不敢轻易押注。</p>\n<p>据公开报道，宁德时代首席制造官倪军近日表示，预计今年将有约1万至2万辆电动车搭载宁德时代的钠离子电池。这个数字放在全球电动车市场里不算大，但意义在于：钠电池正在从“技术验证”进入“真实装车”。</p>\n<p>与此同时，宁德时代还发布了名为TENER的钠电池储能系统，计划今年9月在中国开始首批交付，并于2027年6月起面向全球供货。也就是说，钠电池不是只押注乘用车，而是在电动车和储能两条线上同时推进。</p>\n<h3 class=\"article-section\">为什么钠电池会重新被看见？</h3>\n<p>答案很简单：锂电池太重要，也太容易受到原材料周期影响。</p>\n<p>过去十多年，电动车产业的主线几乎都围绕锂电池展开。从三元锂到磷酸铁锂，从快充到长续航，从电池安全到成本控制，锂电池构成了新能源汽车的基础设施。</p>\n<p>但锂资源价格波动大、供应链集中度高，原材料成本一旦上行，就会直接挤压车企和电池企业利润。钠资源储量丰富、分布更广，理论上供应链韧性更强。</p>\n<p>因此，钠电池不一定是“替代锂电池”，更像是一个风险管理工具：当锂价波动时，它给产业链多一条可选路线。</p>\n<h3 class=\"article-section\">它的突破口：低温、成本和储能</h3>\n<p>钠电池过去最大的短板是能量密度。但如果能量密度持续提升，同时在低温性能和安全性上形成优势，它就有机会找到自己的市场。</p>\n<p>公开资料显示，宁德时代Naxtra钠离子电池强调低温表现。对于加拿大、北欧、中国东北、日本北部等寒冷地区来说，这一点尤其关键。冬季续航衰减、低温充电和寒冷环境可靠性，一直是电动车用户最真实的痛点。</p>\n<p>另一方面，储能系统对重量和体积没有汽车那么敏感，但对成本、安全、寿命和供应链稳定性非常敏感。这也是为什么通用汽车近期与Peak Energy合作开发钠离子电池时，重点方向并不是电动车，而是储能系统。</p>\n<h3 class=\"article-section\">固态电池：热度很高，但离“百万级装车”还远</h3>\n<p>与钠电池开始小规模上车形成对照的是，固态电池虽然热度不减，但量产门槛仍然很高。</p>\n<p>据报道，6月23日，在大连夏季达沃斯论坛上，宁德时代董事长曾毓群给固态电池行业进展打了一个分：如果1到9分，9分才算量产就绪，目前整个行业大约只做到4分。他还认为，2030年之前，全固态电池实现百万级装车的可能性很小。</p>\n<p>这不是曾毓群第一次降温。此前他就曾表示固态电池“商品化还很远”，也批评部分车企对外宣传过于乐观。</p>\n<p>但有意思的是，泼冷水最凶的人，并不是不做固态电池的人。宁德时代已经投入多年研发，公开信息显示其固态电池团队规模庞大，并在硫化物全固态路线、能量密度和快充能力上持续推进。</p>\n<h3 class=\"article-section\">4分意味着什么？</h3>\n<p>如果用技术成熟度来理解，4分大致意味着实验室验证阶段：原理可以跑通，电芯能在可控条件下工作，但距离工程化、产线定型和大规模量产仍有很长距离。</p>\n<p>中间还隔着工程验证、中试放大、材料稳定性、良率控制、制造设备、成本下降、车规级验证和整车匹配。任何一步都不是发布会上喊一句“量产”就能跨过去。</p>\n<h3 class=\"article-section\">目前最难的仍是固-固界面</h3>\n<p>液态电池中，电解液能够渗入正负极材料的缝隙，离子传导相对顺畅。全固态电池把液态电解质换成固态电解质后，两个固体材料贴在一起，界面接触、压实密度、结构稳定性都会成为问题。</p>\n<p>一旦界面接触不稳定，内阻升高，电芯衰减加速，安全性和寿命都会受到影响。这也是全固态电池从实验室走向车规量产最难跨越的关口之一。</p>\n<h3 class=\"article-section\">行业为什么还在抢跑？</h3>\n<p>虽然曾毓群不断降温，但行业并没有停下来。丰田、三星SDI，以及国内的比亚迪、广汽、奇瑞、上汽、中创新航、国轩高科、长安等企业，都在推进固态或半固态路线。</p>\n<p>原因并不复杂：一旦全固态电池真正成熟，它有机会在能量密度、安全性和快充能力上打开新的天花板。谁能率先完成工程化，谁就可能在下一代电池竞争中占据位置。</p>\n<div class=\"article-callout\"><p>很多企业宣布的“固态电池量产”，实际可能是半固态产品；而曾毓群说的“9分量产就绪”，指向的是更难的全固态电池。</p></div>\n<p>半固态电池仍保留部分液态电解质，技术门槛低得多，产业化也更快。全固态电池则要真正解决固态电解质、固-固界面、制造工艺和成本控制等问题。两者不能混为一谈。</p>\n<h3 class=\"article-section\">一张表看清三条路线</h3>\n<table class=\"article-table\"><thead><tr><th>路线</th><th>近期状态</th><th>主要优势</th><th>主要瓶颈</th><th>更适合场景</th></tr></thead><tbody><tr><td>钠离子电池</td><td>开始小规模装车，并向储能系统推进</td><td>资源丰富、成本潜力、低温性能、供应链韧性</td><td>能量密度和规模化仍需提升</td><td>入门车型、短途通勤、寒冷地区、储能</td></tr><tr><td>半固态电池</td><td>已有部分产品进入应用或小规模交付</td><td>比传统液态电池安全性和能量密度有提升</td><td>路线口径容易与全固态混淆</td><td>高端车型、示范项目、特定场景</td></tr><tr><td>全固态电池</td><td>仍处于工程化和中试放大阶段</td><td>高能量密度、安全性、快充潜力</td><td>固-固界面、良率、成本、车规验证</td><td>中长期高端电动车和下一代平台</td></tr></tbody></table>\n<h3 class=\"article-section\">对加拿大意味着什么？</h3>\n<p>如果从加拿大市场看，这两条路线都值得关注，但意义不同。</p>\n<p>钠电池更现实。加拿大冬季漫长，很多地区低温环境严苛。电动车推广过程中，续航焦虑、低温充电、冬季性能衰减，一直是消费者和车队运营方关心的问题。如果钠电池在低温性能上持续兑现，它可能为加拿大北部、省际物流、公共交通、短途通勤和储能项目提供新的技术选择。</p>\n<p>固态电池更长远。它可能决定下一代高端电动车平台和电池制造技术竞争，但短期内不宜把它当作已经成熟的产业机会。对投资、招商和产业合作而言，真正需要分清的是：对方讲的是半固态，还是全固态；讲的是实验室样品，还是车规级量产。</p>\n<h3 class=\"article-section\">结语：未来不是一条路线通吃</h3>\n<p>宁德时代最近释放的两个信号，合在一起看，其实很清楚：钠电池开始走向现实，固态电池仍要尊重工程化规律。</p>\n<p>钠电池短期内不会取代锂电池，固态电池也不会因为热度高就突然跨过量产门槛。真正发生的变化，是电池产业从单一技术叙事，走向多路线、多场景、多供应链。</p>\n<p>高端长续航车型，短期继续看锂电池；低成本通勤、寒冷地区和储能系统，钠电池可能更快落地；下一代高端平台和长期技术天花板，则仍然要看固态电池能否真正跨过工程化难关。</p>\n<p>电池行业最热闹的地方，不是某一种技术“终结”另一种技术，而是每一种技术终于开始找到自己的位置。</p>",
   /* Canada students 2026-06-24 */ "<p>来源：inkway.org</p>\n<div class=\"article-callout\"><p>很多人以为，拿到加拿大文凭等于拿到了留下来的通行证。但今天的现实是：PGWP 门槛在变、省提名在收紧、就业岗位在分化。真正的问题不是&quot;能不能留&quot;，而是&quot;值不值得留，以及该怎么留&quot;。</p></div>\n<h3 class=\"article-section\">一、PGWP 还在，但已不是&quot;无脑稳拿&quot;</h3>\n<p>毕业后工签（PGWP）仍是绝大多数中国留学生的第一张关键牌——开放式工签，无需 job offer，时长与学制挂钩（学制 2 年以上通常可拿 3 年；硕士读满 8 个月即可直申 3 年）。</p>\n<p>但从 2024 年 11 月 1 日起，PGWP 已加上两道新门槛：</p>\n<p>•语言成绩：大学学位项目要求 CLB 7，非学位项目要求 CLB 5，几乎人人都要提交。</p>\n<p>•专业限制：学签申请于 2024 年 11 月 1 日后递交、且读非学位项目的学生，毕业时专业须在&quot;紧缺领域合格清单&quot;内。学位项目（本科/硕士/博士）暂时豁免此要求——这正是近两年越来越多学生偏向大学学位项目的关键原因。</p>\n<p>此外，2024 年 5 月 15 日起，public-private partnership 或 curriculum licensing 安排下的多数项目不再具备 PGWP 资格；边境 flagpoling 现场办理渠道也已于 2024 年 6 月关闭。换句话说，报读前确认 DLI 及项目合格性，比以往任何时候都更重要。</p>\n<p>数据参考：2024 年新 PGWP 持有人 203,363 份，较 2023 年下降 15%（IRCC 公开数据）。</p>\n<h3 class=\"article-section\">二、找到工作之后：就业现实与岗位分化</h3>\n<p>Statistics Canada 2025 年研究显示，留在加拿大的 2020 届国际毕业生，三年后就业率为 88.6%——数字不低，但岗位高度分化：</p>\n<table class=\"article-table\"><thead><tr><th>学历层级</th><th>常见岗位分布</th><th>全职年收入中位数（加元）</th></tr></thead><tbody><tr><td>College 专科</td><td>34.8% 在销售与服务岗位</td><td>45,000</td></tr><tr><td>本科</td><td>30.6% 在销售与服务；仅 33.8% 认为工作与专业高度相关</td><td>52,000</td></tr><tr><td>硕士</td><td>44.5% 集中在自然与应用科学</td><td>70,000</td></tr><tr><td>博士</td><td>45.8% 集中在自然与应用科学</td><td>83,000</td></tr></tbody></table>\n<p>以上收入均低于同学历本地毕业生。（来源：Statistics Canada，National Graduates Survey 2023）</p>\n<p>结论很直白：学历越高、越偏 STEM，越容易直接进入专业岗位；学历越低、越偏商科或泛管理，越可能先进入销售/行政，需要时间跳槽。很多留学生前两三年的核心任务其实是——先拿到 TEER 0–3、能积累 CEC 积分的工作，薪资优化是第二步。</p>\n<h3 class=\"article-section\">三、PR 路径：PGWP → CEC / PNP 顺次闯关</h3>\n<p>Statistics Canada 2024 年研究显示，PGWP 是所有工作类工签中转 PR 概率最高的一类：2011–2015 届 PGWP 持有人 5 年内转 PR 比例达 72.9%，2016–2020 届 2 年内已达 40.1%。</p>\n<p>CEC（联邦经验类）的硬门槛：近 3 年内在加拿大以合法身份积累至少 1 年（1,560 小时）TEER 0/1/2/3 有薪工作经验——注意，全日制学生期间的 co-op 和打工不计入。这意味着有效的 CEC 积分，通常要从 PGWP 生效后才开始累计。</p>\n<p>PNP（省提名）与 CEC 已取代 FSWP，成为 2022 年后国际毕业生转 PR 的最主要路径。2025 年 IRCC 明确更关注&quot;有加拿大工作经验&quot;候选人，类别化邀请围绕法语、医疗社福、STEM、技工、教育等方向展开。</p>\n<p>专业—岗位—类别化邀请三者联动越来越强。不是所有专业的留加难度都一样，提前了解所在省份的邀请偏好，是核心功课。</p>\n<h3 class=\"article-section\">四、省份差异：选省几乎决定了 PR 难度</h3>\n<p>Statistics Canada 省际留存研究显示，毕业后第一年仍在就读省份的国际毕业生比例：</p>\n<p>•阿尔伯塔省：60%，5 年条件留存率 80%</p>\n<p>•安大略省：50%，5 年条件留存率 76%</p>\n<p>•卑诗省：49%，5 年条件留存率 79%</p>\n<p>•魁北克省：40%，5 年条件留存率 78%</p>\n<p>•大西洋四省：均低于 30%，爱德华王子岛 5 年仅 19%</p>\n<p>各省提名也正在进一步分化：安省国际学生雇主担保流不强制要求工作经验；卑诗省 2026 年邀请明显偏向医疗、幼教、建筑与高薪岗位；大西洋省份更集中在医疗、技工、托育。同一个中国留学生，在不同省读书、做不同岗位，PR 难度可以相差 2–3 年。</p>\n<h3 class=\"article-section\">五、留加操作清单：从入学就要开始倒推</h3>\n<table class=\"article-table\"><thead><tr><th>时间节点</th><th>关键事项</th></tr></thead><tbody><tr><td>入学前 / 入学初</td><td>确认 DLI 及项目 PGWP 资格；学签申请时间若晚于 2024-11-01 且读非学位，确认专业在紧缺清单内</td></tr><tr><td>在校期间</td><td>积累语言成绩（CLB 7/5）；优先获取本地 internship、可量化项目与推荐人；在校打工对 CEC 积分帮助有限，但对拿到毕业后第一份 skilled job 极关键</td></tr><tr><td>毕业材料确认后</td><td>180 天内递交 PGWP 申请（勿错过窗口）</td></tr><tr><td>PGWP 生效后</td><td>锁定 TEER 0–3 岗位，开始 CEC 经验计时；每季度核查所在省 PNP 邀请动态</td></tr><tr><td>PGWP 剩余 8–10 个月</td><td>如仍无 skilled job 或分数无竞争力，须正式评估：转雇主定向工签（需 LMIA 或豁免）、申请 BOWP（前提是已提交 PR 获 AOR），或将回国/转第三地列为备选</td></tr></tbody></table>\n<h3 class=\"article-section\">结语</h3>\n<p>加拿大不再是&quot;低门槛留下来&quot;的版本。真正有效的路径只有一种：把毕业后的 2–3 年，当成一次职业试错和身份博弈的窗口期——先拿经验，再做选择，别被旧叙事绑住。</p>\n<p>STEM 背景 + 硕博学历，留加胜率更高；商科、人文且本地 network 不强的同学，不妨同步规划回国选项（详见姊妹篇）。</p>",
   /* Joly 2026-06-22 */ "<div class=\"article-video-wrap\" style=\"margin:0 0 28px 0;\"><video controls preload=\"metadata\" playsinline style=\"width:100%;height:auto;display:block;border-radius:8px;background:#000;\"><source src=\"Joly-China%20EV.mp4\" type=\"video/mp4\">您的浏览器不支持视频播放。</video></div><p style=\"font-size:13px;color:var(--mid-gray);\">视频来源：<a href=\"https://www.cpac.ca/headline-politics/episode/melanie-joly-holds-a-news-conference-from-japan--june-22-2026?id=6a2f994c-eb99-4936-a2e8-dfa294c51e24\" target=\"_blank\" rel=\"noopener\">CPAC，Mélanie Joly Holds a News Conference from Japan – June 22, 2026</a></p><p>加拿大工业部长梅拉妮·乔利刚刚结束中日访问行程，于6月22日在东京召开新闻发布会透露：比亚迪、吉利、奇瑞等中国主要电动车制造商，均对加拿大4.9万辆低关税电动车进口配额表示兴趣，并愿意在加拿大成立合资企业、本地生产。</p><p>加拿大政府开出的条件很明确：合资企业须由加方控股、使用加拿大零部件、遵守加拿大劳工标准，并保障用户数据安全。</p><h3 class=\"article-section\">乔利用一句话总结了加拿大的立场——“在哪卖，就在哪造。”</h3><p>这句话的政策含义非常直接：加拿大不是单纯把配额作为进口便利，而是把配额变成本地化谈判工具。对中国EV企业而言，下一阶段竞争重点将从“能不能进入加拿大”转向“能不能用加拿大可接受的方式进入加拿大”。</p><p>CSTEAC判断，49,000辆低关税配额仍然是入场窗口，但真正决定长期市场空间的，是合资结构、加拿大零部件参与度、劳工与工会沟通、售后服务网络，以及车联网数据治理能力。谁能先把这些要素组合成可信方案，谁才可能从配额试水走向本地生产。</p>",
   /* 0 */ "<p>来源：inkway.org</p>\n<p>2026 年 3 月 26 日，加拿大移民系统迎来数十年来的最重磅时刻——《C-12 法案》（加强加拿大移民系统与边境安全法）正式获得御准，成为法律。</p>\n<h3 class=\"article-section\">这不仅仅是一次简单的政策调整，而是对庇护体系、边境管理及临时居民（学签/工签）监管权力的全方位重构。说它是一次变革可能还不太准确，实际上就是变天了，很多人的枫叶梦都将因此受阻，甚至岌岌可危。</h3>\n<p>一、 两类人将被直接挡在听证门外</p>\n<p>C-12 法案的核心杀手锏，是针对 2025 年 6 月 3 日后提交的庇护申请设立了两个极其严苛的时间红线。一旦违规，你将失去进入 IRB（移民与难民委员会）进行完整司法听证的机会。</p>\n<table class=\"article-table\"><tbody><tr><th>新规类别</th><th>适用人群</th><th>处罚后果</th></tr><tr><td>一年规则</td><td>2020 年 6 月 24 日后入境，且居住超过 1 年才申请的人。</td><td>降级处理： 无法进入 IRB 听证，仅限申请程序保障较弱的 PRRA（遣返前风险评估）。</td></tr><tr><td>14 天规则</td><td>从美加陆地边境非官方口岸入境，且超过 14 天才申请的人。</td><td>失去资格： 同上，直接剥夺 IRB 听证权，面临更快的移除流程。</td></tr></tbody></table>\n<h3 class=\"article-section\">⚠️ 划重点： “一年规则”具有追溯性！这意味着很多已经在加拿大“黑”着或犹豫不决的人，现在猛然发现：路径已被堵死。</h3>\n<p>二、 告别“积压”，迎来“快进键”</p>\n<p>为了清理近 30 万件 庇护积压，C-12 引入了更加严厉的处理逻辑：</p>\n<p>在线申请极致化： 仅处理“完整申请”，任何缺失都可能导致直接退信。</p>\n<p>自愿回国 = 放弃： 如果申请人在决定下达前离开加拿大，申请自动作废。</p>\n<p>撤案即遣返： 移除令（Removal Order）的生效速度大幅加快，旨在实现“当天下达、尽快执行”。</p>\n<h3 class=\"article-section\">信息共享透明化： IRCC 现在有权与各级政府直接共享你的身份、签证、工签数据，无需申请人额外同意。隐私边界虽然存在，但监管已经无死角。</h3>\n<p>三、 政府获得“批量取消/修改签证”特权</p>\n<p>这是该法案中最令临时居民（学签、工签持有者）不安的条款。在“公共利益”的名义下，政府现在拥有了“一键撤签”的超级权力：</p>\n<p>权力范畴： 可批量取消、暂停或修改工作许可、学习许可及各类访问签证。</p>\n<p>触发条件： 涉及欺诈、行政错误、国家安全、公共卫生等。</p>\n<p>制衡机制： 此权力需经内阁批准并公开通报，虽非部长一人说了算，但权力边界极宽。</p>\n<p>影响人群： 虽不直接涉及 PR 身份，但对持临时身份的几十万留学生和工签持有人悬起了一柄达摩克利斯之剑。</p>\n<h3 class=\"article-section\">四、 背后的逻辑与影响</h3>\n<p>1️⃣谁受影响最大？</p>\n<p>安大略省（多伦多）首当其冲，其次是魁北克省。</p>\n<p>BC 省主要影响通过机场入境后转庇护的人群。</p>\n<p>2️⃣为什么是现在？</p>\n<p>加拿大正式进入了“移民大收紧时代”：</p>\n<p>临时居民配额大幅削减 43%。</p>\n<p>《安全第三国协议》（与美国）叠加 C-12 的重重限制。结果就是：</p>\n<p>进入加拿大申请庇护的路径更窄了</p>\n<p>核心逻辑： 控量 + 提速 + 严管。</p>\n<p>💡 给申请人的实操建议</p>\n<h3 class=\"article-section\">给申请人的实操建议</h3>\n<p>2️⃣合规是底线： 在“批量取消权”生效的今天，任何微小的材料欺诈或不合规行为都可能导致灾难性后果。</p>\n<p>3️⃣经济类移民大可放心： 此次改革主要靶向是庇护与边境管理。对于走正规 EE、省提名（PNP）或科研人才通道的申请人，整体环境虽趋严，但路径依然清晰。</p>\n<p>在 C-12 之下，“不知情”不能作为豁免理由。如果您身处以下情况，请务必及早评估：</p>\n<p>已在加但未及时递交申请。</p>\n<p>涉及非正规入境历史。</p>\n<p>担忧临时工签受新规波及。</p>",
@@ -2523,23 +2624,25 @@ function showArticle(idx) {
   document.querySelector('nav a.active') && document.querySelector('nav a.active').classList.remove('active');
   document.querySelector('#mobile-nav a.active') && document.querySelector('#mobile-nav a.active').classList.remove('active');
   var isEn = (typeof _lang !== 'undefined' && _lang === 'en');
+  var isHant = (typeof _lang !== 'undefined' && _lang === 'zhHant');
   var en = (isEn && typeof listingsEn !== 'undefined' && listingsEn[idx]) ? listingsEn[idx] : null;
-  document.getElementById('article-title').textContent = en ? en.title : l.title;
-  document.getElementById('article-date').textContent = en ? en.date : l.date;
+  document.getElementById('article-title').textContent = en ? en.title : localizeZh(l.title);
+  document.getElementById('article-date').textContent = en ? en.date : localizeZh(l.date);
   var badge = document.getElementById('article-cat-badge');
-  badge.textContent = en ? en.catLabel : l.catLabel;
+  badge.textContent = en ? en.catLabel : localizeZh(l.catLabel);
   badge.className = 'listing-cat cat-' + l.cat;
   if(en && en.summary) {
     document.getElementById('article-body').innerHTML =
       '<div class="article-en-summary">'
-      +'<p style="font-size:12px;color:var(--mid-gray);margin-bottom:1.2rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);">📄 English Summary &nbsp;·&nbsp; <span style=\'font-style:italic;\'>Full article in Chinese below</span></p>'
+      +'<p style="font-size:12px;color:var(--mid-gray);margin-bottom:1.2rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);">English Summary &nbsp;·&nbsp; <span style=\'font-style:italic;\'>Full article in Chinese below</span></p>'
       + en.summary
       +'</div>'
       +'<hr style="margin:2rem 0;border:none;border-top:1px solid var(--border);">'
       +'<p style="font-size:12px;color:var(--mid-gray);margin-bottom:1rem;">原文（中文）：</p>'
       +(articleContents[idx]||'');
   } else {
-    document.getElementById('article-body').innerHTML = articleContents[idx] || '<p>内容加载中...</p>';
+    var body = articleContents[idx] || '<p>内容加载中...</p>';
+    document.getElementById('article-body').innerHTML = isHant ? toTraditional(body) : body;
   }
   window.scrollTo(0, 0);
 }
@@ -2553,27 +2656,31 @@ function renderListings(filter) {
   if (!grid) return;
   var items = filter === 'all' ? listings : listings.filter(function(l){ return l.cat === filter; });
   grid.innerHTML = items.map(function(l){
-          var idx = listings.indexOf(l);
-      var readMoreTxt = (_langData[_lang]||_langData.zh).readMore; var linkHtml = '<a class="listing-link" href="#" onclick="showArticle('+idx+');return false;">'+readMoreTxt+'</a>';
+      var idx = listings.indexOf(l);
+      var readMoreTxt = (_langData[_lang]||_langData.zh).readMore;
+      var linkHtml = '<a class="listing-link" href="#" onclick="showArticle('+idx+');return false;">'+readMoreTxt+'</a>';
       var isEn = (typeof _lang !== 'undefined' && _lang === 'en');
       var en = (isEn && typeof listingsEn !== 'undefined' && listingsEn[idx]) ? listingsEn[idx] : null;
-      var dispCat   = en ? en.catLabel : l.catLabel;
-      var dispTitle = en ? en.title    : l.title;
-      var dispDesc  = en ? en.desc     : l.desc;
+      var dispCat   = en ? en.catLabel : localizeZh(l.catLabel);
+      var dispTitle = en ? en.title    : localizeZh(l.title);
+      var dispDesc  = en ? en.desc     : localizeZh(l.desc);
+      var dispDate  = en ? en.date     : localizeZh(l.date);
+      var dispAlt   = en ? (en.title || l.alt) : localizeZh(l.alt);
     return '<article class="listing-card" data-cat="'+l.cat+'">'
-      +'<img class="listing-img" src="'+l.img+'" alt="'+l.alt+'" loading="lazy">'
+      +'<img class="listing-img" src="'+l.img+'" alt="'+dispAlt+'" loading="lazy">'
       +'<div class="listing-body">'
       +'<span class="listing-cat cat-'+l.cat+'">'+dispCat+'</span>'
       +'<h3>'+dispTitle+'</h3>'
       +'<p>'+dispDesc+'</p>'
       +'</div>'
       +'<div class="listing-footer">'
-      +'<span class="listing-date">'+(en ? en.date : l.date)+'</span>'
+      +'<span class="listing-date">'+dispDate+'</span>'
       +linkHtml
       +'</div>'
       +'</article>';
   }).join('');
 }
+
 
 function filterListings(cat, btn) {
   document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
