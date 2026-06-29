@@ -329,6 +329,148 @@ p { color: var(--body-text); line-height: 1.75; }
   color: var(--teal); border-radius: 100px; font-size: 12px; font-weight: 600;
 }
 
+
+/* ── THREE PLATFORM ENTRIES ─────────────────────────────── */
+.entry-bg { background: var(--white); }
+.entry-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.entry-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 28px;
+  display: flex; flex-direction: column; min-height: 100%;
+  transition: all var(--transition);
+  position: relative; overflow: hidden;
+}
+.entry-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--teal); }
+.entry-card:nth-child(2)::before { background: var(--gold); }
+.entry-card:nth-child(3)::before { background: var(--navy-light); }
+.entry-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.entry-kicker { font-size: 12px; font-weight: 700; letter-spacing: .08em; color: var(--teal); text-transform: uppercase; margin-bottom: 10px; }
+.entry-card:nth-child(2) .entry-kicker { color: var(--gold); }
+.entry-card h3 { font-size: 19px; margin-bottom: 10px; color: var(--navy); }
+.entry-card p { font-size: 14px; color: var(--body-text); margin-bottom: 18px; }
+.entry-list { list-style: none; margin: 0 0 22px; padding: 0; }
+.entry-list li { border-top: 1px solid var(--light-gray); }
+.entry-link {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--body-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0 10px 16px;
+  position: relative;
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.55;
+  text-align: left;
+  cursor: pointer;
+}
+.entry-link::before { content: ''; position: absolute; left: 0; top: 19px; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); }
+.entry-link::after { content: '→'; color: var(--mid-gray); font-weight: 700; transition: transform var(--transition), color var(--transition); }
+.entry-link:hover { color: var(--navy); }
+.entry-link:hover::after { transform: translateX(3px); color: var(--teal); }
+.entry-card:nth-child(2) .entry-link::before { background: var(--gold); }
+.entry-card:nth-child(2) .entry-link:hover::after { color: var(--gold); }
+.entry-card:nth-child(3) .entry-link::before { background: var(--navy-light); }
+.entry-card:nth-child(3) .entry-link:hover::after { color: var(--navy-light); }
+.entry-card .btn { margin-top: auto; justify-content: center; padding: 10px 18px; }
+.service-note { margin-top: 28px; padding: 18px 22px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--off-white); color: var(--body-text); font-size: 14px; text-align: center; }
+.service-split { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.35fr); gap: 36px; align-items: start; }
+.service-split-copy { max-width: 700px; margin-bottom: 30px; }
+.service-split-copy .label { margin-bottom: 12px; }
+.service-split-copy h2 { font-size: 32px; margin-bottom: 16px; }
+.service-split-copy p { color: var(--body-text); font-size: 15px; margin-bottom: 12px; }
+.direction-list { display: grid; gap: 0; border-top: 1px solid var(--border); }
+.direction-item { display: grid; grid-template-columns: 42px 1fr; gap: 12px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+.direction-num { font-family: var(--serif); font-size: 25px; line-height: 1; color: var(--gold); font-weight: 700; }
+.direction-item h3 { font-size: 17px; margin-bottom: 6px; color: var(--navy); }
+.direction-item p { font-size: 13px; line-height: 1.65; color: var(--body-text); }
+.direction-item { color: inherit; text-decoration: none; cursor: pointer; transition: background var(--transition), padding-left var(--transition); }
+.direction-item:hover { background: rgba(13,115,119,0.035); padding-left: 10px; }
+.direction-item:hover h3 { color: var(--teal); }
+.svc-detail-card { scroll-margin-top: 110px; }
+.service-entry-stack { display: grid; gap: 18px; }
+.service-entry-stack .entry-card { padding: 26px 26px 24px; }
+.service-entry-stack .entry-card::before { width: 4px; height: auto; right: auto; bottom: 0; }
+.service-entry-stack .entry-card .btn { align-self: flex-start; margin-top: 4px; }
+.gov-dashboard-section { background: var(--off-white); }
+.gov-dashboard { display: grid; grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr); gap: 30px; align-items: stretch; }
+.gov-report-panel {
+  background: var(--navy); color: var(--white); border-radius: var(--radius);
+  padding: 34px 32px; display: flex; flex-direction: column; min-height: 100%;
+}
+.gov-report-panel .label { color: var(--gold-light); }
+.gov-report-panel h3 { color: var(--white); font-size: 27px; margin: 12px 0 14px; }
+.gov-report-panel p { color: rgba(255,255,255,.76); font-size: 14px; line-height: 1.8; }
+.gov-report-list { list-style: none; margin: 24px 0; padding: 0; display: grid; gap: 11px; }
+.gov-report-list li { color: rgba(255,255,255,.88); font-size: 14px; padding-left: 18px; position: relative; }
+.gov-report-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.gov-report-panel .btn { align-self: flex-start; margin-top: auto; }
+.gov-kpi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.gov-kpi {
+  background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 18px 16px; min-height: 118px; display: flex; flex-direction: column; justify-content: space-between;
+}
+.gov-kpi span { font-family: var(--serif); font-size: 25px; font-weight: 700; color: var(--teal); line-height: 1; }
+.gov-kpi p { font-size: 13px; color: var(--body-text); line-height: 1.55; margin-top: 16px; }
+
+.entry-modal {
+  position: fixed; inset: 0; z-index: 2000;
+  display: none; align-items: center; justify-content: center;
+  padding: 24px; background: rgba(15,35,71,.58);
+}
+.entry-modal.active { display: flex; }
+.entry-modal-panel {
+  width: min(760px, 100%);
+  max-height: min(86vh, 820px);
+  overflow: auto;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 24px 80px rgba(15,35,71,.28);
+}
+.entry-modal-head {
+  padding: 26px 30px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;
+}
+.entry-modal-head h3 { font-size: 22px; color: var(--navy); margin-bottom: 8px; }
+.entry-modal-head p { font-size: 14px; color: var(--body-text); margin: 0; }
+.entry-modal-close {
+  border: 1px solid var(--border); background: var(--white); color: var(--navy);
+  width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+  font-size: 22px; line-height: 1; flex-shrink: 0;
+}
+.entry-modal-body { padding: 24px 30px 30px; }
+.entry-form-table { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 18px; }
+.entry-field-row { display: grid; grid-template-columns: 190px 1fr; border-top: 1px solid var(--border); }
+.entry-field-row:first-child { border-top: none; }
+.entry-field-row label {
+  background: var(--off-white);
+  padding: 13px 14px;
+  font-size: 13px; font-weight: 700; color: var(--navy);
+  border-right: 1px solid var(--border);
+}
+.entry-field-row input, .entry-field-row textarea, .entry-field-row select {
+  width: 100%; border: none; padding: 12px 14px;
+  font: inherit; color: var(--dark-text); background: var(--white);
+}
+.entry-field-row textarea { min-height: 86px; resize: vertical; }
+.entry-field-row input:focus, .entry-field-row textarea:focus, .entry-field-row select:focus { outline: 2px solid rgba(13,115,119,.18); outline-offset: -2px; }
+.entry-modal-success {
+  display: none; margin-top: 14px; padding: 12px 14px; border-radius: var(--radius);
+  background: rgba(13,115,119,.1); color: var(--teal); font-size: 14px;
+}
+@media (max-width: 600px) {
+  .entry-modal { padding: 12px; }
+  .entry-modal-head, .entry-modal-body { padding-left: 18px; padding-right: 18px; }
+  .entry-field-row { grid-template-columns: 1fr; }
+  .entry-field-row label { border-right: none; border-bottom: 1px solid var(--border); }
+}
+
 /* ── TESTIMONIALS ───────────────────────────────────────── */
 .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
 .testi-card {
@@ -574,6 +716,10 @@ p { color: var(--body-text); line-height: 1.75; }
 .cat-policy { background: rgba(100,80,200,0.1); color: #6450c8; }
 .cat-member { background: rgba(220,60,40,0.1); color: #c03020; }
 .cat-other { background: rgba(80,80,80,0.1); color: #555; }
+.cat-market { background: rgba(13,115,119,0.1); color: var(--teal); }
+.cat-merchant { background: rgba(201,145,61,0.14); color: var(--gold); }
+.cat-talent { background: rgba(30,120,60,0.11); color: #1e783c; }
+.cat-research { background: rgba(26,58,108,0.1); color: var(--navy); }
 .listing-body h3 { font-size: 16px; margin-bottom: 8px; line-height: 1.4; }
 .listing-body p { font-size: 13px; color: var(--body-text); }
 .listing-footer {
@@ -675,7 +821,7 @@ p { color: var(--body-text); line-height: 1.75; }
   .hamburger { display: flex; }
   .hero-content { grid-template-columns: 1fr; }
   .hero-stat-card { display: none; }
-  .adv-grid, .testi-grid { grid-template-columns: 1fr; }
+  .adv-grid, .testi-grid, .entry-grid, .service-split, .gov-dashboard { grid-template-columns: 1fr; }
   .svc-grid, .svc-detail-grid { grid-template-columns: 1fr; }
   .about-prev-inner { grid-template-columns: 1fr; }
   .about-prev img { display: none; }
@@ -688,6 +834,7 @@ p { color: var(--body-text); line-height: 1.75; }
   .trust-inner { gap: 20px; }
   .trust-sep { display: none; }
   .form-row { grid-template-columns: 1fr; }
+  .gov-kpi-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 600px) {
   .hero { min-height: auto; }
@@ -698,6 +845,7 @@ p { color: var(--body-text); line-height: 1.75; }
   .hero-stats { grid-template-columns: 1fr 1fr; }
   .hero-actions { flex-direction: column; }
   .cta-actions { flex-direction: column; align-items: center; }
+  .gov-kpi-grid { grid-template-columns: 1fr; }
 }
 
   /* Article detail page */
@@ -761,6 +909,7 @@ p { color: var(--body-text); line-height: 1.75; }
 .cat-tcm { background: rgba(46,139,87,0.12); color: #2e8b57; }
 .member-activity { display:grid; grid-template-columns:1.1fr 1fr; gap:32px; align-items:center; background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow); }
 .member-activity-media video { width:100%; height:auto; display:block; border-radius:var(--radius); background:#000; }
+.member-activity-media img { width:100%; aspect-ratio:16/10; object-fit:cover; display:block; border-radius:var(--radius); background:var(--light-gray); }
 .member-activity-body .listing-cat { display:inline-block; }
 .member-activity-body .listing-date { display:block; margin:10px 0 2px; color:var(--mid-gray); font-size:13px; }
 .member-activity-body h3 { margin:6px 0 14px; color:var(--dark-text); font-size:22px; line-height:1.45; }
@@ -877,7 +1026,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
       <div class="trust-sep"></div>
       <div class="trust-item">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <span>成立于 2026 年 · 温哥华</span>
+        <span>2026 年批准筹建 · 温哥华</span>
       </div>
       <div class="trust-sep"></div>
       <div class="trust-item">
@@ -907,7 +1056,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
           </div>
           <h3>学术引领，中立客观</h3>
           <div class="divider"></div>
-          <p>CSTE 成立于 1978 年，15,000+ 名会员，50个分支机构（含26个专业委员会）。代表处以学术组织身份运营，不背书、不代理，以事实与研究为基础提供判断。</p>
+          <p>中国技术经济学会(CSTE)成立于 1978 年，是中国技术经济领域的全国性科技社团组织。学会拥有 15,000+ 名会员、50个分支机构（含26个专业委员会）；代表处以学术组织身份运营，不背书、不代理，以事实与研究为基础提供判断。</p>
         </div>
         <div class="adv-card">
           <div class="adv-icon">
@@ -925,6 +1074,53 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
           <div class="divider"></div>
           <p>从前瞻性市场研究到全周期项目管理，我们提供“研究—洞察—对接—陪跑”的全链条赋能。不贩卖空洞的结论，陪伴客户在真实的应用场景中，完成每一次关键的判断与决策。</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Three Platform Entries -->
+  <section class="section entry-bg">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">平台入口</span>
+        <h2>以项目需求进入 CSTEAC 双向平台</h2>
+        <p>在六大工作方向之上，CSTEAC 以三类项目入口承接需求：中企出海、华商回流、青年英才。每一项均对应独立申请表，便于后续评估、分流与跟进。</p>
+      </div>
+      <div class="entry-grid">
+        <article class="entry-card">
+          <div class="entry-kicker">Enterprise</div>
+          <h3>中企出海</h3>
+          <p>面向具有明确产品、技术或服务方向的中国企业，先完成市场适配、政策风险和本地落地条件的初步判断。</p>
+          <ul class="entry-list">
+            <li><button type="button" class="entry-link" onclick="openEntryForm('enterprise-feasibility')">市场进入可行性诊断</button></li>
+            <li><button type="button" class="entry-link" onclick="openEntryForm('enterprise-opportunity')">行业机会卡与政策风险评估</button></li>
+            <li><button type="button" class="entry-link" onclick="openEntryForm('enterprise-feedback')">闭门反馈会与本地资源引荐</button></li>
+          </ul>
+          <button class="btn btn-primary" onclick="openEntryForm('enterprise-feasibility')">提交企业需求</button>
+        </article>
+        <article class="entry-card">
+          <div class="entry-kicker">Investment Matching</div>
+          <h3>华商回流</h3>
+          <p>面向海外华商、地方政府、园区平台与 CSTE 分支机构，将华商资源、产业方向、项目阶段和落地建议整理为可持续跟进的招商项目池。</p>
+          <ul class="entry-list">
+            <li><button type="button" class="entry-link" onclick="openEntryForm('merchant-profile')">华商资源与投资意向登记</button></li>
+            <li><button type="button" class="entry-link" onclick="openEntryForm('merchant-gov')">地方政府项目仪表盘与招商匹配</button></li>
+            <li><button type="button" class="entry-link" onclick="openEntryForm('merchant-roadshow')">月度简报、线下考察与项目路演</button></li>
+          </ul>
+          <button class="btn btn-gold xi18n" data-zh="提交政府招商需求" data-en="Submit Government Matching Request" onclick="openEntryForm('merchant-gov')">提交政府招商需求</button>
+        </article>
+        <article class="entry-card">
+          <div class="entry-kicker">Talent Development</div>
+          <h3>青年英才</h3>
+          <p>面向有意提升背景、获取实习实践、连接就业机会的留学生与青年人才，建立更可展示的项目履历和回国发展路径。</p>
+          <ul class="entry-list">
+            <li><button type="button" class="entry-link" onclick="openEntryForm('talent-profile')">背景提升规划</button></li>
+            <li><button type="button" class="entry-link" onclick="openEntryForm('talent-internship')">实习与项目实践申请</button></li>
+            <li><button type="button" class="entry-link" onclick="openEntryForm('talent-employment')">就业与回国发展匹配</button></li>
+          </ul>
+          <button class="btn btn-outline" onclick="openEntryForm('talent-profile')">提交青年英才需求</button>
+        </article>
       </div>
     </div>
   </section>
@@ -1022,7 +1218,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
           <span class="label">我们的故事</span>
           <h2>从学术到产业，从中国到北美</h2>
           <div class="divider"></div>
-          <p class="xi18n" style="margin-top:16px;" data-zh="中国技术经济学会是中国科协直属全国一级学会，创立于 1978 年，长期致力于技术经济研究、学术交流和产学研协作。中国技术经济学会北美代表处的设立，是学会国际化发展中的重要一步。作为一个立足北美、面向技术经济、创新与应用研究的非营利学术与专业赋能平台，CSTEAC 希望在不同国家、不同文化、不同专业背景的人群之间，搭建一个多元化的交流空间。" data-en="The Chinese Society of Technology Economics is a national first-level academic society under the China Association for Science and Technology. Founded in 1978, it has long been dedicated to techno-economic research, academic exchange, and collaboration among academia, industry, and research institutions. The establishment of the CSTE North America Office marks an important step in CSTE&#x27;s international development. As a non-profit academic and professional enablement platform based in North America and focused on techno-economics, innovation, and applied research, CSTEAC aims to create a diversified space for people from different countries, cultures, and professional backgrounds.">中国技术经济学会是中国科协直属全国一级学会，创立于 1978 年，长期致力于技术经济研究、学术交流和产学研协作。中国技术经济学会北美代表处的设立，是学会国际化发展中的重要一步。作为一个立足北美、面向技术经济、创新与应用研究的非营利学术与专业赋能平台，CSTEAC 希望在不同国家、不同文化、不同专业背景的人群之间，搭建一个多元化的交流空间。</p>
+          <p class="xi18n" style="margin-top:16px;" data-zh="中国技术经济学会(CSTE)成立于 1978 年，是中国技术经济领域的全国性科技社团组织，长期致力于技术经济研究、学术交流和产学研协作。中国技术经济学会北美代表处的设立，是学会国际化发展中的重要一步。作为一个立足北美、面向技术经济、创新与应用研究的非营利学术与专业赋能平台，CSTEAC 希望在不同国家、不同文化、不同专业背景的人群之间，搭建一个多元化的交流空间。" data-en="The Chinese Society of Technology Economics is a national first-level academic society under the China Association for Science and Technology. Founded in 1978, it has long been dedicated to techno-economic research, academic exchange, and collaboration among academia, industry, and research institutions. The establishment of the CSTE North America Office marks an important step in CSTE&#x27;s international development. As a non-profit academic and professional enablement platform based in North America and focused on techno-economics, innovation, and applied research, CSTEAC aims to create a diversified space for people from different countries, cultures, and professional backgrounds.">中国技术经济学会(CSTE)成立于 1978 年，是中国技术经济领域的全国性科技社团组织，长期致力于技术经济研究、学术交流和产学研协作。中国技术经济学会北美代表处的设立，是学会国际化发展中的重要一步。作为一个立足北美、面向技术经济、创新与应用研究的非营利学术与专业赋能平台，CSTEAC 希望在不同国家、不同文化、不同专业背景的人群之间，搭建一个多元化的交流空间。</p>
           <p class="xi18n" style="margin-top:14px;" data-zh="我们深知，真正有价值的国际合作，不是从交易开始，而是从理解、信任和共同关注的问题开始。北美有成熟的法律体系、专业标准、社区文化和产业生态。CSTEAC 在这里开展工作，首先要做的是了解本地、尊重本地、融入本地，并在此基础上推动研究交流、专业学习和跨区域互信与合作。" data-en="We believe that meaningful international cooperation does not begin with transactions, but with understanding, trust, and shared questions. North America has mature legal systems, professional standards, community cultures, and industrial ecosystems. For CSTEAC, our first priority is to learn from, respect, and integrate into the local environment, and on that basis promote research exchange, professional learning, and cross-regional mutual trust and cooperation.">我们深知，真正有价值的国际合作，不是从交易开始，而是从理解、信任和共同关注的问题开始。北美有成熟的法律体系、专业标准、社区文化和产业生态。CSTEAC 在这里开展工作，首先要做的是了解本地、尊重本地、融入本地，并在此基础上推动研究交流、专业学习和跨区域互信与合作。</p>
           <p class="xi18n" style="margin-top:14px;" data-zh="CSTEAC 不是商业中介，也不是政治组织。我们的工作重点，是围绕技术经济、科技创新、产业发展、教育、健康、社区与可持续发展等议题，组织研讨、研究、对话和专业交流。我们希望连接研究人员、企业家、专业人士、社区伙伴和青年才俊，帮助大家在事实和研究的基础上提出更好的问题，形成更稳健的合作基础。" data-en="CSTEAC is neither a commercial intermediary nor a political organization. Our work focuses on seminars, research, dialogue, and professional exchange around issues such as technology economics, technological innovation, industrial development, education, health, community, and sustainable development. We seek to connect researchers, entrepreneurs, professionals, community partners, and young professionals, helping all parties ask better questions and build a more solid foundation for cooperation based on facts and research.">CSTEAC 不是商业中介，也不是政治组织。我们的工作重点，是围绕技术经济、科技创新、产业发展、教育、健康、社区与可持续发展等议题，组织研讨、研究、对话和专业交流。我们希望连接研究人员、企业家、专业人士、社区伙伴和青年才俊，帮助大家在事实和研究的基础上提出更好的问题，形成更稳健的合作基础。</p>
           <p class="xi18n" style="margin-top:14px;" data-zh="未来，CSTEAC 将坚持合规运营的原则，持续推动中加、中美及全球范围内在技术经济领域的知识交流与专业合作。我们也期待与更多本地机构、商会、学术组织、企业和社区伙伴建立长期、真诚、务实的联系。" data-en="Looking ahead, CSTEAC will continue to uphold the principles of compliant operations. We will work to promote knowledge exchange and professional cooperation in the field of techno-economics across Canada, the United States, and global contexts. We also look forward to building long-term, sincere, and practical relationships with local institutions, chambers of commerce, academic organizations, businesses, and community partners.">未来，CSTEAC 将坚持合规运营的原则，持续推动中加、中美及全球范围内在技术经济领域的知识交流与专业合作。我们也期待与更多本地机构、商会、学术组织、企业和社区伙伴建立长期、真诚、务实的联系。</p>
@@ -1168,6 +1364,125 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
     </div>
   </section>
 
+  
+  <section class="section entry-bg service-overview-section">
+    <div class="container">
+      <div class="service-split-copy">
+        <span class="label xi18n" data-zh="平台入口" data-en="Platform Access">平台入口</span>
+        <h2 class="xi18n" data-zh="识别合作方向，精准匹配资源" data-en="Identify the cooperation direction, then match resources precisely">识别合作方向，精准匹配资源</h2>
+        <p class="xi18n" data-zh="CSTEAC 以六大工作方向构建长期能力框架，并围绕三类核心场景设立项目入口：中企出海、华商回流、青年英才。" data-en="CSTEAC builds long-term institutional capacity through six work directions, while creating three project entry points around core cooperation scenarios: Chinese enterprise globalization, overseas Chinese business return, and young talent development.">CSTEAC 以六大工作方向构建长期能力框架，并围绕三类核心场景设立项目入口：中企出海、华商回流、青年英才。</p>
+        <p class="xi18n" data-zh="代表处将根据来访方的项目阶段、资源需求与合作边界，完成初步研判与方向匹配，再视需要免费引荐经审核的战略合作伙伴，进入专业服务环节。" data-en="The representative office reviews each visitor's project stage, resource needs, and cooperation boundaries, then matches the appropriate direction and, when needed, introduces vetted strategic partners free of charge for specialist services.">代表处将根据来访方的项目阶段、资源需求与合作边界，完成初步研判与方向匹配，再视需要免费引荐经审核的战略合作伙伴，进入专业服务环节。</p>
+      </div>
+      <div class="service-split">
+        <div class="service-directions">
+          <div class="direction-list">
+            <a class="direction-item" href="#svc-detail-1">
+              <div class="direction-num">01</div>
+              <div>
+                <h3 class="xi18n" data-zh="学术论坛与研讨活动" data-en="Academic Forums & Seminars">学术论坛与研讨活动</h3>
+                <p class="xi18n" data-zh="围绕技术经济、产业升级与跨境协作议题，组织论坛、圆桌、闭门研讨与专题交流。" data-en="Forums, roundtables, closed-door seminars, and thematic exchanges on techno-economics, industrial upgrading, and cross-border collaboration.">围绕技术经济、产业升级与跨境协作议题，组织论坛、圆桌、闭门研讨与专题交流。</p>
+              </div>
+            </a>
+            <a class="direction-item" href="#svc-detail-2">
+              <div class="direction-num">02</div>
+              <div>
+                <h3 class="xi18n" data-zh="产业研究与洞察发布" data-en="Industry Research & Insights">产业研究与洞察发布</h3>
+                <p class="xi18n" data-zh="持续跟踪政策、产业链与区域机会，形成面向会员和合作机构的研究简报与专题报告。" data-en="Policy, value-chain, and regional opportunity tracking through research briefs and thematic reports for members and partners.">持续跟踪政策、产业链与区域机会，形成面向会员和合作机构的研究简报与专题报告。</p>
+              </div>
+            </a>
+            <a class="direction-item" href="#svc-detail-3">
+              <div class="direction-num">03</div>
+              <div>
+                <h3 class="xi18n" data-zh="跨境产业连接与专业引荐" data-en="Cross-Border Industry Connection & Referral">跨境产业连接与专业引荐</h3>
+                <p class="xi18n" data-zh="基于项目需求识别合作对象、验证资源边界，并在必要时引荐经审核的专业服务伙伴。" data-en="Identify suitable counterparties, clarify resource boundaries, and introduce vetted professional partners when specialist support is needed.">基于项目需求识别合作对象、验证资源边界，并在必要时引荐经审核的专业服务伙伴。</p>
+              </div>
+            </a>
+            <a class="direction-item" href="#svc-detail-4">
+              <div class="direction-num">04</div>
+              <div>
+                <h3 class="xi18n" data-zh="海外会员招募与社团网络" data-en="Overseas Membership & Community Network">海外会员招募与社团网络</h3>
+                <p class="xi18n" data-zh="连接北美专家、企业家、高校校友与社团组织，建设面向长期合作的会员网络。" data-en="Connect North American experts, entrepreneurs, alumni groups, and community organizations into a long-term membership network.">连接北美专家、企业家、高校校友与社团组织，建设面向长期合作的会员网络。</p>
+              </div>
+            </a>
+            <a class="direction-item" href="#svc-detail-5">
+              <div class="direction-num">05</div>
+              <div>
+                <h3 class="xi18n" data-zh="海外英才与创新实践" data-en="Overseas Talent & Innovation Practice">海外英才与创新实践</h3>
+                <p class="xi18n" data-zh="面向留学生与青年人才，链接产业认知、实习实践、就业发展与回国发展场景。" data-en="Support students and young professionals through industry exposure, project practice, internship pathways, career development, and China-facing opportunities.">面向留学生与青年人才，链接产业认知、实习实践、就业发展与回国发展场景。</p>
+              </div>
+            </a>
+            <a class="direction-item" href="#svc-detail-6">
+              <div class="direction-num">06</div>
+              <div>
+                <h3 class="xi18n" data-zh="多元文化分享" data-en="Multicultural Exchange">多元文化分享</h3>
+                <p class="xi18n" data-zh="以文化交流、社区活动与公共沟通为纽带，增强代表处在北美本地网络中的可见度与信任基础。" data-en="Use cultural exchange, community programs, and public communication to strengthen visibility and trust in North American local networks.">以文化交流、社区活动与公共沟通为纽带，增强代表处在北美本地网络中的可见度与信任基础。</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="service-entry-stack">
+          <article class="entry-card">
+            <div class="entry-kicker">Enterprise</div>
+            <h3>中企出海</h3>
+            <p>适合需要市场判断、政策风险识别、闭门反馈和本地资源引荐的中国企业。</p>
+            <ul class="entry-list"><li><button type="button" class="entry-link" onclick="openEntryForm('enterprise-feasibility')">市场进入可行性诊断</button></li><li><button type="button" class="entry-link" onclick="openEntryForm('enterprise-opportunity')">行业机会卡与政策风险评估</button></li><li><button type="button" class="entry-link" onclick="openEntryForm('enterprise-feedback')">闭门反馈会与本地资源引荐</button></li></ul>
+            <button class="btn btn-primary" onclick="openEntryForm('enterprise-feasibility')">提交企业需求</button>
+          </article>
+          <article class="entry-card">
+            <div class="entry-kicker">Investment Matching</div>
+            <h3>华商回流</h3>
+            <p>适合地方政府、园区与海外华商围绕项目来源、产业画像、政策需求和落地进度建立可视化跟进机制。</p>
+            <ul class="entry-list"><li><button type="button" class="entry-link" onclick="openEntryForm('merchant-profile')">华商资源与投资意向登记</button></li><li><button type="button" class="entry-link" onclick="openEntryForm('merchant-gov')">地方政府项目仪表盘与招商匹配</button></li><li><button type="button" class="entry-link" onclick="openEntryForm('merchant-roadshow')">月度简报、线下考察与项目路演</button></li></ul>
+            <button class="btn btn-gold xi18n" data-zh="提交政府招商需求" data-en="Submit Government Matching Request" onclick="openEntryForm('merchant-gov')">提交政府招商需求</button>
+          </article>
+          <article class="entry-card">
+            <div class="entry-kicker">Talent Development</div>
+            <h3>青年英才</h3>
+            <p>适合需要背景提升、实习实践、就业匹配和回国发展路径规划的留学生与青年人才。</p>
+            <ul class="entry-list"><li><button type="button" class="entry-link" onclick="openEntryForm('talent-profile')">背景提升规划</button></li><li><button type="button" class="entry-link" onclick="openEntryForm('talent-internship')">实习与项目实践申请</button></li><li><button type="button" class="entry-link" onclick="openEntryForm('talent-employment')">就业与回国发展匹配</button></li></ul>
+            <button class="btn btn-outline" onclick="openEntryForm('talent-profile')">提交青年英才需求</button>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section gov-dashboard-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="label xi18n" data-zh="政府合作工具" data-en="Government Cooperation Tool">政府合作工具</span>
+        <h2 class="xi18n" data-zh="不是 App，而是可决策的项目仪表盘" data-en="Not an app, but a decision-ready project dashboard">不是 App，而是可决策的项目仪表盘</h2>
+        <p class="xi18n" data-zh="面向合作城市与园区，CSTEAC 更适合提供定期更新的项目仪表盘与月度简报，帮助地方政府识别海外华商资源、筛选可落地项目，并安排后续对接、考察与政策支持。" data-en="For partner cities and industrial parks, CSTEAC is better positioned to provide a regularly updated project dashboard and monthly brief, helping local governments identify overseas Chinese business resources, screen landing-ready projects, and plan follow-up matching, visits, and policy support.">面向合作城市与园区，CSTEAC 更适合提供定期更新的项目仪表盘与月度简报，帮助地方政府识别海外华商资源、筛选可落地项目，并安排后续对接、考察与政策支持。</p>
+      </div>
+      <div class="gov-dashboard">
+        <div class="gov-report-panel">
+          <span class="label xi18n" data-zh="月度交付" data-en="Monthly Deliverable">月度交付</span>
+          <h3 class="xi18n" data-zh="《全球华商科创资源月度简报》" data-en="Global Chinese Business & Innovation Resources Monthly Brief">《全球华商科创资源月度简报》</h3>
+          <p class="xi18n" data-zh="每月面向合作城市形成一份轻量但可执行的简报，用项目语言呈现海外华商画像、热点产业、项目清单、对接建议与下一步活动安排。" data-en="Each month, partner cities receive a concise and actionable brief covering overseas Chinese business profiles, active sectors, project lists, matching recommendations, and upcoming activity plans.">每月面向合作城市形成一份轻量但可执行的简报，用项目语言呈现海外华商画像、热点产业、项目清单、对接建议与下一步活动安排。</p>
+          <ul class="gov-report-list">
+            <li class="xi18n" data-zh="海外华商画像与重点国家/城市分布" data-en="Overseas Chinese business profiles and country/city distribution">海外华商画像与重点国家/城市分布</li>
+            <li class="xi18n" data-zh="热点产业方向与项目成熟度判断" data-en="Active industry sectors and project maturity assessment">热点产业方向与项目成熟度判断</li>
+            <li class="xi18n" data-zh="适合本地园区承接的项目清单" data-en="Project list suitable for local industrial parks">适合本地园区承接的项目清单</li>
+            <li class="xi18n" data-zh="政策支持、线下考察与实质对接建议" data-en="Policy support, on-site visit, and substantive matching recommendations">政策支持、线下考察与实质对接建议</li>
+          </ul>
+          <button class="btn btn-gold xi18n" data-zh="提交政府招商需求" data-en="Submit Government Matching Request" onclick="openEntryForm('merchant-gov')">提交政府招商需求</button>
+        </div>
+        <div class="gov-kpi-grid">
+          <div class="gov-kpi"><span>01</span><p class="xi18n" data-zh="本月新增海外华商数量" data-en="New overseas Chinese business contacts this month">本月新增海外华商数量</p></div>
+          <div class="gov-kpi"><span>02</span><p class="xi18n" data-zh="涉及国家、城市与社群节点" data-en="Countries, cities, and community nodes involved">涉及国家、城市与社群节点</p></div>
+          <div class="gov-kpi"><span>03</span><p class="xi18n" data-zh="最活跃产业方向与技术主题" data-en="Most active industries and technology themes">最活跃产业方向与技术主题</p></div>
+          <div class="gov-kpi"><span>04</span><p class="xi18n" data-zh="有回流意向的企业与团队" data-en="Companies and teams considering China-facing return">有回流意向的企业与团队</p></div>
+          <div class="gov-kpi"><span>05</span><p class="xi18n" data-zh="有出海需求的中国企业" data-en="Chinese companies seeking overseas expansion">有出海需求的中国企业</p></div>
+          <div class="gov-kpi"><span>06</span><p class="xi18n" data-zh="适合本地园区落地的项目" data-en="Projects suitable for local industrial park landing">适合本地园区落地的项目</p></div>
+          <div class="gov-kpi"><span>07</span><p class="xi18n" data-zh="需要政策支持或场景开放的项目" data-en="Projects requiring policy support or scenario access">需要政策支持或场景开放的项目</p></div>
+          <div class="gov-kpi"><span>08</span><p class="xi18n" data-zh="适合安排线下考察的项目" data-en="Projects suitable for on-site visits">适合安排线下考察的项目</p></div>
+          <div class="gov-kpi"><span>09</span><p class="xi18n" data-zh="已进入实质对接的项目进度" data-en="Progress of projects in substantive matching">已进入实质对接的项目进度</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
       <div class="section-header">
@@ -1177,7 +1492,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
       </div>
       <div class="svc-detail-grid">
         <!-- W1 -->
-        <div class="svc-detail-card">
+        <div id="svc-detail-1" class="svc-detail-card">
           <div class="svc-detail-header">
             <div class="svc-detail-icon" style="background:rgba(13,115,119,0.1);">
               <svg viewBox="0 0 24 24" fill="none" stroke="#0D7377" stroke-width="2" width="26" height="26"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -1199,7 +1514,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
           </div>
         </div>
         <!-- W2 -->
-        <div class="svc-detail-card">
+        <div id="svc-detail-2" class="svc-detail-card">
           <div class="svc-detail-header">
             <div class="svc-detail-icon" style="background:rgba(26,58,108,0.1);">
               <svg viewBox="0 0 24 24" fill="none" stroke="#1A3A6C" stroke-width="2" width="26" height="26"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
@@ -1221,7 +1536,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
           </div>
         </div>
         <!-- W3 -->
-        <div class="svc-detail-card svc-featured-card">
+        <div id="svc-detail-3" class="svc-detail-card svc-featured-card">
           <div class="svc-detail-header">
             <div class="svc-detail-icon" style="background:rgba(201,145,61,0.12);">
               <svg viewBox="0 0 24 24" fill="none" stroke="#C9913D" stroke-width="2" width="26" height="26"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -1243,7 +1558,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
           </div>
         </div>
         <!-- W4 -->
-        <div class="svc-detail-card">
+        <div id="svc-detail-4" class="svc-detail-card">
           <div class="svc-detail-header">
             <div class="svc-detail-icon" style="background:rgba(100,80,200,0.1);">
               <svg viewBox="0 0 24 24" fill="none" stroke="#6450c8" stroke-width="2" width="26" height="26"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -1265,7 +1580,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
           </div>
         </div>
         <!-- W5 -->
-        <div class="svc-detail-card svc-featured-card">
+        <div id="svc-detail-5" class="svc-detail-card svc-featured-card">
           <div class="svc-detail-header">
             <div class="svc-detail-icon" style="background:rgba(30,120,60,0.1);">
               <svg viewBox="0 0 24 24" fill="none" stroke="#1e783c" stroke-width="2" width="26" height="26"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
@@ -1286,7 +1601,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
           </div>
         </div>
         <!-- W6 -->
-        <div class="svc-detail-card">
+        <div id="svc-detail-6" class="svc-detail-card">
           <div class="svc-detail-header">
             <div class="svc-detail-icon" style="background:rgba(180,60,40,0.1);">
               <svg viewBox="0 0 24 24" fill="none" stroke="#b43c28" stroke-width="2" width="26" height="26"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -1422,7 +1737,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
     <div class="container" style="position:relative;z-index:2;">
       <span class="label" style="color:var(--gold-light);">洞察报告</span>
       <h1 style="color:var(--white);">研究与洞察</h1>
-      <p style="color:rgba(255,255,255,0.7);max-width:520px;margin-top:12px;font-size:15px;">CSTEAC 定期发布聚焦中加产业互动的深度研究报告、政策解读与市场分析。</p>
+      <p style="color:rgba(255,255,255,0.7);max-width:520px;margin-top:12px;font-size:15px;">CSTEAC 围绕三大入口持续发布中企出海、华商回流、青年英才与综合政策观察，帮助来访方先建立判断，再提交更具体的合作需求。</p>
     </div>
   </section>
 
@@ -1430,12 +1745,10 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
     <div class="container">
       <div class="filter-bar" id="filter-bar">
         <button class="filter-btn active xi18n" data-filter="all" data-zh="全部" data-en="All" onclick="filterListings('all',this)">全部</button>
-        <button class="filter-btn xi18n" data-filter="ev" data-zh="EV 出海" data-en="EV" onclick="filterListings('ev',this)">EV 出海</button>
-        <button class="filter-btn xi18n" data-filter="ai" data-zh="AI 与算力" data-en="AI &amp; Computing" onclick="filterListings('ai',this)">AI 与算力</button>
-        <button class="filter-btn xi18n" data-filter="policy" data-zh="政策分析" data-en="Policy" onclick="filterListings('policy',this)">政策分析</button>
-        <button class="filter-btn xi18n" data-filter="bipv" data-zh="绿色经济" data-en="Green Economy" onclick="filterListings('bipv',this)">绿色经济</button>
-        <button class="filter-btn xi18n" data-filter="member" data-zh="侨情视野" data-en="Diaspora" onclick="filterListings('member',this)">侨情视野</button>
-        <button class="filter-btn xi18n" data-filter="other" data-zh="其它" data-en="Other" onclick="filterListings('other',this)">其它</button>
+        <button class="filter-btn xi18n" data-filter="market" data-zh="中企出海" data-en="Chinese Globalization" onclick="filterListings('market',this)">中企出海</button>
+        <button class="filter-btn xi18n" data-filter="merchant" data-zh="华商回流" data-en="Diaspora Return" onclick="filterListings('merchant',this)">华商回流</button>
+        <button class="filter-btn xi18n" data-filter="talent" data-zh="青年英才" data-en="Young Talent" onclick="filterListings('talent',this)">青年英才</button>
+        <button class="filter-btn xi18n" data-filter="research" data-zh="综合观察" data-en="Strategic Briefs" onclick="filterListings('research',this)">综合观察</button>
       </div>
       <div class="listing-grid" id="listing-grid">
         <!-- Cards injected by JS -->
@@ -1465,6 +1778,20 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
         <span class="label xi18n" data-zh="会员活动" data-en="Member Activities">会员活动</span>
         <h2 class=" xi18n" data-zh="近期活动" data-en="Recent Activities">近期活动</h2>
       </div>
+
+      <article class="member-activity">
+        <div class="member-activity-media">
+          <img src="member-hangzhou-optics-2026.png" alt="CSTEAC 参与新国际化合作走进杭州光机所专场交流会" loading="lazy">
+        </div>
+        <div class="member-activity-body">
+          <span class="listing-cat cat-member xi18n" data-zh="会员活动" data-en="Member Activity">会员活动</span>
+          <span class="listing-date xi18n" data-zh="2026年6月15日" data-en="June 15, 2026">2026年6月15日</span>
+          <h3 class="xi18n" data-zh="CSTEAC 参与“新国际化合作走进杭州光机所”专场交流" data-en="CSTEAC Joins NICC Exchange at Hangzhou Institute of Optics">CSTEAC 参与“新国际化合作走进杭州光机所”专场交流</h3>
+          <p class="xi18n" data-zh="2026年6月15日，恩盈创新国际智库牵头新国际化合作共同体（NICC）举办的“新国际化合作走进杭州光机所”专场交流会在杭州光学精密机械研究所举行。活动围绕跨境合规、硬科技成果转化、产业基金协同、算力产业场景与企业出海模式等议题展开。" data-en="On June 15, 2026, the New Internationalization Cooperation Community (NICC), led by Enying Innovation International Think Tank, held a dedicated exchange session at the Hangzhou Institute of Optics and Precision Machinery. The program focused on cross-border compliance, hard-tech commercialization, industry fund collaboration, computing infrastructure scenarios, and new models for Chinese enterprises expanding overseas.">2026年6月15日，恩盈创新国际智库牵头新国际化合作共同体（NICC）举办的“新国际化合作走进杭州光机所”专场交流会在杭州光学精密机械研究所举行。活动围绕跨境合规、硬科技成果转化、产业基金协同、算力产业场景与企业出海模式等议题展开。</p>
+          <p class="xi18n" data-zh="中国技术经济学会北美代表处（CSTEAC）主任刘世坚受邀分享代表处工作进展，以及中国与北美双向合作服务生态建设规划。他介绍，CSTEAC 作为立足北美、面向技术经济、创新与应用研究的非营利学术与专业交流平台，致力于在不同国家、文化与专业背景之间建立多元交流空间。" data-en="Jason Liu, Director of the Chinese Society of Technology Economics North America Office (CSTEAC), shared CSTEAC's recent progress and its plan to build a bidirectional China-North America cooperation ecosystem. He noted that CSTEAC is a North America-based non-profit academic and professional exchange platform focused on techno-economics, innovation, and applied research, aiming to create a constructive space across countries, cultures, and professional communities.">中国技术经济学会北美代表处（CSTEAC）主任刘世坚受邀分享代表处工作进展，以及中国与北美双向合作服务生态建设规划。他介绍，CSTEAC 作为立足北美、面向技术经济、创新与应用研究的非营利学术与专业交流平台，致力于在不同国家、文化与专业背景之间建立多元交流空间。</p>
+          <p class="xi18n" data-zh="刘世坚强调，真正有价值的国际合作不是从交易开始，而是从理解、信任与共同关注的问题开始。未来，CSTEAC 将坚持合规运营，持续推动中加、中美及更广泛北美地区在技术经济领域的知识交流、专业学习与长期合作。" data-en="Liu emphasized that meaningful international cooperation does not begin with a transaction, but with understanding, trust, and shared questions. CSTEAC will continue to operate with a strong compliance orientation and promote knowledge exchange, professional learning, and long-term cooperation in technology economics across Canada, the United States, China, and the broader North American region.">刘世坚强调，真正有价值的国际合作不是从交易开始，而是从理解、信任与共同关注的问题开始。未来，CSTEAC 将坚持合规运营，持续推动中加、中美及更广泛北美地区在技术经济领域的知识交流、专业学习与长期合作。</p>
+        </div>
+      </article>
 
       <article class="member-activity">
         <div class="member-activity-media">
@@ -1577,8 +1904,10 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
 
         <div class="contact-form">
           <h3>发送咨询消息</h3>
-          <form id="contact-form" action="https://formspree.io/f/xwvjjdpp" method="POST" onsubmit="submitForm(event)">
+          <form id="contact-form" action="https://formsubmit.co/dukecc@qq.com" method="POST" onsubmit="submitForm(event)">
             <input type="hidden" name="_subject" value="CSTEAC website inquiry">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
             <div class="form-row">
               <div class="form-group">
                 <label for="name">姓名 *</label>
@@ -1707,11 +2036,11 @@ zh:{
 'hero-btn-consult':'预约咨询','hero-btn-services':'了解服务',
 'stat-1-label':'CSTE 创立年份','stat-2-label':'学会会员','stat-3-label':'分支机构','stat-4-label':'学术期刊',
 'hero-note':'中国科协直属学会 · 学术引领创新发展',
-'trust-1':'依托中国技术经济学会（CSTE）','trust-2':'成立于 2026 年 · 温哥华',
+'trust-1':'依托中国技术经济学会（CSTE）','trust-2':'2026 年批准筹建 · 温哥华',
 'trust-3':'服务中企出海 · 华商回流 · 两岸学术连接','trust-4':'聚焦 科技创新 · 跨境交流 · 可持续发展',
 'adv-label':'核心优势','adv-h2':'为什么选择 CSTEAC',
 'adv-p':'平台价值来自于学术深度、行业广度与本土视野。',
-'adv1-h3':'学术引领，中立客观','adv1-p':'CSTE 成立于 1978 年，15,000+ 名会员，50个分支机构（含26个专业委员会）。代表处以学术组织身份运营，不背书、不代理，以事实与研究为基础提供判断。',
+'adv1-h3':'学术引领，中立客观','adv1-p':'中国技术经济学会(CSTE)成立于 1978 年，是中国技术经济领域的全国性科技社团组织。学会拥有 15,000+ 名会员、50个分支机构（含26个专业委员会）；代表处以学术组织身份运营，不背书、不代理，以事实与研究为基础提供判断。',
 'adv2-h3':'双边网络，跨境对接','adv2-p':'从加拿大辐射北美，广泛整合中加美技术经济资源，中国国内创新生态圈层畅通直达。',
 'adv3-h3':'研究驱动，落地陪跑','adv3-p':'从前瞻性市场研究到全周期项目管理，我们提供“研究—洞察—对接—陪跑”的全链条赋能。不贩卖空洞的结论，陪伴客户在真实的应用场景中，完成每一次关键的判断与决策。',
 'home-svc-label':'工作方向','home-svc-h2':'我们做什么',
@@ -1729,7 +2058,7 @@ zh:{
 'testi3-text':'CSTEAC 不做空洞的承诺。他们帮我们梳理了在加拿大落地的每一道门槛，并协助对接了本地 PDI 合作伙伴，这种实质性的帮助很难得。',
 'testi3-name':'王总','testi3-role':'深圳供应链企业 · 加拿大市场负责人',
 'about-prev-label':'关于我们','about-prev-h2':'源自中国，扎根北美，服务两岸',
-'about-prev-p1':'中国技术经济学会（CSTE）成立于 1978 年，是中国技术经济领域的全国性科技社团组织。2026 年，CSTEAC 作为学会首家境外代表机构批准筹建，总部位于温哥华，以客观、中立、学术为立足点，致力于填平太平洋两岸的心理距离和信息壁垒。',
+'about-prev-p1':'中国技术经济学会(CSTE)成立于 1978 年，是中国技术经济领域的全国性科技社团组织。2026 年，CSTEAC 作为学会首家境外代表机构批准筹建，总部位于温哥华，以客观、中立、学术为立足点，致力于填平太平洋两岸的心理距离和信息壁垒。',
 'about-prev-p2':'代表处的定位是非营利桥梁与催化剂——不以盈利为目的，以学术公信力推动中外信息流动、人才连接与产业协同。',
 'about-prev-btn':'了解我们的故事 →',
 'home-cta-h2':'准备好开始了吗？',
@@ -1738,8 +2067,8 @@ zh:{
 'about-hero-label':'关于我们','about-hero-h1':'国际视野，本土连接',
 'about-hero-p':'CSTEAC 是中国技术经济学会在中国境外设立的首家代表机构，以学术背景、网络覆盖和本土连接能力服务中外学术与产业交流。',
 'story-label':'我们的故事','story-h2':'从学术到产业，从中国到北美',
-'story-p1':'中国技术经济学会（CSTE）成立于 1978 年，是中国最具影响力的技术经济类学术组织之一，现有会员逾 15,000 人，与全球 50个分支机构的高校、研究机构及产业组织建立了合作关系。',
-'story-p2':'2026 年 5 月，CSTEAC（中国技术经济学会北美代表处）在加拿大不列颠哥伦比亚省正式成立，成为 CSTE 在境外的唯一授权代表机构。代表处以客观、中立、学术为基本原则，聚焦于填平太平洋两岸的心理距离和信息壁垒，为有意在北美与中国之间构建产业连接的各类机构和个人提供基于事实的研究与咨询服务。',
+'story-p1':'中国技术经济学会(CSTE)成立于 1978 年，是中国技术经济领域的全国性科技社团组织。学会现有会员逾 15,000 人，设有 50个分支机构（含26个专业委员会），并与高校、研究机构及产业组织保持广泛联系。',
+'story-p2':'2026 年，CSTEAC（中国技术经济学会北美代表处）作为 CSTE 首家境外代表机构批准筹建，总部位于加拿大不列颠哥伦比亚省温哥华。代表处以客观、中立、学术为基本原则，聚焦于填平太平洋两岸的心理距离和信息壁垒，为有意在北美与中国之间构建产业连接的各类机构和个人提供基于事实的研究与咨询服务。',
 'story-p3':'我们的价值来自信息的准确与结构化，而非人脉的密度。',
 'tl1-h4':'中国技术经济学会（CSTE）成立','tl1-p':'在改革开放初期应运而生，成为中国技术经济领域的核心学术平台。',
 'tl2-h4':'CSTEAC 在温哥华批准筹建','tl2-p':'获批成为 CSTE 首家境外代表机构，总部位于加拿大卑诗省。',
@@ -1787,7 +2116,7 @@ zh:{
 'svc-cta-h2':'欢迎建立连接','svc-cta-p':'无论您是企业、机构或个人、专家学者或留学生，欢迎随时与我们联系。',
 'svc-cta-btn1':'联系我们','svc-cta-btn2':'阅读研究报告',
 'listings-label':'洞察报告','listings-h1':'研究与洞察',
-'listings-p':'CSTEAC 定期发布聚焦中加产业互动的深度研究报告、政策解读与市场分析。',
+'listings-p':'CSTEAC 围绕三大入口持续发布中企出海、华商回流、青年英才与综合政策观察，帮助来访方先建立判断，再提交更具体的合作需求。',
 'filter-all':'全部','filter-ev':'EV 出海','filter-ai':'AI 与算力',
 'filter-policy':'政策分析','filter-bipv':'绿色经济','filter-member':'侨情视野','filter-other':'其它',
 'listings-sub-btn':'订阅最新研究 →',
@@ -1870,10 +2199,10 @@ en:{
 'home-cta-p':'Whether you represent an enterprise, institution, academic community, professional network, or are reaching out as an individual, CSTEAC offers a neutral and academically grounded starting point for trans-Pacific exchange.',
 'home-cta-btn1':'Book a Free Consultation','home-cta-btn2':'Read Latest Research',
 'about-hero-label':'About Us','about-hero-h1':"Global Perspective, Local Connection",
-'about-hero-p':'CSTEAC is the first representative office established by the Chinese Society of Technology Economics outside China. With an academic foundation, professional networks, and local connections, it supports constructive exchange among academic, industry, and research communities.',
+'about-hero-p':'CSTEAC is the first representative office approved for establishment by the Chinese Society of Technology Economics outside China. With an academic foundation, professional networks, and local connections, it supports constructive exchange among academic, industry, and research communities.',
 'story-label':'Our Story','story-h2':'From Academia to Industry, From China to North America',
 'story-p1':"The Chinese Society of Technology Economics (CSTE) was founded in 1978 and is among China's most influential academic organizations in technology and economics, with over 15,000 members and 50 branch offices, including 26 professional committees.",
-'story-p2':"In May 2026, CSTEAC was approved for establishment in British Columbia, Canada as CSTE\'s first representative office outside China. Operating on principles of objectivity, neutrality, and academic integrity, it provides fact-based research, professional exchange, and connection-oriented support for organizations and individuals working across the Pacific.",
+'story-p2':"In 2026, CSTEAC was approved for establishment in Vancouver, British Columbia, Canada as CSTE\'s first representative office outside China. Operating on principles of objectivity, neutrality, and academic integrity, it provides fact-based research, professional exchange, and connection-oriented support for organizations and individuals working across the Pacific.",
 'story-p3':'Our value lies in the accuracy and structure of information — not the density of our rolodex.',
 'tl1-h4':'Chinese Society of Technology Economics (CSTE) Founded',
 'tl1-p':"Established at the dawn of China's reform era, CSTE became the core academic platform for technology economics in China.",
@@ -2104,9 +2433,9 @@ function applyTranslations(lang) {
   s('#page-services .about-hero .label','svc-hero-label');
   s('#page-services .about-hero h1','svc-hero-h1');
   s('#page-services .about-hero p','svc-hero-p');
-  var svLabels = document.querySelectorAll('#page-services .section-header .label');
-  var svH2s = document.querySelectorAll('#page-services .section-header h2');
-  var svPs = document.querySelectorAll('#page-services .section-header p');
+  var svLabels = document.querySelectorAll('#page-services section:not(.entry-bg) .section-header .label');
+  var svH2s = document.querySelectorAll('#page-services section:not(.entry-bg) .section-header h2');
+  var svPs = document.querySelectorAll('#page-services section:not(.entry-bg) .section-header p');
   if(svLabels[0]) svLabels[0].textContent=t['svc-detail-label'];
   if(svH2s[0]) svH2s[0].textContent=t['svc-detail-h2'];
   if(svPs[0]) svPs[0].textContent=t['svc-detail-p'];
@@ -2356,6 +2685,184 @@ function toggleFaq(btn) {
   item.classList.toggle('open');
 }
 
+
+// ── ENTRY DETAIL FORMS ───────────────────────────────────────────
+var entryFormConfigs = {
+  'enterprise-feasibility': {
+    title: '市场进入可行性诊断',
+    subtitle: '用于初步判断企业进入北美市场的阶段、约束与优先路径。',
+    fields: [
+      ['企业/项目名称', 'project_name', 'input', '请输入企业或项目名称'],
+      ['行业方向', 'industry', 'select', ['EV / 汽车供应链', 'AI / 数字服务', '绿色经济 / BIPV / 氢能', '医疗健康 / 中医药', '教育科技 / 专业服务', '其他']],
+      ['产品/服务简介', 'product_summary', 'textarea', '请简述核心产品、技术或服务'],
+      ['目标市场', 'target_market', 'input', '加拿大 / 美国 / 具体省份或城市'],
+      ['当前阶段', 'stage', 'select', ['概念调研', '已有国内业务', '已有英文资料', '已有北美客户/线索', '准备落地']],
+      ['最需要判断的问题', 'key_question', 'textarea', '例如准入、认证、渠道、定价、合作伙伴、政策风险']
+    ]
+  },
+  'enterprise-opportunity': {
+    title: '行业机会卡与政策风险评估',
+    subtitle: '用于申请特定行业机会卡、政策风险梳理或进入路径简报。',
+    fields: [
+      ['关注行业', 'industry_focus', 'input', '例如专用车、BIPV、AI 医疗、农业科技'],
+      ['目标客户/应用场景', 'customer_scene', 'textarea', '希望服务的客户类型或使用场景'],
+      ['关注的政策/合规问题', 'policy_concern', 'textarea', '关税、认证、数据、投资审查、牌照等'],
+      ['已有资料', 'materials', 'select', ['暂无', '中文资料', '英文资料', '产品白皮书/认证材料', '可提供非保密摘要']],
+      ['期望输出', 'expected_output', 'select', ['机会卡', '政策风险摘要', '市场进入简报', '闭门说明会']]
+    ]
+  },
+  'enterprise-feedback': {
+    title: '闭门反馈会与本地资源引荐',
+    subtitle: '用于申请小范围北美市场反馈会或本地专业资源引荐。',
+    fields: [
+      ['反馈主题', 'feedback_topic', 'input', '希望向北美专业人士验证的问题'],
+      ['可分享内容', 'shareable_content', 'textarea', '请说明可公开/可闭门分享的非保密信息'],
+      ['希望反馈对象', 'feedback_audience', 'select', ['华商渠道', '行业专家', '专业服务机构', '潜在客户', '地方/园区代表']],
+      ['时间窗口', 'timeline', 'input', '希望安排的月份或时间段'],
+      ['后续需求', 'next_step', 'textarea', '路演、渠道、认证、法律税务、园区/政府资源等']
+    ]
+  },
+  'merchant-profile': {
+    title: '华商资源与投资意向登记',
+    subtitle: '用于梳理海外华商可参与的行业资源、投资意向与中国端合作方向。',
+    fields: [
+      ['所在城市', 'city', 'input', '例如温哥华、多伦多、西雅图'],
+      ['经营/投资领域', 'business_sector', 'input', '行业、企业类型或专业背景'],
+      ['可提供资源', 'available_resources', 'textarea', '渠道、资本、客户、专业服务、产业经验等'],
+      ['关注的中国城市/产业', 'china_interest', 'input', '希望了解或对接的城市、园区、产业'],
+      ['参与方式', 'engagement_mode', 'select', ['项目投资', '渠道/代理', '专业服务', '导师/顾问', '城市活动参与', '暂不确定']]
+    ]
+  },
+  'merchant-gov': {
+    title: '地方政府项目仪表盘与招商匹配',
+    subtitle: '用于地方政府、园区、平台机构提交招商需求，并申请项目仪表盘、月度简报与后续对接安排。',
+    fields: [
+      ['提交方身份', 'submitter_type', 'select', ['地方政府/招商部门', '园区/孵化器', '城市平台公司', 'CSTE 分支机构', '海外华商', '专业服务机构', '其他']],
+      ['合作城市/园区', 'target_region', 'input', '希望推广或对接的城市、园区、平台名称'],
+      ['重点产业方向', 'industry_priority', 'textarea', '例如 AI、生命健康、智能制造、新能源、新材料、跨境电商'],
+      ['园区承载与政策资源', 'policy_resources', 'textarea', '载体空间、补贴政策、产业基金、应用场景、人才政策、审批便利等'],
+      ['希望纳入仪表盘的指标', 'dashboard_metrics', 'textarea', '新增华商、国家/城市分布、项目阶段、回流/出海意向、政策支持需求、考察安排等'],
+      ['月度简报需求', 'monthly_brief_need', 'select', ['全球华商科创资源月度简报', '项目清单与落地建议', '线下考察项目筛选', '实质对接进度跟踪', '综合合作方案']],
+      ['下一步安排', 'next_step', 'textarea', '希望 CSTEAC 协助安排的对接会、项目路演、闭门沟通或城市考察']
+    ]
+  },
+  'merchant-roadshow': {
+    title: '月度简报、线下考察与项目路演',
+    subtitle: '用于围绕月度简报中的项目线索，申请闭门说明会、项目路演、城市考察或专题活动。',
+    fields: [
+      ['活动/节点名称', 'event_name', 'input', '拟举办活动或节点名称'],
+      ['活动形式', 'event_format', 'select', ['月度简报说明会', '闭门咖啡局', '线上说明会', '项目路演', '城市考察', '专题圆桌']],
+      ['项目数量/类型', 'project_count', 'input', '拟展示或考察的项目数量与类型'],
+      ['希望邀请对象', 'invite_target', 'textarea', '华商、企业、专家、青年人才、地方代表等'],
+      ['计划时间', 'event_timeline', 'input', '拟举办时间或周期']
+    ]
+  },
+  'talent-profile': {
+    title: '背景提升规划',
+    subtitle: '用于留学生或青年人才申请研究、项目、竞赛、活动等背景提升路径建议。',
+    fields: [
+      ['学校/专业', 'school_major', 'input', '学校、专业、年级或毕业时间'],
+      ['目标方向', 'target_direction', 'select', ['科研/论文/课题', '产业研究', '创新创业竞赛', '项目履历', '回国求职', '暂不确定']],
+      ['现有经历', 'current_profile', 'textarea', '课程、实习、项目、论文、社团、竞赛等'],
+      ['希望提升的短板', 'gap', 'textarea', '研究能力、行业认知、简历项目、表达材料等'],
+      ['可投入时间', 'availability', 'input', '每周可投入小时数或可参与周期']
+    ]
+  },
+  'talent-internship': {
+    title: '实习与项目实践申请',
+    subtitle: '用于申请 CSTEAC 相关研究、活动执行、市场访谈、企业项目制任务等实践机会。',
+    fields: [
+      ['学校/专业', 'school_major', 'input', '学校、专业、年级或毕业时间'],
+      ['希望实践类型', 'practice_type', 'select', ['研究助理', '市场访谈', '活动执行', '英文资料本地化', '企业项目任务', '内容/报告协作']],
+      ['可服务行业', 'industry_interest', 'input', 'EV、AI、绿色经济、医疗健康、教育科技等'],
+      ['语言/技能', 'skills', 'textarea', '中英文、数据、写作、设计、视频、商务沟通等'],
+      ['可投入时间', 'availability', 'input', '每周小时数、起止时间、城市/远程']
+    ]
+  },
+  'talent-employment': {
+    title: '就业与回国发展匹配',
+    subtitle: '用于梳理留学生回国就业、实习转化、产业岗位与地方人才项目匹配需求。',
+    fields: [
+      ['学历与毕业时间', 'education_graduation', 'input', '本科/硕士/博士及预计毕业时间'],
+      ['目标城市/行业', 'target_city_industry', 'input', '希望回国城市、行业或岗位方向'],
+      ['求职阶段', 'job_stage', 'select', ['探索方向', '准备简历', '正在投递', '已有面试', '希望对接实习/项目']],
+      ['核心优势', 'strengths', 'textarea', '专业、项目、语言、实习、研究或跨文化优势'],
+      ['希望获得支持', 'support_needed', 'textarea', '岗位方向、实习机会、项目履历、地方人才政策、导师建议等']
+    ]
+  }
+};
+
+function openEntryForm(key) {
+  var cfg = entryFormConfigs[key];
+  if (!cfg) return;
+  var modal = document.getElementById('entry-modal');
+  var form = document.getElementById('entry-detail-form');
+  var fields = document.getElementById('entry-dynamic-fields');
+  var success = document.getElementById('entry-modal-success');
+  document.getElementById('entry-modal-title').textContent = cfg.title;
+  document.getElementById('entry-modal-subtitle').textContent = cfg.subtitle;
+  document.getElementById('entry-interest').value = cfg.title;
+  fields.innerHTML = cfg.fields.map(function(f) {
+    var label = f[0], name = f[1], type = f[2], spec = f[3];
+    var input = '';
+    if (type === 'textarea') {
+      input = '<textarea name="' + name + '" placeholder="' + spec + '"></textarea>';
+    } else if (type === 'select') {
+      input = '<select name="' + name + '"><option value="">请选择…</option>' + spec.map(function(o){ return '<option>' + o + '</option>'; }).join('') + '</select>';
+    } else {
+      input = '<input name="' + name + '" placeholder="' + spec + '">';
+    }
+    return '<div class="entry-field-row"><label>' + label + '</label>' + input + '</div>';
+  }).join('');
+  if (success) success.style.display = 'none';
+  form.querySelector('button[type=submit]').style.display = 'inline-flex';
+  form.querySelector('button[type=submit]').disabled = false;
+  form.querySelector('button[type=submit]').textContent = '提交专项需求';
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeEntryForm() {
+  var modal = document.getElementById('entry-modal');
+  if (!modal) return;
+  modal.classList.remove('active');
+  modal.setAttribute('aria-hidden', 'true');
+}
+
+function submitEntryForm(e) {
+  e.preventDefault();
+  var form = e.target;
+  var btn = form.querySelector('button[type=submit]');
+  var success = document.getElementById('entry-modal-success');
+  btn.textContent = '提交中…';
+  btn.disabled = true;
+  if (success) success.style.display = 'none';
+  fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  }).then(function(response) {
+    if (!response.ok) throw new Error('Entry form submission failed');
+    if (success) {
+      success.textContent = '✓ 已提交。我们将在 1-2 个工作日内与您联系。';
+      success.style.display = 'block';
+    }
+    btn.style.display = 'none';
+    form.reset();
+  }).catch(function() {
+    if (success) {
+      success.textContent = '抱歉，表单未能发送。请直接发送邮件至 jasonliu@cste.org.cn。';
+      success.style.display = 'block';
+    }
+    btn.disabled = false;
+    btn.textContent = '提交专项需求';
+  });
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeEntryForm();
+});
+
 // ── CONTACT FORM ─────────────────────────────────────────────────
 function submitForm(e) {
   e.preventDefault();
@@ -2395,6 +2902,7 @@ function submitForm(e) {
 
 // ── LISTINGS DATA ────────────────────────────────────────────────
 var listings = [
+  {"cat": "merchant", "catLabel": "华商回流", "img": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80", "alt": "城市项目仪表盘与招商报告", "title": "全球华商科创资源月度简报：试刊号", "desc": "试刊号以公开资料梳理和观察框架搭建为主，围绕北美华商科创资源、重点城市节点、产业方向、公开案例、月度追踪指标与项目分层机制，形成面向地方政府和园区的招商项目池观察框架。", "date": "2026年6月29日"},
   {"cat": "ev", "catLabel": "EV 出海", "img": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=600&q=80", "alt": "加拿大电动专用车", "title": "空白，恰恰是机会：中国电动专用车的加拿大市场验证分析", "desc": "加拿大电动环卫与电动专用车市场仍未被充分定义。文章从政策资金、公共采购、关税规则、本地化组装、样板场景和运维责任链出发，判断中国企业应以本地化闭环方案进入实质验证阶段。", "date": "2026年6月26日"},
   {"cat": "member", "catLabel": "侨情视野", "img": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80", "alt": "海归职业发展", "title": "海归融入国内职业生态圈全攻略", "desc": "海归回流正在从身份溢价转向能力溢价。文章围绕产业、科研、创业三大赛道，梳理竞赛论文、薪酬对比、学历认证、求职时间线和简历本土化等关键步骤。", "date": "2026年6月26日"},
   {"cat": "ai", "catLabel": "AI 与算力", "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80", "alt": "AI 存储芯片与数据中心", "title": "美光财报炸裂：AI 正在把存储芯片推向一个全新周期", "desc": "美光2026财年第三季度财报显示，AI正在把内存与存储推向基础设施级战略资产。收入、毛利率和EPS全面刷新纪录，长期客户协议、HBM需求和结构性供给约束正在改写存储芯片的周期逻辑。", "date": "2026年6月24日"},
@@ -2430,6 +2938,7 @@ var listings = [
 ];
 
 var listingsEn = [
+  {"catLabel": "Diaspora & Investment", "title": "Global Chinese Business & Innovation Resources Monthly Brief: Pilot Issue", "desc": "A pilot monthly brief for local governments and industrial parks, translating overseas Chinese business and innovation resources into a project dashboard covering resource inflow, sector activity, return interest, park fit, policy needs, site visits, and substantive matching progress.", "date": "June 29, 2026", "summary": "<p><strong>Overview:</strong> The pilot issue proposes a monthly project dashboard rather than another app. It organizes overseas Chinese business and innovation resources into indicators local governments can use: new resource inflow, country and city distribution, active sectors, return-oriented projects, China outbound needs, park-fit projects, policy support needs, site-visit candidates, and substantive matching progress.</p><p><strong>Key Takeaway:</strong> For city and park partners, the value lies in turning scattered diaspora networks into an actionable project pool with monthly briefs, screening logic, and next-step matching recommendations.</p>"},
   {"catLabel": "EV Expansion", "title": "Canada's Electric Specialty-Vehicle Market: A Strategic Blank Space", "desc": "A practical validation note on electric sanitation trucks, school buses, sweepers, airport vehicles, and other specialty fleets in Canada, focusing on public funding, localization, compliance, and pilot deployment.", "date": "June 26, 2026", "summary": "<p><strong>Overview:</strong> Canada's electric sanitation and specialty-vehicle market remains under-defined. The opportunity is not simple vehicle export, but a localized solution covering compliance, assembly or upfitting, public procurement, after-sales responsibility, data, insurance, and financing.</p><p><strong>Key Takeaway:</strong> Chinese manufacturers should start with controlled scenarios such as airports, ports, campuses, industrial parks, and logistics yards, then use real operating data to enter municipal procurement with credibility.</p>"},
   {"catLabel": "Diaspora Insights", "title": "A Practical Guide for Returnees Re-Entering China's Career Ecosystem", "desc": "A guide for overseas graduates returning to China, covering industry, research, entrepreneurship, competitions, papers, salary comparisons, credential recognition, recruiting timelines, and localized resumes.", "date": "June 26, 2026", "summary": "<p><strong>Overview:</strong> Return migration is increasingly becoming the second stage of an international career path. The value of overseas study depends on whether the experience can be translated into measurable value recognized by Chinese employers, research institutions, and startup ecosystems.</p><p><strong>Key Takeaway:</strong> Returnees should choose among industry, research, and entrepreneurship tracks early, prepare Chinese-market proof points, complete credential recognition, and align applications with domestic recruiting cycles.</p>"},
   {"catLabel": "AI & Computing", "title": "Micron's Blowout Results Signal a New AI-Driven Memory Cycle", "desc": "Micron's fiscal Q3 2026 results show AI turning memory and storage into strategic infrastructure assets. Record revenue, margins, long-term customer agreements, HBM demand, and structural supply constraints are reshaping the old memory-cycle playbook.", "date": "June 24, 2026", "summary": "<p><strong>Overview:</strong> Micron's fiscal Q3 2026 results point beyond a normal memory-cycle rebound. AI demand, HBM capacity pressure, data center SSD growth, and strategic customer agreements are changing the economics of DRAM and NAND.</p><p><strong>Key Takeaway:</strong> The memory industry is becoming less about short price cycles and more about strategic supply assurance, advanced-node leadership, long-term contracted demand, and AI infrastructure scale.</p>"},
@@ -2554,6 +3063,7 @@ var listingsEn = [
 
 
 var articleContents = [
+  /* monthly-brief-pilot */ "<h3 class=\"article-section\">刊首语</h3>\n<p>中国技术经济学会(CSTE)成立于 1978 年，是中国技术经济领域的全国性科技社团组织。中国技术经济学会北美代表处（筹）依托学会在学术界、产业界和专业服务领域的多重网络，在温哥华、多伦多、湾区、西雅图等华人科创资源集中的节点开展工作，重点围绕学术交流与论坛、产业研究与洞察发布、跨境产业连接与专业引荐、海外会员招募与社团网络、海外英才与创新实践、多元文化分享六个方向，推动中外技术经济交流与务实合作。</p>\n<p>我们不是商业中介，也不替代任何一方作出决策。北美代表处的工作，是把碎片化的人脉资源、活动线索、项目意向与产业动态，整理为可评估、可跟进、可复盘的资源观察框架，帮助地方政府、园区平台、企业机构与华商创业者在信息更充分、边界更清晰的基础上开展沟通。</p>\n<p>《全球华商科创资源月度简报》是这一工作机制的起点。试刊号以公开资料梳理和观察框架搭建为主；后续正式版将逐步引入项目线索、城市专栏、合作伙伴动态与对接进展。我们希望，这份简报最终能够成为地方招商与产业合作部门每月值得参考的轻量工具，为中外技术经济交流及中国可持续发展贡献一份力量。</p>\n<p><strong>中国技术经济学会北美代表处（筹）</strong><br>2026 年 6 月</p>\n<h3 class=\"article-section\">开篇：一个反复出现的问题</h3>\n<p>在与地方招商和园区平台的沟通中，一个反复出现的问题是：</p>\n<div class=\"article-callout\"><p>我们所掌握的海外华商资源，上一次更新是什么时候？</p></div>\n<p>得到的回答，大多是：“上次活动回来之后”。活动，是一次性的；项目，是持续流动的。相较于一次性活动，更高价值的工作在于建立一套可持续跟进的项目筛选与对接机制。</p>\n<p>这份试刊号想做的，是建立一套可月度更新的资源观察框架，让地方政府看清楚：海外华商资源在哪里，什么产业最活跃，哪些项目有回流或落地意愿，下一步该找谁、在哪里、怎么谈。</p>\n<h3 class=\"article-section\">一、先看几个数字</h3>\n<p>北美华人社群规模远超很多人的认知。加拿大华裔主要集中在 BC 和 Ontario 两省；美国华裔高度聚集在湾区、纽约、洛杉矶和西雅图等创新节点。美国 57% 的国际学生就读 STEM 专业，留学生群体既是青年人才入口，也是产业研究和回国发展项目的潜在供给。</p>\n<table class=\"article-table\"><thead><tr><th>指标</th><th>公开数据</th><th>观察意义</th></tr></thead><tbody><tr><td>加拿大华裔人口</td><td>171.6 万</td><td>华商、专业人士和青年人才资源在 BC 与 Ontario 两省高度集中。</td></tr><tr><td>美国华裔人口</td><td>545 万</td><td>湾区、纽约、洛杉矶、西雅图等节点形成高密度创新与产业网络。</td></tr><tr><td>美国国际学生</td><td>117.8 万</td><td>留学生群体是青年人才、科研创新与产业合作的重要入口。</td></tr><tr><td>其中中国学生</td><td>26.6 万</td><td>留学生回流、实习实践、就业匹配可与地方产业需求形成连接。</td></tr></tbody></table>\n<p>UNCTAD 数据显示，2023 年全球 FDI 下降 2%，发展中国家降幅更大，下降 7% 至 8670 亿美元。这意味着招商竞争已从“资源数量”转向“项目筛选质量”，单纯期待活动带来大量项目线索的模式正在失效。</p>\n<h3 class=\"article-section\">二、北美四个节点，资源画像各不相同</h3>\n<table class=\"article-table\"><thead><tr><th>节点</th><th>资源画像</th><th>适合切入方向</th></tr></thead><tbody><tr><td>湾区 / 硅谷<br>Bay Area / Silicon Valley</td><td>AI、自动驾驶、半导体、生命科学、VC 与连续创业者网络密集，华人工程师和创始人资源最为集中。</td><td>高技术回流项目、海外市场验证、双地研发合作。</td></tr><tr><td>西雅图<br>Seattle</td><td>云计算、企业软件、AI 应用、跨境电商，大厂工程师网络集中。</td><td>AI 企业服务、供应链数字化、青年人才实习项目。</td></tr><tr><td>多伦多 / 滑铁卢<br>Toronto-Waterloo</td><td>AI、金融科技、大学科研、工程人才密集，是 Startup Genome 2024 全球第 18 位创新生态节点。</td><td>AI 场景落地、生命健康、绿色技术合作。</td></tr><tr><td>温哥华<br>Vancouver</td><td>亚太门户，华裔人口比例高，清洁技术、专业服务和地产资源集中。</td><td>招商说明会、园区考察、华商资源登记启动节点。</td></tr></tbody></table>\n<h3 class=\"article-section\">三、五类产业方向，建议优先跟踪</h3>\n<table class=\"article-table\"><thead><tr><th>方向</th><th>重点观察</th><th>判断标准</th></tr></thead><tbody><tr><td>AI 与产业智能化</td><td>重点不在泛 AI 概念，而在能够进入本地产业场景的应用项目：制造业质检、医疗辅助、供应链预测、城市治理工具。</td><td>优先看是否有本地产业场景和可验证客户，而不是只看模型能力。</td></tr><tr><td>新能源与绿色产业</td><td>储能、充电、BIPV 光伏、园区节能和碳管理，适合与园区应用场景、公共采购和绿色基金结合。</td><td>首先评估是否具备可落地的应用场景，以及地方绿色产业政策是否与项目定位匹配。</td></tr><tr><td>生命健康与医疗科技</td><td>北美华人专业人士在生物医药、医疗器械和数字健康领域积累较深。</td><td>承接这类项目需同步评估注册审批、临床资源、产业基金支持、合规能力、客户网络和国际信任。</td></tr><tr><td>智能制造与新材料</td><td>海外华商可能掌握材料配方、工艺改进或海外客户网络。这类项目判断周期较长，但一旦匹配，产业黏性强。</td><td>重点看技术落地转化路径是否清晰，以及是否有本地中下游企业可以承接配套。</td></tr><tr><td>跨境专业服务</td><td>法律、会计、认证、渠道、投融资，本身就是其他项目落地的基础设施，不应被忽略。</td><td>建议优先纳入经审核的专业服务伙伴池，作为其他项目落地的支撑组合一并提供。</td></tr></tbody></table>\n<h3 class=\"article-section\">四、公开案例：可借鉴的跨境科创机制</h3>\n<p>以下为公开资料案例，用于说明跨境科创项目的常见机制，不代表 CSTEAC 与相关企业存在合作关系。</p>\n<table class=\"article-table\"><thead><tr><th>公开案例</th><th>机制启示</th></tr></thead><tbody><tr><td>某生命科学服务平台</td><td>创始人具备海外博士后及产业实践背景，2000 年代回国创业，最终建立覆盖亚洲、北美、欧洲的生命科学服务平台。启示：不要只看技术，要看合规能力、客户网络和国际信任。</td></tr><tr><td>小马智行（Pony.ai）</td><td>相关背景工程师 2016 年创立，业务横跨硬件制造与中国多个城市，依托地方政府开放测试道路和许可政策实现落地。启示：硬科技项目需要真实场景和长期监管配合，不是一次签约的事。</td></tr><tr><td>晶泰科技（XtalPi）</td><td>具备量子物理背景的国际科研团队，聚焦 AI 药物发现，结合中国工程化团队实现产业转化。启示：高水平人才项目更适合按“研发平台 + 场景 + 资本 + 产业客户”组合承接。</td></tr></tbody></table>\n<div class=\"article-callout\"><p>跨境科创项目往往不是简单“回流”，而是双总部、跨国研发、市场验证与供应链协同的组合。地方政府应看项目阶段，而不只看创始人背景。</p></div>\n<h3 class=\"article-section\">五、月度简报能提供什么</h3>\n<p>CSTEAC 拟围绕月度简报建立以下九项追踪维度：</p>\n<table class=\"article-table\"><tbody><tr><td>新增海外华商资源</td><td>来源节点分布</td></tr><tr><td>活跃产业方向</td><td>回流意向项目</td></tr><tr><td>出海需求企业</td><td>园区适配项目</td></tr><tr><td>政策支持需求</td><td>线下考察候选</td></tr><tr><td colspan=\"2\">实质对接进度</td></tr></tbody></table>\n<p>这不是为了出一份漂亮的 PPT，而是让招商部门每个月都能回答一个问题：</p>\n<div class=\"article-callout\"><p>这个月的资源池里，有几个项目值得真正跟进？</p></div>\n<h3 class=\"article-section\">六、项目分层样表：地方政府拿到后怎么用</h3>\n<p>月度简报提供的项目线索，建议按以下四类进行分层处理，避免资源平均分配、无人跟进。</p>\n<table class=\"article-table\"><thead><tr><th>分类</th><th>建议处理方式</th><th>判断标准</th></tr></thead><tbody><tr><td>A 类</td><td>可进入实质对接</td><td>项目方向明确、需求具体，有意进入平台对接或实地考察；优先安排闭门沟通或园区路演。</td></tr><tr><td>B 类</td><td>适合继续培育</td><td>项目有潜力但阶段较早，需先确认需求、政策匹配或进行风险识别；每季度进行状态更新。</td></tr><tr><td>C 类</td><td>适合活动展示</td><td>项目尚在早期或初步活跃，适合安排路演、圆桌交流，捕捉关注但暂不建议投入实质资源。</td></tr><tr><td>D 类</td><td>暂不建议投入招商资源</td><td>需求模糊、合作边界不清，或与地方产业方向匹配度较低；仅保留基础记录。</td></tr></tbody></table>\n<p>合作城市版月报将包含具体项目分层表、联系人状态和政策需求建议；公开版只呈现趋势观察与匿名化案例。</p>\n<h3 class=\"article-section\">七、写在最后</h3>\n<p>本期数据来源均为公开资料，包括 UNCTAD、Statistics Canada、IIE Open Doors、WIPO GII 2025 和 Startup Genome 2024 等权威报告。</p>\n<p>CSTEAC 的定位，不是替代地方招商部门，而是以中立学术机构的视角，把碎片化的人脉、活动报名和项目线索，整理成可评估、可跟进的合作路径。</p>\n<div class=\"article-callout\"><p>如您所在的城市、园区或机构希望了解定制版月报合作，欢迎随时联系我们：jasonliu@cste.org.cn ｜ csteac.org</p></div>\n<p>第一期正式版将于近期发布。</p>\n<h3 class=\"article-section\">数据口径说明</h3>\n<p>加拿大华裔人口：来自 2021 年人口普查（Statistics Canada），口径为“Chinese visible minority / Chinese origin”，包括单一华裔来源及双重身份者。</p>\n<p>美国华裔人口：来自美国社区调查（ACS 2022/2023），口径为“Chinese alone or in combination”，包含多重族裔认同者。</p>\n<p>美国国际学生：IIE Open Doors 2025，2024/25 学年数据，包含 OPT 学生及在读学生，具体口径请参阅原始报告。</p>\n<p>全球 FDI：UNCTAD World Investment Report 2024，数据反映 2023 年全年情况，发展中国家 FDI 下降 7% 至 8670 亿美元。</p>\n<p>创新节点排名：Startup Genome GSER 2024，全球创新生态报告，多伦多-滑铁卢排名第 18 位。</p>\n<p>公开案例均来自公开资料及公众可见信息，仅用于说明跨境科创项目机制，不代表 CSTEAC 与相关企业存在合作关系。</p>\n<p>本试刊号基于公开资料，不代表 CSTEAC 已确认的具体项目清单，不构成投资、法律或政策建议。</p>",
   "<p>加拿大电动环卫与电动专用车市场，目前仍是一块尚未被充分定义的“战略空白”。合规门槛确实存在，公共采购也不会因为价格低就轻易开门；但另一方面，绿色转型资金已经到位，市政和公共场景存在真实替换需求，关税与供应链规则也正在出现新的操作空间。</p>\n<p>对中国企业而言，这不是一个适合简单“卖车出海”的市场，却可能是一个适合通过“本地化闭环方案”建立长期壁垒的市场。评估它，不能只看今天有没有现成市占率，而要看三个问题：窗口有没有打开，资金有没有到位，路径能不能跑通。</p>\n<p>按这三个标准看，加拿大电动专用车市场值得尽快进入实质性验证阶段。</p>\n<h3 class=\"article-section\">01 市场是一片空白，但空白意味着定义权</h3>\n<p>在加拿大，与中国品牌有关的新能源商用车经验，主要集中在电动公交领域。比亚迪曾向多伦多交付车辆，也留下过关于本地化、可靠性、维护响应和公共采购信任的经验教训。这个案例真正提醒行业的，不是“北美市场做不成”，而是“只靠整车出口和价格优势，北美市场很难做长”。</p>\n<p>相比之下，电动校车、城市物流配送车、电动环卫车、道路清扫车、机场港口园区作业车等细分领域，目前在加拿大仍难看到中国品牌形成规模化落地。这种空白并不一定是坏事。它意味着本地渠道、技术标准、售后责任链和客户关系尚未被少数巨头完全锁死。</p>\n<p>谁能率先打通“合规准入 + 本地组装或改装 + 本地上装 + 售后运维 + 数据与保险责任”的链条，谁就有机会成为这个细分市场的早期规则定义者。早进场拿的是定义权，晚进场才是在成熟格局里争份额。</p>\n<h3 class=\"article-section\">02 需求不是画饼，公共资金已经在买单</h3>\n<p>判断一个出海市场是不是伪命题，最直接的指标是：桌面上有没有真实预算。加拿大绿色交通转型并不是停留在口号层面，联邦和公共金融体系已经为零排放商用车、电动公交和基础设施配置了大量资金。</p>\n<p>零排放公交基金（ZETF）规模为 27.5 亿加元，目标是支持采购最多 5,000 台零排放公交及校车，并建设相关基础设施。加拿大基础设施银行（CIB）也通过长期融资安排支持公交电动化项目，帮助地方政府以全生命周期成本节约来对冲前期购车溢价。</p>\n<p>中重型零排放车辆补贴（iMHZEV）则直接面向中重型车辆，单车补贴最高可达 20 万加元，已投入约 5.475 亿加元，预计支持约 2 万辆车辆。与此同时，联邦政策要求 2030 年中重型新车中零排放比例达到 35%，2040 年达到 100%；联邦自有商用车队也被要求在 2030 年新购中重型车中至少 40% 为零排放。</p>\n<p>更关键的是，目前加拿大中重型零排放车渗透率仍处低位。低渗透率意味着今天的竞争并不是在高度成熟的存量市场里刺刀见红，而是在替换曲线刚刚抬头时抢占样板、数据和信任。</p>\n<h3 class=\"article-section\">03 关税与规则不是死局，但“整车硬运”不是最优解</h3>\n<p>很多企业一听到加拿大曾对中国电动车加征高额关税，就直接打退堂鼓。但从 2026 年以来的公开政策和贸易动态看，中加之间围绕电动车、农产品和产业合作的谈判已经出现松动迹象，部分中国制造电动车在一定额度内获得较低税率进入加拿大市场的空间。</p>\n<p>不过必须保持谨慎和客观：当前公开讨论较多的配额与关税调整，主要覆盖乘用车、客车和卡车等类别，环卫专用车、道路清扫车等 HS 8705 专用车辆是否被纳入，仍需逐项核验。不能把乘用车或普通卡车的政策口径，简单套到专用车上。</p>\n<p>但这并不意味着此路不通，反而说明“整车硬上”从来就不是最优解。真正适合北美市场的打法，是把供应链拆开，把底盘、上装、改装、合规、售后、数据和责任边界分别设计，再用本地化方案解决关税、公共采购和信任问题。</p>\n<h3 class=\"article-section\">04 最优破局解：不卖单车，卖本地化闭环方案</h3>\n<p>把政策、资金、采购逻辑和合规门槛放在一起看，一条更现实的路径已经浮现：不要把加拿大当作单纯出口市场，而要把它当作本地化验证市场。</p>\n<p>第一步，是车辆来源和制造方式的重构。企业可以借鉴北美新能源商用车的经验，评估 SKD/CKD、本地组装、本地上装或与加拿大改装厂合作的方式，降低关税和公共采购障碍，同时更好满足本土化要求。</p>\n<p>第二步，是从样板场景切入，而不是一开始就冲市政大标。机场、港口、大学、工业园区、物流园、封闭园区和半公共作业场景，路线固定、回库充电便利、采购链条相对短，是最适合电动清扫车、垃圾收运车和专用作业车做首批验证的场景。</p>\n<p>第三步，是用真实运营数据换取信任。一两台样板车先跑出一个季度甚至半年的能耗、故障率、维护成本、充电效率、司机反馈和噪音收益，再带着数据进入正式市政招标，比单纯拿产品册和价格表更有说服力。</p>\n<p>在北美商业语境里，低价只能换来第一次会面；长期采购需要的是完整责任链。谁能把进口、改装、认证、保险、备件、培训、售后、数据合规和融资安排打包成可信方案，谁才真正拿到高壁垒入场券。</p>\n<h3 class=\"article-section\">05 环卫与专用车为什么适合先做</h3>\n<p>电动环卫和专用车看似小众，但它们具备几个非常适合中国企业切入的特征。</p>\n<p>首先，作业路线固定，天然适合电动化。垃圾收运、道路清扫、园区巡检、机场地勤等场景大多有固定线路、固定班次和固定回库点，充电组织难度低于长途货运。</p>\n<p>其次，低噪音和低排放收益容易被公共部门感知。环卫车辆往往在居民区、学校、医院、商业区和市中心运行，电动化带来的噪音下降、尾气减少和城市形象提升，很容易成为市政采购的非价格理由。</p>\n<p>第三，单车价值高，客户数量不必巨大。含上装的电动环卫或专用车辆单车价值往往可达数十万甚至更高加元。对企业来说，它不需要一开始铺设大规模零售渠道，更适合以“一个样板城市、一套运维方案、一个细分场景”逐步复制。</p>\n<h3 class=\"article-section\">结语：空白不是劝退理由，而是入场邀请函</h3>\n<p>出海最好的时机，往往不是市场已经卷成红海、人人都能看懂的时候；而是规则刚刚理顺、资金已经到位、客户需求开始显性化，而场子里还没有形成既定秩序的时候。</p>\n<p>加拿大电动环卫与专用车市场，正处在这样一个临界点。它不是没有门槛，而是门槛还没有被少数玩家垄断；它不是没有风险，而是风险可以通过本地化闭环方案逐项拆解。</p>\n<p>对中国企业来说，下一步不是空谈“加拿大市场很大”，而是把每一块合规砖头标清楚，把第一台样板车稳稳落进真实本地场景里。空白，从来不是劝退的理由；在产业出海的早期阶段，空白往往正是最好的入场邀请。</p>\n<h3 class=\"article-section\">附录：加拿大电动商用 / 专用车市场容量分析</h3>\n<p>数据源主要参考加拿大基础设施部、交通部、自然资源部、Statistics Canada 及公开行业资料；标注“估算”的细分市场容量，需在具体项目启动前进一步以官方、招标和本地访谈数据核验。</p>\n<p>1. 政策资金盘：公共财政直接放大需求</p>\n<table class=\"article-table\"><thead><tr><th>资金 / 计划</th><th>盘子规模</th><th>核心用意与战略含义</th></tr></thead><tbody><tr><td>零排放公交基金（ZETF）</td><td>27.5 亿加元（2021-2026）</td><td>支持采购最多 5,000 台零排放公交/校车及配套基建。</td></tr><tr><td>加拿大基础设施银行（CIB）</td><td>15 亿加元公交电动化融资安排</td><td>通过长期融资和全生命周期成本节约，对冲地方政府前期采购压力。</td></tr><tr><td>中重型零排放车补贴（iMHZEV）</td><td>单车最高 20 万加元；已投入约 5.475 亿加元</td><td>覆盖部分油电差价，预计支持约 2 万辆中重型车辆。</td></tr></tbody></table>\n<p>2. 存量与渗透率：高陡峭度的替换曲线</p>\n<table class=\"article-table\"><thead><tr><th>细分领域</th><th>存量现状</th><th>电动渗透与替换空间</th></tr></thead><tbody><tr><td>公共交通巴士</td><td>全国约 20,000 台（行业口径）</td><td>电动化已启动，但仍有大量替换空间；适合观察公共采购机制。</td></tr><tr><td>中重型车辆整体</td><td>2024 年零排放渗透率约 1.4%</td><td>2030/2040 零排放目标驱动，属于政策牵引型增量市场。</td></tr><tr><td>垃圾收运车</td><td>数千至 1 万台级（估算）</td><td>传统年更新率叠加绿色KPI，年潜在电动化空间可达数百台量级。</td></tr><tr><td>道路清扫车</td><td>数百至千余台级（估算）</td><td>路线固定、低噪音收益明显，是最适合做样板试点的先导车型。</td></tr><tr><td>封闭园区作业车</td><td>机场/港口/大学/工业园等分散场景</td><td>高频回库充电、采购链条短，适合作为中国品牌第一入口。</td></tr></tbody></table>\n<p>3. 量级判断</p>\n<p>环卫与专用车看似是年需求以百台计的小众市场，但单车价值高、政府资金托底、绿色KPI明确、早期竞争不足，具备“高价值、低拥挤、强场景约束”的特征。它并不适合一开始铺全国渠道，而更适合采用“主攻一个样板城市 - 跑通一套责任链方案 - 全加逐步复制”的精益路线。</p>",
   "<div class=\"article-callout\"><p>回流不是&quot;失败&quot;，更不是&quot;不得不回&quot;。越来越多留学生将其视为职业路径的第二阶段——先拿海外经历，再回国换赛道、换城市、换平台。关键在于：怎么把那段经历，变成中国市场真正认可的价值。</p></div>\n<h3 class=\"article-section\">一、宏观趋势：海归回流规模创新高</h3>\n<p>教育部涉外监管信息网数据显示，2025 年我国留学回国人数达 53.56 万，较 2024 年增加 4.06 万，较 2023 年增加 12 万；1978–2025 年累计已有 698 万人在完成学业后回国发展。</p>\n<p>智联招聘《2024 中国海归就业调查报告》显示，2025 年应届留学生回国求职规模同比增长 12%，创近八年新高。海归流向正发生结构性转变——从传统的教育、咨询等领域，快速转向：</p>\n<ul class=\"article-list\">\n<li>新材料（投递增速 +87.3%）</li>\n<li>光电子与机器人（+74.3%）</li>\n<li>人工智能（+35.1%）</li>\n</ul>\n<p>新东方 2026 报告显示，42% 的意向留学生更倾向&quot;先在留学地工作一段时间再回国&quot;，27% 选择&quot;毕业后马上回国就业&quot;，&quot;最终归国就业&quot;意向高达 88%。这说明：回流与留加并不对立，往往是同一条路的前后两段。</p>\n<p>海归优先岗位平均招聘月薪：15,440 元（智联招聘 2024）；海归首份工作实际平均月薪约 1.3 万元，平均期望月薪约 2 万元（新东方 2026）。</p>\n<h3 class=\"article-section\">二、三大赛道融入指南</h3>\n<h3 class=\"article-section\">赛道一：产业赛道——把技术落到场景里</h3>\n<p>国内产业优势在于海量应用场景，而非炫技。产业升级使具备技术背景与国际视野的复合型海归需求旺盛。</p>\n<ul class=\"article-list\">\n<li>找准行业：进入科技巨头（腾讯、字节）或制造业领军企业（格力）的技术研发或国际化业务部门</li>\n<li>&quot;翻译&quot;经历：将海外经历具象化为可量化成果，例如&quot;通过重构 XX 模块，将系统并发处理能力提升 50%&quot;</li>\n<li>理解招聘周期：秋招通常在前一年 7–11 月，2026 年 6 月毕业需在 2025 年秋季启动投递</li>\n</ul>\n<h3 class=\"article-section\">赛道二：科研赛道——抓住&quot;蓄水池&quot;窗口期</h3>\n<p>地缘政治&quot;推力&quot;与国内研发投入&quot;拉力&quot;交织，科研人才回流成为理性选择。</p>\n<ul class=\"article-list\">\n<li>经费基础：2024 年中国 R&amp;D 经费突破 3.6 万亿元；2025 年研发投入强度达 2.8%，首超 OECD 均值</li>\n<li>加入载体：头部高校、新兴科研院所（如上海数学院）、企业研究院（华为、腾讯 AI Lab）</li>\n<li>政策红利：&quot;K 签证&quot;降低科技人才回流门槛；博士后可进入国内高校博士后科研流动站，享受专项支持</li>\n</ul>\n<p>在科研赛道，国内关系网络和导师推荐远比&quot;正式申请渠道&quot;更重要——海归博士需在读期间主动建立国内学术联系，不要等毕业后才开始。</p>\n<h3 class=\"article-section\">赛道三：创业赛道——善用政策杠杆</h3>\n<p>关键在于进入国家扶持海归创业的政策生态和产业园区网络。</p>\n<ul class=\"article-list\">\n<li>政策红利：凭专利、科研成果创办企业，可享受创业担保贷款、一次性补贴及留创园场地、财税优惠</li>\n<li>产业生态圈：苏州 BioBay、上海张江药谷已聚集上百家海归科学家创立的企业</li>\n<li>发力方向：传统产业数字化转型，特别是用 AI、大数据改造钢铁、农业等&quot;工业的粮食&quot;</li>\n<li>国家支持：10 部门《意见》明确&quot;举办创新创业大赛，为留学回国人才创新创业搭建平台&quot;</li>\n</ul>\n<h3 class=\"article-section\">三、竞赛与论文：差异化竞争的利器</h3>\n<table class=\"article-table\"><thead><tr><th>赛道</th><th>竞赛权重</th><th>论文权重</th><th>说明</th></tr></thead><tbody><tr><td>互联网技术岗</td><td>高（可替代实习）</td><td>中高</td><td>2025 年字节算法岗 85% offer 获得者有顶会论文或竞赛金牌</td></tr><tr><td>科研 / 学术岗</td><td>低</td><td>极高</td><td>普遍要求 1 篇顶会或 2 篇高质量期刊；CVPR/ICML 认可度高于 SCI</td></tr><tr><td>创业赛道</td><td>中</td><td>低</td><td>Kaggle/天池 前 10% 排名，证明力不亚于论文</td></tr></tbody></table>\n<p>计算机领域：有竞赛经历的候选人通过简历筛选的概率高 40%–60%。（行业调查数据）</p>\n<h3 class=\"article-section\">四、典型专业中加薪酬对比</h3>\n<table class=\"article-table\"><thead><tr><th>专业</th><th>加拿大年收入中位数</th><th>中国对标行业年薪参考</th><th>研判</th></tr></thead><tbody><tr><td>STEM</td><td>本科 52,000 加元 / 硕士 70,000 加元 / 博士 83,000 加元</td><td>IT 非私营年均 238,966 元；科研服务 175,425 元</td><td>留加利于走 CEC；回国更容易对接 AI、制造、出海和研发岗</td></tr><tr><td>商科</td><td>本科约 52,000 加元（粗略参考）</td><td>海归优先岗平均月薪 15,440 元；金融非私营年均 201,883 元</td><td>回国行业入口更宽；留加常见&quot;先做销售/行政再跳槽&quot;路径</td></tr><tr><td>人文社科</td><td>整体本科约 52,000 加元（可比口径有限）</td><td>教育非私营年均 126,185 元；私营 60,719 元</td><td>若加拿大本地 network 不强，回国往往更容易形成相对优势</td></tr></tbody></table>\n<p>表注：中加数据口径不完全一致，加拿大收入参考 Statistics Canada 2023 国际毕业生调查，中国收入参考 NBS 2024 年工资数据及智联招聘海归调查。一线及新一线城市、外企或高成长民企可高于均值。</p>\n<h3 class=\"article-section\">五、回国求职必做清单</h3>\n<table class=\"article-table\"><thead><tr><th>事项</th><th>关键说明</th></tr></thead><tbody><tr><td>学历认证</td><td>立即办理教育部留服中心学历认证。考公、进企业必备，周期 10–20 个工作日</td></tr><tr><td>应届生身份认定</td><td>国考规定：2024 年 1 月至面试前取得学位且未落实工作者可报应届岗；企业校招通常放宽至毕业前一年至后一年半内</td></tr><tr><td>求职时间线</td><td>秋招在前一年 7–11 月，2026 年 6 月毕业需在 2025 年秋季启动投递，切勿错过窗口</td></tr><tr><td>简历本土化</td><td>&quot;动词 + 工作内容 + 量化成果&quot;句式；避免英文直译；附正式中文证件照</td></tr><tr><td>目标城市确定</td><td>除北上深广，杭州、成都、重庆、苏州等新一线吸引力持续增强</td></tr><tr><td>人脉与内推</td><td>主动联系校友、参加宣讲会、加入行业社群——一次有效内推可让简历绕过残酷的初筛</td></tr><tr><td>政策红利核查</td><td>《关于进一步做好留学人才回国服务工作的意见》（2024 年底）已将海归纳入统一就业支持体系；各城市人才补贴、落户政策差异较大，提前研究</td></tr></tbody></table>\n<h3 class=\"article-section\">结语</h3>\n<p>国内正处于&quot;新质生产力&quot;驱动的产业升级期，对掌握前沿技术且具备国际视野的复合型人才需求旺盛。融入的关键在于&quot;翻译&quot;能力——把留学经历转化为国内企业认可的、可衡量的价值。</p>\n<p>海归身份的溢价，正在从&quot;身份溢价&quot;转向&quot;能力溢价&quot;。最重要的不是说&quot;我在加拿大读过书&quot;，而是能否把经历改写成市场能听懂的语言。</p>\n<p>以你之所学与国家所需同频共振——这是中国留学生回国发展最根本、也最有效的策略。</p>\n<div class=\"article-callout\"><p>【姊妹篇】：加拿大留学生毕业后如何&quot;留下来&quot;？</p></div>\n<p>本文数据来源：教育部涉外监管信息网、智联招聘《2024 中国海归就业调查报告》、新东方 2026 中国学生出国留学发展报告、国家统计局 2024 年工资数据。数据截止 2026 年 6 月。</p>",
   /* Micron AI memory cycle 2026-06-24 */ "<div class=\"article-callout\"><p>这不是一次普通的周期反弹。AI带来的需求、HBM对产能的挤占、长期客户协议的出现，正在把美光从传统周期型存储厂商，推向一个供应更紧、价格更稳、客户绑定更深的新阶段。</p></div>\n<p>6月24日，美光科技发布2026财年第三季度业绩。</p>\n<p>这份财报最大的看点，不只是收入和利润大幅超预期，而是它透露出一个更重要的行业信号：AI正在重塑整个存储芯片行业。</p>\n<p>过去，DRAM和NAND更像典型周期品，价格随供需波动剧烈起落。但现在，美光给出的判断是：AI带来的需求并不是短期行情，而是正在改变存储产业的商业模式、供应结构和客户关系。</p>\n<h3 class=\"article-section\">一、业绩全面刷新纪录</h3>\n<p>美光2026财年第三季度收入达到414.6亿美元，环比增长74%，同比增长346%。</p>\n<table class=\"article-table\"><thead><tr><th>指标</th><th>FQ3 2026表现</th></tr></thead><tbody><tr><td>总收入</td><td>414.6亿美元，环比增长74%，同比增长346%</td></tr><tr><td>DRAM收入</td><td>313.3亿美元，占总收入76%</td></tr><tr><td>NAND收入</td><td>99.4亿美元，占总收入24%</td></tr><tr><td>非GAAP毛利率</td><td>84.9%</td></tr><tr><td>非GAAP净利润</td><td>288.6亿美元</td></tr><tr><td>摊薄每股收益</td><td>25.11美元</td></tr></tbody></table>\n<p>更值得注意的是，美光给出的下一季度指引同样强劲：FQ4收入预计约500亿美元，毛利率约86%，每股收益约31美元。这意味着，存储芯片的景气度仍在继续上行。</p>\n<h3 class=\"article-section\">二、AI数据中心成为最大引擎</h3>\n<p>美光强调，AI正在推动数据中心需求爆发。其数据中心相关收入在本季度已经超过250亿美元，按年化计算，相当于超过1000亿美元的收入规模。</p>\n<p>其中，数据中心SSD收入超过50亿美元，环比增长超过一倍。</p>\n<p>背后的原因很直接：AI系统不只需要GPU，也需要更高带宽、更大容量、更低延迟、更低功耗的内存和存储系统。</p>\n<p>无论是GPU、ASIC还是CPU架构，最终都离不开一个共同点：AI系统性能越来越依赖内存子系统的性能和容量。</p>\n<p>这也是为什么HBM、高容量DDR、服务器DRAM、数据中心SSD等产品正在成为新一轮产业竞争的核心。</p>\n<h3 class=\"article-section\">三、供给紧张可能持续到2027年之后</h3>\n<p>美光对行业供需的判断非常明确：DRAM和NAND的紧张状态将持续到2027年之后。</p>\n<p>原因不只是需求太强，也包括供给端扩张越来越难。美光提到，存储行业扩产受到多重限制：新建晶圆厂周期长、洁净室空间有限、关键工种劳动力短缺、许可审批复杂、能源基础设施要求提高、新制程技术复杂度持续上升。</p>\n<p>特别是HBM，每一代产品的制造复杂度和资源占用都在提高，这会进一步压缩非HBM产品的供给弹性。</p>\n<p>换句话说，这轮上涨不是简单的“涨价周期”，而更像是存储产业进入了一个结构性紧平衡阶段。</p>\n<h3 class=\"article-section\">四、16份长期客户协议，改变周期品逻辑</h3>\n<p>这份财报里最值得关注的一点，是美光宣布已经签署16份战略客户协议，覆盖数据中心、消费电子、汽车等市场。</p>\n<p>美光表示，这些协议通常为期五年，从2026年持续到2030年底；汽车相关协议一般为三年。已签署协议覆盖约20%的DRAM出货量，以及约三分之一的NAND出货量。</p>\n<p>更关键的是，这些协议多为take-or-pay结构，也就是客户承诺在多年周期内购买特定数量的产品。</p>\n<p>美光还披露，其中14份协议按最低价格计算，剩余协议期内累计收入约1000亿美元；同时，公司预计将获得220亿美元的现金押金和相关财务承诺。</p>\n<div class=\"article-callout\"><p>对客户来说，这是锁定关键供应；对美光来说，这是锁定未来收入、利润率和现金流。</p></div>\n<p>这意味着，美光正在把传统周期型生意，部分转化为长期绑定、可预期性更强的供应合同模式。</p>\n<h3 class=\"article-section\">五、AI不只在云端，也在终端、汽车和机器人</h3>\n<p>美光对未来需求的描述并不局限于数据中心。</p>\n<p>在PC和手机领域，美光认为，虽然短期终端出货量可能下降，但高端设备占比提升、端侧AI功能增强，会继续推高单机存储价值量。</p>\n<p>在汽车领域，ADAS和自动驾驶是重要驱动力。美光提到，L2+及以上级别车辆的内存和存储含量，是普通汽车的五倍以上。今年这类车型占比预计超过20%，到2030年有望超过40%。</p>\n<p>在机器人领域，美光给出了更具想象力的判断：人形机器人的内存用量可能达到普通L2+汽车的10倍。</p>\n<p>如果物理AI、机器人和自动驾驶在本十年后半段进入加速期，存储芯片将迎来一个跨越多个终端场景的长期需求周期。</p>\n<h3 class=\"article-section\">六、美光正在加速扩产，但仍保持克制</h3>\n<p>面对客户需求，美光正在推进全球制造布局。</p>\n<p>包括爱达荷州ID1晶圆厂预计2027年中开始首片晶圆产出，ID2预计2028年底启动；纽约新厂集群已于今年1月破土动工；弗吉尼亚Manassas工厂启动1-alpha DDR4生产；台湾铜锣基地预计2027年中实现有意义出货；新加坡将成为HBM先进封装能力的重要中心，预计2027年上半年开始贡献产能。</p>\n<p>同时，美光还与ASML签署多年EUV供应协议，为未来DRAM节点升级做准备。</p>\n<p>不过，美光也强调会保持资本开支纪律，根据市场环境调整供给节奏。2026财年全年资本开支预计约270亿美元，FQ4单季资本开支预计约100亿美元。</p>\n<h3 class=\"article-section\">结语：存储芯片的估值逻辑正在变化</h3>\n<p>美光这份财报释放的信号非常清楚：AI对存储芯片的拉动，已经从单纯的价格上涨，进入到更深层的产业重构。</p>\n<p>过去，市场看存储，主要看周期底部和价格反弹。现在，可能还要看三件事：谁能掌握HBM和高端DRAM的技术节奏；谁能拿到长期客户锁量协议；谁能在全球扩产、封装、供应链安全之间取得平衡。</p>\n<p>AI时代不只是GPU的故事。当模型越来越大、推理越来越多、终端越来越智能，内存和存储正在从“配套零部件”，变成AI基础设施的核心战略资产。</p>\n<p>而美光这份财报，正是这个变化的一个强烈信号。</p>",
@@ -2595,6 +3105,42 @@ function parseListingDate(dateText) {
   return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3])).getTime();
 }
 
+function normalizeInsightCategories() {
+  var zhLabels = {
+    market: '中企出海',
+    merchant: '华商回流',
+    talent: '青年英才',
+    research: '综合观察'
+  };
+  var enLabels = {
+    market: 'Chinese Globalization',
+    merchant: 'Diaspora Return',
+    talent: 'Young Talent',
+    research: 'Strategic Briefs'
+  };
+  function pickCategory(item) {
+    var title = (item.title || '');
+    var desc = (item.desc || '');
+    var cat = (item.cat || '');
+    var text = title + ' ' + desc + ' ' + (item.catLabel || '') + ' ' + (item.alt || '');
+    if (/中企出海2026路线图/.test(title)) return 'market';
+    if (/94%的中国留学生选择回流/.test(title)) return 'talent';
+    if (/美光|Micron|次世代光触媒|光触媒|禽流感|C-12|Bill C-12|PGWP|移民|庇护|工签|学签|毕业后如何.*留下来|How Can International Students Stay/.test(text)) return 'research';
+    if (/美伊|中欧|经济转型|地缘|常态化|财报|存储芯片|AI 正在把存储芯片|Token经济学|新生产函数/.test(text)) return 'research';
+    if (/全球华商|华商回流|华商资源|侨商|招商|园区|回流创业|时代迁徙|地方政府/.test(text)) return 'merchant';
+    if (/海归融入|背景提升|实习|就业匹配|求职|职业生态|青年英才|青年人才/.test(text)) return 'talent';
+    if (cat === 'ev' || cat === 'bipv') return 'market';
+    if (/出海|加拿大市场|进入加拿大|电动|EV|氢能|BIPV|数字健康|中医药|绿电|供应链|农业合作|目的地/.test(text)) return 'market';
+    return 'research';
+  }
+  listings.forEach(function(item, idx) {
+    var next = pickCategory(item);
+    item.cat = next;
+    item.catLabel = zhLabels[next];
+    if (typeof listingsEn !== 'undefined' && listingsEn[idx]) listingsEn[idx].catLabel = enLabels[next];
+  });
+}
+
 function sortListingsByDate() {
   var combined = listings.map(function(item, idx) {
     return {
@@ -2617,6 +3163,7 @@ function sortListingsByDate() {
   }
 }
 
+normalizeInsightCategories();
 sortListingsByDate();
 
 var _prevPage = 'listings';
@@ -2717,6 +3264,49 @@ renderListings('all');
       </div>
     </div>
   </div>
+
+<!-- Entry Detail Form Modal -->
+<div id="entry-modal" class="entry-modal" aria-hidden="true">
+  <div class="entry-modal-panel" role="dialog" aria-modal="true" aria-labelledby="entry-modal-title">
+    <div class="entry-modal-head">
+      <div>
+        <h3 id="entry-modal-title">专项需求表</h3>
+        <p id="entry-modal-subtitle">请填写以下信息，CSTEAC 将据此进行初步评估与分流。</p>
+      </div>
+      <button type="button" class="entry-modal-close" aria-label="关闭" onclick="closeEntryForm()">×</button>
+    </div>
+    <div class="entry-modal-body">
+      <form id="entry-detail-form" action="https://formsubmit.co/dukecc@qq.com" method="POST" onsubmit="submitEntryForm(event)">
+        <input type="hidden" name="_subject" value="CSTEAC platform entry inquiry">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" id="entry-interest" name="entry_interest" value="">
+        <div class="entry-form-table">
+          <div class="entry-field-row">
+            <label for="entry-name">联系人 *</label>
+            <input id="entry-name" name="name" required placeholder="姓名 / Name">
+          </div>
+          <div class="entry-field-row">
+            <label for="entry-email">邮箱 *</label>
+            <input id="entry-email" name="email" type="email" required placeholder="your@email.com">
+          </div>
+          <div class="entry-field-row">
+            <label for="entry-phone">电话 / 微信</label>
+            <input id="entry-phone" name="phone" placeholder="+1 / 微信号">
+          </div>
+          <div class="entry-field-row">
+            <label for="entry-org">机构 / 学校</label>
+            <input id="entry-org" name="organization" placeholder="企业、政府/园区、学校或个人身份">
+          </div>
+        </div>
+        <div id="entry-dynamic-fields" class="entry-form-table"></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交专项需求</button>
+        <div class="entry-modal-success" id="entry-modal-success">✓ 已提交。我们将在 1-2 个工作日内与您联系。</div>
+      </form>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
 
