@@ -1452,7 +1452,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
     <div class="container">
       <div class="section-header">
         <span class="label xi18n" data-zh="政府合作工具" data-en="Government Cooperation Tool">政府合作工具</span>
-        <h2 class="xi18n" data-zh="不是 App，而是可决策的项目仪表盘" data-en="Not an app, but a decision-ready project dashboard">不是 App，而是可决策的项目仪表盘</h2>
+        <h2 class="xi18n" data-zh="不是 App，而是可供决策参考的项目仪表盘" data-en="Not an app, but a decision-ready project dashboard">不是 App，而是可供决策参考的项目仪表盘</h2>
         <p class="xi18n" data-zh="面向合作城市与园区，CSTEAC 更适合提供定期更新的项目仪表盘与月度简报，帮助地方政府识别海外华商资源、筛选可落地项目，并安排后续对接、考察与政策支持。" data-en="For partner cities and industrial parks, CSTEAC is better positioned to provide a regularly updated project dashboard and monthly brief, helping local governments identify overseas Chinese business resources, screen landing-ready projects, and plan follow-up matching, visits, and policy support.">面向合作城市与园区，CSTEAC 更适合提供定期更新的项目仪表盘与月度简报，帮助地方政府识别海外华商资源、筛选可落地项目，并安排后续对接、考察与政策支持。</p>
       </div>
       <div class="gov-dashboard">
@@ -2801,6 +2801,8 @@ function openEntryForm(key) {
   document.getElementById('entry-modal-title').textContent = cfg.title;
   document.getElementById('entry-modal-subtitle').textContent = cfg.subtitle;
   document.getElementById('entry-interest').value = cfg.title;
+  var subject = document.getElementById('entry-subject');
+  if (subject) subject.value = 'CSTEAC platform entry inquiry - ' + cfg.title;
   fields.innerHTML = cfg.fields.map(function(f) {
     var label = f[0], name = f[1], type = f[2], spec = f[3];
     var input = '';
@@ -3279,7 +3281,7 @@ renderListings('all');
     </div>
     <div class="entry-modal-body">
       <form id="entry-detail-form" action="https://formsubmit.co/ajax/dukecc@qq.com" method="POST" onsubmit="submitEntryForm(event)">
-        <input type="hidden" name="_subject" value="CSTEAC platform entry inquiry">
+        <input type="hidden" id="entry-subject" name="_subject" value="CSTEAC platform entry inquiry">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" id="entry-interest" name="entry_interest" value="">
         <div class="entry-form-table">
