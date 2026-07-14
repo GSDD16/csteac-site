@@ -815,6 +815,34 @@ p { color: var(--body-text); line-height: 1.75; }
 .footer-social a:hover { background: var(--gold); color: var(--white); border-color: var(--gold); }
 .footer-social svg { width: 15px; height: 15px; }
 
+/* ── PARTNERS NETWORK ────────────────────────────────────── */
+.partners-section { background: var(--white); }
+.partners-intro { max-width: 760px; }
+.partner-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+.partner-card {
+  min-height: 188px; padding: 24px; border: 1px solid var(--border); border-radius: var(--radius-lg);
+  background: var(--white); display: flex; flex-direction: column; color: inherit;
+  box-shadow: 0 6px 22px rgba(17,35,58,.05); transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+a.partner-card:hover { transform: translateY(-3px); border-color: rgba(14,122,117,.4); box-shadow: 0 12px 30px rgba(17,35,58,.1); }
+.partner-card-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+.partner-mark {
+  width: 54px; height: 54px; flex: 0 0 54px; border-radius: 14px; display: grid; place-items: center;
+  background: linear-gradient(145deg,var(--navy),#245675); color: var(--white); font-weight: 800; font-size: 16px; letter-spacing: .03em;
+}
+.partner-mark.gold { background: linear-gradient(145deg,#9a7428,var(--gold-light)); }
+.partner-mark.teal { background: linear-gradient(145deg,#075e5a,var(--teal)); }
+.partner-name { min-width: 0; }
+.partner-name h3 { font-size: 17px; line-height: 1.42; margin: 0 0 6px; color: var(--dark-text); }
+.partner-tag { color: var(--teal); font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.partner-card p { color: var(--body-text); font-size: 13px; line-height: 1.7; margin: auto 0 0; }
+.partner-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 14px; color: var(--teal); font-size: 12px; font-weight: 700; }
+.partner-disclaimer {
+  margin-top: 28px; padding: 18px 20px; border-left: 3px solid var(--gold); border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--off-white); color: var(--body-text); font-size: 13px; line-height: 1.75;
+}
+.partner-actions { margin-top: 28px; display: flex; justify-content: center; }
+
 /* ── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 960px) {
   nav, .btn-nav, .header-inner > .lang-switch { display: none; }
@@ -835,6 +863,7 @@ p { color: var(--body-text); line-height: 1.75; }
   .trust-sep { display: none; }
   .form-row { grid-template-columns: 1fr; }
   .gov-kpi-grid { grid-template-columns: 1fr 1fr; }
+  .partner-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 @media (max-width: 600px) {
   .hero { min-height: auto; }
@@ -846,6 +875,7 @@ p { color: var(--body-text); line-height: 1.75; }
   .hero-actions { flex-direction: column; }
   .cta-actions { flex-direction: column; align-items: center; }
   .gov-kpi-grid { grid-template-columns: 1fr; }
+  .partner-grid { grid-template-columns: 1fr; }
 }
 
   /* Article detail page */
@@ -1166,6 +1196,85 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
       <div style="text-align:center;margin-top:40px;">
         <button class="btn btn-primary" id="home-svc-btn" onclick="showPage('services')">了解全部工作方向 →</button>
       </div>
+    </div>
+  </section>
+
+  <!-- Partnership Network -->
+  <section class="section partners-section" id="partners-network">
+    <div class="container">
+      <div class="section-header partners-intro">
+        <span class="label xi18n" data-zh="合作网络" data-en="Partnership Network">合作网络</span>
+        <h2 class="xi18n" data-zh="以专业连接推动务实合作" data-en="Professional connections for practical cooperation">以专业连接推动务实合作</h2>
+        <p class="xi18n" data-zh="CSTEAC 与学术研究机构、产业与技术企业、专业服务机构及社区伙伴保持交流与合作，共同推动知识分享、产业连接与跨境项目实践。" data-en="CSTEAC maintains exchanges and cooperation with academic institutions, industry and technology companies, professional service providers, and community partners to advance knowledge sharing, industry connections, and cross-border project practice.">CSTEAC 与学术研究机构、产业与技术企业、专业服务机构及社区伙伴保持交流与合作，共同推动知识分享、产业连接与跨境项目实践。</p>
+      </div>
+
+      <div class="partner-grid">
+        <a class="partner-card" href="https://www.cste.org.cn/" target="_blank" rel="noopener noreferrer">
+          <div class="partner-card-top"><div class="partner-mark">CSTE</div><div class="partner-name"><h3 class="xi18n" data-zh="中国技术经济学会" data-en="Chinese Society of Technology Economics">中国技术经济学会</h3><span class="partner-tag xi18n" data-zh="学术组织" data-en="Academic Organization">学术组织</span></div></div>
+          <p class="xi18n" data-zh="技术经济领域的全国性学术组织，为代表处提供学术体系与专业网络基础。" data-en="A national academic organization in techno-economics and the academic and professional network foundation of the Representative Office.">技术经济领域的全国性学术组织，为代表处提供学术体系与专业网络基础。</p><span class="partner-link xi18n" data-zh="访问官网 ↗" data-en="Visit website ↗">访问官网 ↗</span>
+        </a>
+        <a class="partner-card" href="https://www.sppm.tsinghua.edu.cn/yjjg/xjyjjg/qhdxtrzzcyjzx.htm" target="_blank" rel="noopener noreferrer">
+          <div class="partner-card-top"><div class="partner-mark">THU</div><div class="partner-name"><h3 class="xi18n" data-zh="清华大学投融资政策研究中心" data-en="Tsinghua University Research Center for Investment and Financing Policy">清华大学投融资政策研究中心</h3><span class="partner-tag xi18n" data-zh="学术研究" data-en="Academic Research">学术研究</span></div></div>
+          <p class="xi18n" data-zh="聚焦投融资政策、公共治理与相关领域的研究交流。" data-en="Focused on research exchange in investment and financing policy, public governance, and related fields.">聚焦投融资政策、公共治理与相关领域的研究交流。</p><span class="partner-link xi18n" data-zh="访问官网 ↗" data-en="Visit website ↗">访问官网 ↗</span>
+        </a>
+        <a class="partner-card" href="https://www.hiom.ac.cn/sh/pages/index" target="_blank" rel="noopener noreferrer">
+          <div class="partner-card-top"><div class="partner-mark">HIOM</div><div class="partner-name"><h3 class="xi18n" data-zh="杭州光学精密机械研究所" data-en="Hangzhou Institute of Optics and Fine Mechanics">杭州光学精密机械研究所</h3><span class="partner-tag xi18n" data-zh="科研机构" data-en="Research Institute">科研机构</span></div></div>
+          <p class="xi18n" data-zh="围绕光学、精密机械及科技成果转化开展专业交流。" data-en="Professional exchange in optics, precision mechanics, and the commercialization of scientific and technological achievements.">围绕光学、精密机械及科技成果转化开展专业交流。</p><span class="partner-link xi18n" data-zh="访问官网 ↗" data-en="Visit website ↗">访问官网 ↗</span>
+        </a>
+
+        <a class="partner-card" href="https://easy-bs.co.jp/" target="_blank" rel="noopener noreferrer">
+          <div class="partner-card-top"><div class="partner-mark teal">EBS</div><div class="partner-name"><h3 class="xi18n" data-zh="EBS 株式会社" data-en="Easy Business Solutions Co., Ltd.">EBS 株式会社</h3><span class="partner-tag xi18n" data-zh="环境技术" data-en="Environmental Technology">环境技术</span></div></div>
+          <p class="xi18n" data-zh="围绕光触媒技术、公共空间环境治理及跨区域应用开展交流。" data-en="Exchange on photocatalyst technology, environmental management in public spaces, and cross-regional applications.">围绕光触媒技术、公共空间环境治理及跨区域应用开展交流。</p><span class="partner-link xi18n" data-zh="访问官网 ↗" data-en="Visit website ↗">访问官网 ↗</span>
+        </a>
+        <a class="partner-card" href="https://www.e20.com.cn/" target="_blank" rel="noopener noreferrer">
+          <div class="partner-card-top"><div class="partner-mark teal">E20</div><div class="partner-name"><h3 class="xi18n" data-zh="E20 环境平台" data-en="E20 Environment Platform">E20 环境平台</h3><span class="partner-tag xi18n" data-zh="环境产业平台" data-en="Environmental Industry Platform">环境产业平台</span></div></div>
+          <p class="xi18n" data-zh="连接环境产业研究、行业交流与生态合作资源。" data-en="Connecting environmental industry research, professional exchange, and ecosystem collaboration resources.">连接环境产业研究、行业交流与生态合作资源。</p><span class="partner-link xi18n" data-zh="访问官网 ↗" data-en="Visit website ↗">访问官网 ↗</span>
+        </a>
+        <a class="partner-card" href="https://gammana.com/" target="_blank" rel="noopener noreferrer">
+          <div class="partner-card-top"><div class="partner-mark teal">GAMMA</div><div class="partner-name"><h3 class="xi18n" data-zh="远东北美 GAMMA" data-en="Far East North America GAMMA">远东北美 GAMMA</h3><span class="partner-tag xi18n" data-zh="产业与本地化" data-en="Industry & Localization">产业与本地化</span></div></div>
+          <p class="xi18n" data-zh="围绕北美市场落地、合规准入、本地合作与产业协同开展交流。" data-en="Exchange on North American market implementation, compliance access, local cooperation, and industrial collaboration.">围绕北美市场落地、合规准入、本地合作与产业协同开展交流。</p><span class="partner-link xi18n" data-zh="访问官网 ↗" data-en="Visit website ↗">访问官网 ↗</span>
+        </a>
+        <a class="partner-card" href="https://www.daqo.com/" target="_blank" rel="noopener noreferrer">
+          <div class="partner-card-top"><div class="partner-mark teal">DAQO</div><div class="partner-name"><h3 class="xi18n" data-zh="大全集团" data-en="Daqo Group">大全集团</h3><span class="partner-tag xi18n" data-zh="能源与电气" data-en="Energy & Electrical">能源与电气</span></div></div>
+          <p class="xi18n" data-zh="围绕能源、电气产业与国际市场合作开展交流。" data-en="Exchange on energy, the electrical industry, and international market cooperation.">围绕能源、电气产业与国际市场合作开展交流。</p><span class="partner-link xi18n" data-zh="访问官网 ↗" data-en="Visit website ↗">访问官网 ↗</span>
+        </a>
+        <a class="partner-card" href="https://encasystems.com/" target="_blank" rel="noopener noreferrer">
+          <div class="partner-card-top"><div class="partner-mark teal">ENCA</div><div class="partner-name"><h3>ENCA Systems</h3><span class="partner-tag xi18n" data-zh="新能源" data-en="New Energy">新能源</span></div></div>
+          <p class="xi18n" data-zh="围绕新能源动力系统、技术应用与北美市场合作开展交流。" data-en="Exchange on new-energy power systems, technology applications, and North American market cooperation.">围绕新能源动力系统、技术应用与北美市场合作开展交流。</p><span class="partner-link xi18n" data-zh="访问官网 ↗" data-en="Visit website ↗">访问官网 ↗</span>
+        </a>
+        <a class="partner-card" href="https://www.hdbiopak.com/" target="_blank" rel="noopener noreferrer">
+          <div class="partner-card-top"><div class="partner-mark teal">HD</div><div class="partner-name"><h3>HD BioPak</h3><span class="partner-tag xi18n" data-zh="食品包装" data-en="Foodservice Packaging">食品包装</span></div></div>
+          <p class="xi18n" data-zh="围绕食品服务包装、环保包装选择、定制印刷与北美供应服务开展交流。" data-en="Exchange on foodservice packaging, eco-friendly packaging options, custom printing, and North American supply services.">围绕食品服务包装、环保包装选择、定制印刷与北美供应服务开展交流。</p><span class="partner-link xi18n" data-zh="访问官网 ↗" data-en="Visit website ↗">访问官网 ↗</span>
+        </a>
+        <a class="partner-card" href="http://www.pamedical.com.cn/aboutus" target="_blank" rel="noopener noreferrer">
+          <div class="partner-card-top"><div class="partner-mark teal">PA</div><div class="partner-name"><h3 class="xi18n" data-zh="光声科技" data-en="PA Medical Technology">光声科技</h3><span class="partner-tag xi18n" data-zh="医疗科技" data-en="Medical Technology">医疗科技</span></div></div>
+          <p class="xi18n" data-zh="围绕光声成像、医疗科技及成果转化开展专业交流。" data-en="Professional exchange on photoacoustic imaging, medical technology, and technology commercialization.">围绕光声成像、医疗科技及成果转化开展专业交流。</p><span class="partner-link xi18n" data-zh="访问官网 ↗" data-en="Visit website ↗">访问官网 ↗</span>
+        </a>
+        <div class="partner-card">
+          <div class="partner-card-top"><div class="partner-mark teal">SN</div><div class="partner-name"><h3 class="xi18n" data-zh="深圳市束能科技有限公司" data-en="Shenzhen Shuneng Technology Co., Ltd.">深圳市束能科技有限公司</h3><span class="partner-tag xi18n" data-zh="电子核心器件" data-en="Core Electronic Devices">电子核心器件</span></div></div>
+          <p class="xi18n" data-zh="成立于2025年，专注电子核心器件及高功率电磁波源技术研发，依托高校实验室等学术资源推进科技创新。" data-en="Founded in 2025, the company focuses on core electronic devices and high-power electromagnetic wave source technologies, drawing on university laboratory resources for innovation.">成立于2025年，专注电子核心器件及高功率电磁波源技术研发，依托高校实验室等学术资源推进科技创新。</p>
+        </div>
+
+        <a class="partner-card" href="https://www.caianlaw.com/" target="_blank" rel="noopener noreferrer">
+          <div class="partner-card-top"><div class="partner-mark gold">CA</div><div class="partner-name"><h3 class="xi18n" data-zh="采安律师事务所" data-en="Caian Law Firm">采安律师事务所</h3><span class="partner-tag xi18n" data-zh="法律服务" data-en="Legal Services">法律服务</span></div></div>
+          <p class="xi18n" data-zh="为跨境项目、企业合规及相关法律议题提供专业交流支持。" data-en="Professional exchange support for cross-border projects, corporate compliance, and related legal matters.">为跨境项目、企业合规及相关法律议题提供专业交流支持。</p><span class="partner-link xi18n" data-zh="访问官网 ↗" data-en="Visit website ↗">访问官网 ↗</span>
+        </a>
+        <a class="partner-card" href="https://www.longanlaw.com/" target="_blank" rel="noopener noreferrer">
+          <div class="partner-card-top"><div class="partner-mark gold">LA</div><div class="partner-name"><h3 class="xi18n" data-zh="隆安律师事务所" data-en="Long An Law Firm">隆安律师事务所</h3><span class="partner-tag xi18n" data-zh="法律服务" data-en="Legal Services">法律服务</span></div></div>
+          <p class="xi18n" data-zh="围绕企业合规、投融资及跨境业务相关法律议题开展专业交流。" data-en="Professional exchange on corporate compliance, investment and financing, and cross-border legal matters.">围绕企业合规、投融资及跨境业务相关法律议题开展专业交流。</p><span class="partner-link xi18n" data-zh="访问官网 ↗" data-en="Visit website ↗">访问官网 ↗</span>
+        </a>
+        <a class="partner-card" href="https://www.sdecb.com/" target="_blank" rel="noopener noreferrer">
+          <div class="partner-card-top"><div class="partner-mark gold">SDECB</div><div class="partner-name"><h3 class="xi18n" data-zh="卑诗省法语社群经济发展会" data-en="Société de développement économique de la Colombie-Britannique">卑诗省法语社群经济发展会</h3><span class="partner-tag xi18n" data-zh="社区与经济发展" data-en="Community & Economic Development">社区与经济发展</span></div></div>
+          <p class="xi18n" data-zh="连接卑诗省法语社群、企业发展、人才与社区经济合作资源。" data-en="Connecting British Columbia's Francophone community with business development, talent, and community economic resources.">连接卑诗省法语社群、企业发展、人才与社区经济合作资源。</p><span class="partner-link xi18n" data-zh="访问官网 ↗" data-en="Visit website ↗">访问官网 ↗</span>
+        </a>
+        <div class="partner-card">
+          <div class="partner-card-top"><div class="partner-mark gold">WSC</div><div class="partner-name"><h3 class="xi18n" data-zh="杭州西湖科学咖啡馆" data-en="Hangzhou West Lake Science Café">杭州西湖科学咖啡馆</h3><span class="partner-tag xi18n" data-zh="创新交流平台" data-en="Innovation Exchange Platform">创新交流平台</span></div></div>
+          <p class="xi18n" data-zh="以社区化交流空间连接科学家、企业家、投资人与创新项目，促进科技成果交流与转化。" data-en="A community-based exchange platform connecting scientists, entrepreneurs, investors, and innovation projects to support technology exchange and commercialization.">以社区化交流空间连接科学家、企业家、投资人与创新项目，促进科技成果交流与转化。</p>
+        </div>
+      </div>
+
+      <div class="partner-disclaimer xi18n" data-zh="说明：本板块用于展示 CSTEAC 的机构联系与合作网络，仅说明相关各方曾围绕研究、活动、项目或专业议题开展交流与合作，不构成 CSTEAC 对任何机构、产品或专业服务的商业背书。具体服务由相关机构独立提供并承担责任。" data-en="Note: This section presents CSTEAC's institutional connections and cooperation network. It indicates exchanges or cooperation on research, events, projects, or professional topics and does not constitute commercial endorsement by CSTEAC of any institution, product, or professional service. Each organization independently provides and assumes responsibility for its services.">说明：本板块用于展示 CSTEAC 的机构联系与合作网络，仅说明相关各方曾围绕研究、活动、项目或专业议题开展交流与合作，不构成 CSTEAC 对任何机构、产品或专业服务的商业背书。具体服务由相关机构独立提供并承担责任。</div>
+      <div class="partner-actions"><button class="btn btn-primary xi18n" data-zh="洽谈机构合作" data-en="Explore Partnership" onclick="openPartnerInquiry()">洽谈机构合作</button></div>
     </div>
   </section>
 
@@ -1979,6 +2088,7 @@ p,li,td,th,figcaption,.hero-sub,.hero-note,.listing-body p,.member-activity-body
                   <option>市场研究报告</option>
                   <option>会员申请</option>
                   <option>AI 算力与绿色经济</option>
+                  <option>机构合作与伙伴联系</option>
                   <option>其他</option>
                 </select>
               </div>
@@ -2177,7 +2287,7 @@ zh:{
 'contact-form-h3':'发送咨询消息',
 'form-name-label':'姓名 *','form-email-label':'邮箱 *','form-phone-label':'电话',
 'form-topic-label':'咨询主题','form-msg-label':'留言 *','form-submit':'发送消息',
-'form-topic-ph':'请选择…','form-topic-1':'中企出海（EV / 供应链）','form-topic-2':'华商回流与国内对接','form-topic-3':'市场研究报告','form-topic-4':'会员申请','form-topic-5':'AI 算力与绿色经济','form-topic-6':'其他',
+'form-topic-ph':'请选择…','form-topic-1':'中企出海（EV / 供应链）','form-topic-2':'华商回流与国内对接','form-topic-3':'市场研究报告','form-topic-4':'会员申请','form-topic-5':'AI 算力与绿色经济','form-topic-6':'机构合作与伙伴联系','form-topic-7':'其他',
 'form-sending':'发送中…','form-success-msg':'✓ 您的消息已发送成功！我们将在 1-2 个工作日内与您联系。',
 'footer-links-h5':'快速链接','footer-work-h5':'服务领域','footer-contact-h5':'联系信息',
 'footer-link-home':'首页','footer-link-about':'关于我们','footer-link-svc':'服务',
@@ -2315,7 +2425,7 @@ en:{
 'contact-form-h3':'Send Us a Message',
 'form-name-label':'Name *','form-email-label':'Email *','form-phone-label':'Phone',
 'form-topic-label':'Topic','form-msg-label':'Message *','form-submit':'Send Message',
-'form-topic-ph':'Please select…','form-topic-1':'Outbound Expansion (EV / Supply Chain)','form-topic-2':'Returnee & China Connection','form-topic-3':'Market Research Reports','form-topic-4':'Membership Application','form-topic-5':'AI Computing & Green Economy','form-topic-6':'Other',
+'form-topic-ph':'Please select…','form-topic-1':'Outbound Expansion (EV / Supply Chain)','form-topic-2':'Returnee & China Connection','form-topic-3':'Market Research Reports','form-topic-4':'Membership Application','form-topic-5':'AI Computing & Green Economy','form-topic-6':'Institutional Partnership','form-topic-7':'Other',
 'form-sending':'Sending…','form-success-msg':'✓ Your message has been sent! We will be in touch within 1–2 business days.',
 'footer-links-h5':'Quick Links','footer-work-h5':'Focus Areas','footer-contact-h5':'Contact Info',
 'footer-link-home':'Home','footer-link-about':'About','footer-link-svc':'Work',
@@ -2541,7 +2651,7 @@ function applyTranslations(lang) {
   sph('#name','form-name-ph'); sph('#message','form-msg-ph');
   // select options
   var opts = document.querySelectorAll('#topic option');
-  ['form-topic-ph','form-topic-1','form-topic-2','form-topic-3','form-topic-4','form-topic-5','form-topic-6'].forEach(function(k,i){
+  ['form-topic-ph','form-topic-1','form-topic-2','form-topic-3','form-topic-4','form-topic-5','form-topic-6','form-topic-7'].forEach(function(k,i){
     if(opts[i] && t[k]!==undefined) opts[i].textContent=t[k];
   });
   // submit
@@ -2709,6 +2819,12 @@ function showPage(id) {
   }
   closeMobile();
   window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function openPartnerInquiry() {
+  showPage('contact');
+  var topic = document.getElementById('topic');
+  if (topic && topic.options.length > 6) topic.selectedIndex = 6;
 }
 
 // ── MOBILE MENU ──────────────────────────────────────────────────
@@ -3375,9 +3491,6 @@ renderListings('all');
 
 </body>
 </html>
-
-
-
 
 
 
