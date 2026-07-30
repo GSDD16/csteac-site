@@ -3269,8 +3269,8 @@ function submitForm(e) {
 
 // ── LISTINGS DATA ────────────────────────────────────────────────
 var listings = [
-  /* ksi-lisims-uniper-lng-20260729 */ {"cat":"market","catLabel":"中企出海","img":"ksi-lisims-uniper-lng-20260729-cover.png","alt":"加拿大西海岸Ksi Lisims LNG项目与欧洲20年长期购销协议","title":"加拿大LNG拿下欧洲20年长单：300亿加元项目，距离开工还有多远？","desc":"Ksi Lisims LNG与德国Uniper签署最长20年的约束性长期购销协议，每年供应200万吨、预计2032年首批交付。这份订单锁定项目约六分之一产能，但300亿加元是项目预算而非政府拨款，项目仍待最终投资决定。","date":"2026年7月29日"},
-  /* alberta-data-centre-power-costs-20260729 */ {"cat":"ai","catLabel":"AI 与算力","img":"alberta-data-centre-power-costs-20260729-cover.png","alt":"阿尔伯塔数据中心热潮、电力供应与居民电费风险","title":"数据中心热潮背后：谁来发电，谁来买单？","desc":"Meta拟建的1,800MW数据中心可能带来接近阿尔伯塔全省平均负荷15%的新增需求。本文基于Pembina Institute政策分析，拆解BYOG自带发电、天然气价格、输电成本、灵活负荷与多能源协同背后的成本和风险分配。","date":"2026年7月29日"},
+  /* ksi-lisims-uniper-lng-20260729 */ {"cat":"research","catLabel":"综合观察","img":"ksi-lisims-uniper-lng-20260729-cover.png","alt":"加拿大西海岸Ksi Lisims LNG项目与欧洲20年长期购销协议","title":"加拿大LNG拿下欧洲20年长单：300亿加元项目，距离开工还有多远？","desc":"Ksi Lisims LNG与德国Uniper签署最长20年的约束性长期购销协议，每年供应200万吨、预计2032年首批交付。这份订单锁定项目约六分之一产能，但300亿加元是项目预算而非政府拨款，项目仍待最终投资决定。","date":"2026年7月29日"},
+  /* alberta-data-centre-power-costs-20260729 */ {"cat":"research","catLabel":"综合观察","img":"alberta-data-centre-power-costs-20260729-cover.png","alt":"阿尔伯塔数据中心热潮、电力供应与居民电费风险","title":"数据中心热潮背后：谁来发电，谁来买单？","desc":"Meta拟建的1,800MW数据中心可能带来接近阿尔伯塔全省平均负荷15%的新增需求。本文基于Pembina Institute政策分析，拆解BYOG自带发电、天然气价格、输电成本、灵活负荷与多能源协同背后的成本和风险分配。","date":"2026年7月29日"},
   /* canada-ev-policy-variables-20260728 */ {"cat":"ev","catLabel":"EV 出海","img":"canada-ev-policy-variables-20260728-cover.png","alt":"加拿大EV政策换挡：从销售强制令到车队减排标准","title":"加拿大EV政策变量：销售目标、补贴与消费者信心","desc":"加拿大EV政策正在从强制销售比例转向技术中立的车队减排标准，同时恢复但收窄购车补贴。本文结合2025年销量下滑、2026年一季度回升和消费者调查，分析价格、充电、低温体验与本地化如何重塑中国EV供应链的加拿大机会。","date":"2026年7月28日"},
   /* canada-west-foundation-data-centre-strategy-20260727 */ {"cat":"research","catLabel":"综合观察","img":"canada-west-foundation-data-centre-strategy-20260727-cover.png","alt":"Canada West Foundation数据中心战略报告：电力、产业基础设施与数据主权","title":"争夺的，不只是一个数据中心","desc":"Canada West Foundation与萨省Crown Investments Corporation发布数据中心战略报告。以Bell在萨省规划的300MW AI数据中心为样本，文章分析电力、土地、光纤、审批、数据主权与产业生态如何共同决定项目落地，并梳理中国供应商进入加拿大项目所需的认证、本地责任、系统集成和数据安全能力。","date":"2026年7月27日"},
   /* three-industries-one-mission-20260725 */ {"cat":"research","catLabel":"综合观察","img":"csteac-three-industries-one-mission-20260725.png","alt":"CSTEAC三条赛道一个命题：中国电动车、加拿大数据中心与油气开发洞察报告封面","title":"三条产业线，正在汇成一条主线","desc":"中国电动车出海、加拿大数据中心建设与油气开发看似分属不同赛道，却共同考验企业能否把制造与工程优势转化为可认证、可采购、可建设、可运维的加拿大本地化项目能力。本文梳理2026年7月17日至23日的新动态与未来30天观察重点。","date":"2026年7月25日"},
@@ -3324,13 +3324,13 @@ var listings = [
 
 var listingsEn = [
   /* ksi-lisims-uniper-lng-20260729 */ {
-    "catLabel":"Market Entry",
+    "catLabel":"Strategic Briefs",
     "title":"Canadian LNG Secures a 20-Year European Contract: How Far Is the CAD 30 Billion Project from Construction?",
     "desc":"Ksi Lisims LNG has signed a binding long-term sales agreement with Germany's Uniper for two million tonnes per year, with first delivery expected in 2032. The deal covers about one-sixth of planned capacity, but the project still awaits a final investment decision.",
     "date":"July 29, 2026"
   },
   /* alberta-data-centre-power-costs-20260729 */ {
-    "catLabel":"AI & Computing",
+    "catLabel":"Strategic Briefs",
     "title":"Behind the Data-Centre Boom: Who Will Generate the Power, and Who Will Pay?",
     "desc":"Meta’s proposed 1,800 MW data centre could add demand equal to nearly 15% of Alberta’s average provincial load. Based on a Pembina Institute policy analysis, this article examines BYOG, natural-gas prices, transmission costs, flexible loads, and how the costs and risks of multi-energy systems should be allocated.",
     "date":"July 29, 2026",
@@ -4266,6 +4266,7 @@ function normalizeInsightCategories() {
     var desc = (item.desc || '');
     var cat = (item.cat || '');
     var text = title + ' ' + desc + ' ' + (item.catLabel || '') + ' ' + (item.alt || '');
+    if (/加拿大LNG拿下欧洲20年长单|数据中心热潮背后：谁来发电，谁来买单/.test(title)) return 'research';
     if (/中企出海2026路线图/.test(title)) return 'market';
     if (/94%的中国留学生选择回流/.test(title)) return 'talent';
     if (/C-12|Bill C-12|PGWP|LMIA|TFWP|Express Entry|PNP|移民|庇护|难民|工签|学签|签证|留学生|永久居民|省提名|入籍|毕业后如何.*留下来|How Can International Students Stay|work permit|study permit|immigration|asylum|refugee/i.test(text)) return 'talent';
